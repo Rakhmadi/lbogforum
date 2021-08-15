@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 class PostController extends Controller
 {
     public function allPost(){
-        return post::with(['tag','category','author'])->withCount('comment')->get();
+        return post::with(['tag','category','author'])->withCount('comment')->orderBy('created_at','DESC')->get();
     }
 
     public function singlePost($slug){

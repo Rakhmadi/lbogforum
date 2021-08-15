@@ -5,6 +5,8 @@ import About from './components/ExampleComponent.vue';
 import login from './components/login.vue';
 import register from './components/register.vue';
 import post from './components/post.vue';
+import profile from './components/profile.vue';
+
 
 import f from './components/f.vue';
 const routes = [
@@ -44,6 +46,10 @@ const routes = [
         },{
           path:'post',
           component:post
+        },{
+          name:'profile',
+          path:'profile',
+          component:profile
         }
       ],
     },

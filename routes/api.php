@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     
 });
 Route::middleware(['authApi'])->group(function () {
+    Route::get('/post', [postController::class,'allPost']);
     Route::get('/users/{id}', function ($id) {
         return $id;  
     });

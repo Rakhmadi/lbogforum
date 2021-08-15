@@ -10,8 +10,8 @@
                     <h1>Login</h1>
                     <div class="m-1">
                          <form @submit.prevent="login">
-                             <it-input v-model="email" type="email" label-top="Email" placeholder="Your Email" required />
-                             <it-input v-model="password" type="password" label-top="Password" placeholder="Your Password" required />
+                             <it-input v-model="email" value="rakhmadiwalker@gmail.com" type="email" label-top="Email" placeholder="Your Email" required />
+                             <it-input v-model="password" value="rakhmadiwalker@gmail.com" type="password" label-top="Password" placeholder="Your Password" required />
                              <div class="d-flex justify-content-star align-items-center mt-3">
                                     <it-button class="m-2" type="primary">Login</it-button>
                                     <it-button  @click.prevent="login()"  class="m-2" type="primary">Google &nbsp;<i class="mdi mdi-google"></i></it-button>
@@ -44,8 +44,8 @@ export default {
     },
     data() {
         return {
-            'email':'',
-            'password':'',
+            'email':'rakhmadiwalker@gmail.com',
+            'password':'rakhmadiwalker@gmail.com',
             'resp':[],
             'warning':false,
             'isLoading':false
