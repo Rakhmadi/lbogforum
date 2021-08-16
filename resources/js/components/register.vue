@@ -7,13 +7,18 @@
                     <h1>Register</h1>
                     <div class="m-1">
                          <form @submit.prevent="Register">
-                             <it-input v-model="name" type="text" label-top="Name" placeholder="Your Name" required />
-                             <it-input v-model="email" type="email" label-top="Email" placeholder="Your Email" required />
-                             <it-input v-model="password" type="password" label-top="Password" placeholder="Your Password" required />
-                             <it-input v-model="repassword" type="password" label-top="Confirm Password" :message="conf" placeholder="Your Password" required />
+                             <label for="name" class="form-label">Name</label>
+                             <input v-model="name" class="form-control serch_ rounded-pill" type="text"  placeholder="Your Name" required>
+                             <label for="email" class="form-label">Email</label>
+                             <input v-model="email" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
+                             <label for="password" class="form-label">Password</label>
+                             <input v-model="password" class="form-control serch_ rounded-pill" type="password"  placeholder="Your Passowrd" required>
+                             <label for="repassword" class="form-label">Repassword</label>
+                             <input v-model="repassword" class="form-control serch_ rounded-pill" type="password"  placeholder="Confirm Password" required>
+                             <span class="text-danger" >{{conf}}</span>
                              <div class="d-flex justify-content-star align-items-center mt-3">
-                                    <it-button class="m-2" type="primary">Register</it-button>
-                                    <it-button  @click.prevent="login()"  class="m-2" type="primary">Google &nbsp;<i class="mdi mdi-google"></i></it-button>
+                                    <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Register</button>
+                                    <button  @click.prevent="login()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
                              </div>
                             <font>Sudah punya akun? <router-link to="/f/login">Login</router-link></font>
 
@@ -35,12 +40,6 @@ export default {
           title: 'Register',
           htmlAttrs: { lang: 'en', amp: true }
         })
-    },
-    created(){
-        this.$Loading.start()
-    },
-    mounted(){
-        this.$Loading.finish()
     },
     data() {
         return {

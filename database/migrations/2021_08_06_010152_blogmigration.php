@@ -83,6 +83,14 @@ class Blogmigration extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
+        Schema::create('folowing_', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id')->unsigned()->index();
+            $table->bigInteger('folower_id')->unsigned()->index();
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('folower_id')->references('id')->on('users');
+            $table->timestamps();
+        });
 
     }
 

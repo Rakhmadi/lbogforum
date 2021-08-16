@@ -10,11 +10,13 @@
                     <h1>Login</h1>
                     <div class="m-1">
                          <form @submit.prevent="login">
-                             <it-input v-model="email" value="rakhmadiwalker@gmail.com" type="email" label-top="Email" placeholder="Your Email" required />
-                             <it-input v-model="password" value="rakhmadiwalker@gmail.com" type="password" label-top="Password" placeholder="Your Password" required />
+                             <label for="email" class="form-label">Email</label>
+                             <input v-model="email" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
+                             <label for="password" class="form-label">Password</label>
+                             <input class="form-control serch_ rounded-pill"  v-model="password"  type="password" label-top="Password" placeholder="Your Password" required >
                              <div class="d-flex justify-content-star align-items-center mt-3">
-                                    <it-button class="m-2" type="primary">Login</it-button>
-                                    <it-button  @click.prevent="login()"  class="m-2" type="primary">Google &nbsp;<i class="mdi mdi-google"></i></it-button>
+                                    <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Login</button>
+                                    <button  @click.prevent="login()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
                              </div>
                              <div>
                                  <font>Blum punya akan? <router-link to="/f/register">Register</router-link></font>
@@ -35,12 +37,6 @@ export default {
           title: 'Login',
           htmlAttrs: { lang: 'en', amp: true }
         })
-    },
-    created(){
-        this.$Loading.start()
-    },
-    mounted(){
-        this.$Loading.finish()
     },
     data() {
         return {

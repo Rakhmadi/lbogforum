@@ -48,7 +48,7 @@ p{
 }
 .linkc_tag{
   color:rgb(34, 26, 87);
-  font-weight: 700;
+  font-weight: 600;
 }
 .linkc_tag:hover{
   color:rgb(59, 43, 162);
@@ -129,7 +129,6 @@ p{
       transition: .5s ease;
       box-shadow: none !important;
       border: #3f56eb95 1px solid !important;
-
 }
 .back-to-top {
     position: fixed;

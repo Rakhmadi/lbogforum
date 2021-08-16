@@ -32,3 +32,4 @@ Route::middleware(['authApi'])->group(function () {
 });
 Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);
+Route::get('X',[AuthController::class,'infoUsr']);

@@ -25,7 +25,10 @@ class User extends Authenticatable
         'token_expired',
         'api_token',
         'password',
-        'ip_'
+        'ip_',
+        "phone",
+        "gender",
+        "website"
     ];
 
     /**
@@ -53,5 +56,12 @@ class User extends Authenticatable
 
     public function author(){
         return $this->belongsTo('App\Models\post');
+    }
+
+    public function folowers(){
+        return $this->hasMany('App\Models\folower','user_id');
+    }
+    public function folowing(){
+        return $this->hasMany('App\Models\folower','folower_id');
     }
 }

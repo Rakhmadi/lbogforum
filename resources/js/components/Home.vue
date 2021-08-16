@@ -4,18 +4,18 @@
                     <div class="col-12 col-md-6 col-lg-6 ">
                         <div class="card border-0 shadow-none mb-2">
                             <div class="card-body p-0">
-                            <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                <span class="mx-1">All</span>
-                            </button> 
-                            <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                <span class="mx-1">Old</span>
-                            </button> 
-                            <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                <span class="mx-1">All</span>
-                            </button> 
+                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                    <span class="mx-1">All</span>
+                                </button> 
+                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                    <span class="mx-1">Old</span>
+                                </button> 
+                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                    <span class="mx-1">All</span>
+                                </button> 
                             </div>
                         </div>
-                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom" v-for="item in post" :key="item.id">
+                        <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom" v-for="item in post" :key="item.id">
                             <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="item.image_article" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
@@ -27,8 +27,7 @@
                             </div>
                             <div class="p-2">
                                 <h2 class="user_s" style="cursor:pointer;">{{item.title}}</h2>
-                                <router-link class="linkc_tag me-2" to="">#transs</router-link>
-                                <router-link class="linkc_tag me-2" to="">#transs</router-link>
+                                <router-link v-for="ite in item.tag" :key="ite.id" class="linkc_tag me-2" to="">#{{ite.tag_name}}</router-link>
                             </div>
                             <div class="p-2 border-top">
                                 <div class="container-fluid p-0 m-0">
@@ -73,9 +72,7 @@
 import axios from "axios";
 import { useMeta } from 'vue-meta'
 export default {
-    created(){
-        this.$Loading.start()
-    },
+
   setup () {
     useMeta({
       title: 'Home',
@@ -83,7 +80,6 @@ export default {
     })
   },
     async mounted(){
-      this.$Loading.finish()
         axios.get(`${window.location.origin}/api/post?token=${sessionStorage['token']}`).then(x=>{
             this.post = x.data
             console.log(this.post)

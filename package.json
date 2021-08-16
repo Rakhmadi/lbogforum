@@ -10,6 +10,7 @@
     "watch-poll": "mix watch -- --watch-options-poll=1000"
   },
   "dependencies": {
+    "@aacassandra/vue3-progressbar": "^1.0.3",
     "@mdi/font": "5.9.55",
     "aos": "^2.3.4",
     "bootstrap": "^5.0.0-beta3",

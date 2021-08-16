@@ -2,7 +2,7 @@
     
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
-                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                        <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom">
                             <div class="p-2 ">
                             <div class="p-2 d-flex flex-column align-items-center  border-bottom ">
                                 <div>

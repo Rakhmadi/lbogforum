@@ -8,6 +8,8 @@ use Illuminate\Support\Carbon;
 use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use App\Models\folower;
+
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
@@ -79,5 +81,15 @@ class AuthController extends Controller
                 'token'=>$rand
             ], 200,);
         }   
+    }
+    public function infoUsr(Request $r){
+        $x = User::where('api_token',$r->token)->first()->id;
+        $r = folower::where('user_id',$x)->where('folower_id',2)->exists();
+        return  [
+            "folowed" => $r,
+            "user"=>User::where('id',2)->get(),
+            "pengikut"=>folower::where('folower_id',2)->leftJoin('users','users.id','=','user_id')->get(["name","email","avatar"]),
+            "mengikuti"=>folower::where('user_id',2)->leftJoin('users','users.id','=','folower_id')->get(["name","email","avatar"])
+        ];
     }
 }
