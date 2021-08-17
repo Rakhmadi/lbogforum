@@ -39,8 +39,7 @@ Route::get('users/{id}', function ($id) {
 
 })->middleware(['authWeb']);
 
-Route::get('/post/{slug}',[postController::class,'singlePost']);
-Route::get('/post', [postController::class,'allPost']);
+
 Route::get('/fo/{view?}',function(){
     return view('vue');
 })->where('view', '(.*)')

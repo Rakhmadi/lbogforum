@@ -12,10 +12,16 @@ import '@mdi/font/css/materialdesignicons.min.css'
 
 AOS.init();
 const app = createApp(App);
+const gAuthOptions = { 
+    clientId: '647291233126-97nmoe3tnqorroofhe5fv64m1vii99le.apps.googleusercontent.com',
+    scope: 'email',
+    prompt: 'select_account',
+    }
 
 app.use(router)
 app.use(store);
 app.use(createMetaManager());
+app.use(GAuth,gAuthOptions)
 
 app.mount('#app')
 export default app

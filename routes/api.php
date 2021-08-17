@@ -29,6 +29,8 @@ Route::middleware(['authApi'])->group(function () {
             'msg'=>"logged"
         ], 200);        
     });
+    Route::get('/post/{slug}',[postController::class,'singlePost']);
+    Route::get('/post', [postController::class,'allPost']);
 });
 Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);

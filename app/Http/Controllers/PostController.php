@@ -8,8 +8,22 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    public function allPost(){
-        return post::with(['tag','category','author'])->withCount('comment')->orderBy('created_at','DESC')->get();
+    public function post($order){
+        $data = post::with(['tag','category','author'])
+        ->withCount('comment')
+        ->orderBy('created_at',$order)->simplePaginate(5);
+        return response()->json($data, 200);
+    }
+    public function allPost(Request $r){
+        if ($r->order == 'desc') {
+            return $this->post('desc');
+        }else if($r->order == 'asc'){
+            return $this->post('asc');
+        }else{
+            return response()->json([
+                'msg'=>'Order is not valid',
+            ], 400);
+        }
     }
 
     public function singlePost($slug){

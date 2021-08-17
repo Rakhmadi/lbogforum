@@ -82,6 +82,25 @@ class AuthController extends Controller
             ], 200,);
         }   
     }
+    public function loginWithGoogle(Request $r){
+           $rand = bcrypt(Str::random(10));
+           $user = User::where('google_id',$r->google_id);
+           if ($user->exists()) {
+            $user->update([
+                'ip_'=>$r->ip(),
+                'api_token'=>$rand,
+                'token_expired'=>Carbon::now()->addHours(24),
+            ]);
+            return response()->json([
+                "msg"=>"success",
+                "token"=>$rand,
+            ], 200);
+            }else{
+            return response()->json([
+                "msg"=>"error"
+            ], 400);
+           }
+    }
     public function infoUsr(Request $r,$idUser){
         $x = User::where('api_token',$r->token);
         if ($x->exists()) {

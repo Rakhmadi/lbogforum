@@ -6,7 +6,7 @@
                     <input class="form-control rounded-pill me-2 serch_ shadow-none" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
                      <div class=" ms-auto d-flex align-items-center">
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
-                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-feather"></i></button>
+                        <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="createPost" style=""><i class="fs-6 mdi mdi-feather"></i></button>
                      </div>
                      <div class="me-2" data-aos="zoom-in"  v-if="!showals">
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-magnify"></i></button>
@@ -70,6 +70,10 @@ export default {
                   this.$router.push({
                       name:'profile'
                   })
+          },createPost(){
+              this.$router.push({
+                  name:'createPost'
+              })
           }
     },
 }

@@ -3,7 +3,8 @@ import { createStore } from 'vuex'
 export const store = createStore({
   state () {
     return {
-      userDetail: []
+      userDetail: [],
+      postList: [],
     }
   },
   mutations:{
@@ -19,6 +20,9 @@ export const store = createStore({
         store.commit('setUserDetail',data)
         return store.state.userDetail
       })
+    },
+    getPost (store,type) {
+      
     }
    }
 })

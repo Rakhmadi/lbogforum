@@ -7,6 +7,7 @@ import register from './components/register.vue';
 import post from './components/post.vue';
 import profile from './components/profile.vue';
 import folower from './components/folower.vue';
+import createPost from './components/createPost.vue';
 
 async function cekLogin(to,from,next) {
   const resp = await fetch(`${window.location.origin}/api/CEK_TOKEN?token=${sessionStorage['token']}`)
@@ -59,6 +60,11 @@ const routes = [
           name:'folower',
           path:'folower',
           component:folower
+        },{
+          beforeEnter: cekLogin,
+          name:'createPost',
+          path:'createPost',
+          component:createPost
         }
       ],
     },

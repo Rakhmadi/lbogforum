@@ -16,7 +16,7 @@
                              <input class="form-control serch_ rounded-pill"  v-model="password"  type="password" label-top="Password" placeholder="Your Password" required >
                              <div class="d-flex justify-content-star align-items-center mt-3">
                                     <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Login</button>
-                                    <button  @click.prevent="login()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
+                                    <button  @click.prevent="handleClickSignIn()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
                              </div>
                              <div>
                                  <font>Blum punya akan? <router-link to="/f/register">Register</router-link></font>
@@ -51,6 +51,37 @@ export default {
 
     },
     methods: {
+        async loginGoogle() {
+            this.$gAuth
+        .getAuthCode()
+        .then((authCode) => {
+          //on success
+          console.log("authCode", authCode);
+        })
+        .catch((error) => {
+          //on fail do something
+        });
+        },    async handleClickSignIn() {
+      try {
+        const googleUser = await this.$gAuth.signIn();
+        if (!googleUser) {
+          return null;
+        }
+        console.log("googleUser", googleUser);
+        console.log("getId", googleUser.getId());
+        console.log("getBasicProfile", googleUser.getBasicProfile());
+        console.log("getAuthResponse", googleUser.getAuthResponse());
+        console.log(
+          "getAuthResponse",
+          this.$gAuth.GoogleAuth.currentUser.get().getAuthResponse()
+        );
+        this.isSignIn = this.$gAuth.isAuthorized;
+      } catch (error) {
+        //on fail do something
+        console.error(error);
+        return null;
+      }
+    },
         async login(){
             this.isLoading = true
             this.warning = false
