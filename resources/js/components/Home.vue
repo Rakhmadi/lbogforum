@@ -82,7 +82,6 @@ export default {
     async mounted(){
         axios.get(`${window.location.origin}/api/post?token=${sessionStorage['token']}`).then(x=>{
             this.post = x.data
-            console.log(this.post)
         })
     },
     data() {

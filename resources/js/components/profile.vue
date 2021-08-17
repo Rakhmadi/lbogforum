@@ -6,11 +6,14 @@
                             <div class="p-2 ">
                             <div class="p-2 d-flex flex-column align-items-center  border-bottom ">
                                 <div>
-                                    <img style="border:4px solid #3051FF;" class="rounded-circle" width="99px" height="99px" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                                    <img style="border:4px solid #3051FF;width:99px; height:99px;" class="rounded-circle" alt="v" src="https://avatarfiles.alphacoders.com/845/84595.png">
                                 </div>
-                                <div class="ms-2">
-                                    <h4 class="m-0 p-0 text-break user_s text-center" style="">Hataraku Hataraku Hataraku Hataraku</h4>
-
+                                <div>
+                                    <h4 class="m-0 p-0 text-break user_s text-center" style="">{{resp.user.name}}</h4>
+                                </div>
+                                <div class="d-flex flex-row mt-2">
+                                    <h6 class="mx-1" style="text-decoration: underline;"><router-link @click="followers" to="">Follower {{resp.pengikut.length}}</router-link></h6>
+                                    <h6 class="mx-1" style="text-decoration: underline;"><router-link @click="folowing()"  to="">Folowing {{resp.mengikuti.length}}</router-link></h6>
                                 </div>
                                     <div class="my-2">
                                         <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
@@ -65,3 +68,39 @@
                     </div>
                     </div>
 </template>
+<script>
+export default {
+   beforeMount(){
+        this.$store.dispatch('getUserInfo',1).then(x=>{
+            this.resp = x;
+        })
+    },
+    data(){
+        return {
+                resp:{
+                    user:{},
+                    pengikut:[],
+                    mengikuti:[]
+                }
+        }
+    },
+    methods: {
+        folowing(){
+            this.$router.push({
+                name:'folower',
+                query:{
+                    type:'Following'
+                }
+            })
+        },
+        followers(){
+            this.$router.push({
+                name:'folower',
+                query:{
+                    type:'Followers'
+                }
+            })
+        }
+    },
+}
+</script>

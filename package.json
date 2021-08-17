@@ -19,7 +19,9 @@
     "roboto-fontface": "*",
     "vue-meta": "^3.0.0-alpha.7",
     "vue-router": "^4.0.11",
-    "vuelidate": "^0.7.6"
+    "vue3-google-oauth2": "^1.0.4",
+    "vuelidate": "^0.7.6",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "^3.2.1",

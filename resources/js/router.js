@@ -6,7 +6,20 @@ import login from './components/login.vue';
 import register from './components/register.vue';
 import post from './components/post.vue';
 import profile from './components/profile.vue';
+import folower from './components/folower.vue';
 
+async function cekLogin(to,from,next) {
+  const resp = await fetch(`${window.location.origin}/api/CEK_TOKEN?token=${sessionStorage['token']}`)
+  const X = await resp.json()
+  if (X.msg === 'logged' ) {
+    next() // Silahkan masuk ke route ini
+  }
+  else if (resp.status === 401) {
+    next({name:'login'}) // Dilempar ke route dengan name: home
+  }else{
+    next({name:'login'}) // Dilempar ke route dengan name: home
+  }
+}
 
 import f from './components/f.vue';
 const routes = [
@@ -25,31 +38,27 @@ const routes = [
      },
     { 
       path: '/f/U/', 
-      beforeEnter: async function (to,from,next) {
-        const resp = await fetch(`${window.location.origin}/api/CEK_TOKEN?token=${sessionStorage['token']}`)
-        const X = await resp.json()
-        if (X.msg === 'logged') {
-          next() // Silahkan masuk ke route ini
-          console.log('isLooged');
-        }
-        else{
-          next({name:'login'}) // Dilempar ke route dengan name: home
-          console.log('noTLo');
-        }
-      },
+      beforeEnter: cekLogin,
       component: User,
       children:[
         {
           path:'home',
+          beforeEnter: cekLogin,
           name:'home',
           component:Home
         },{
           path:'post',
+          beforeEnter: cekLogin,
           component:post
         },{
           name:'profile',
+          beforeEnter: cekLogin,
           path:'profile',
           component:profile
+        },{
+          name:'folower',
+          path:'folower',
+          component:folower
         }
       ],
     },

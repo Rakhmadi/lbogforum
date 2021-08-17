@@ -8,14 +8,13 @@
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-feather"></i></button>
                      </div>
-                     <div class="me-2">
+                     <div class="me-2" data-aos="zoom-in"  v-if="!showals">
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-magnify"></i></button>
                      </div>
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-brightness-4"></i></button>
                      </div>
-                      <div class="me-2"></div>
-                      <img @click="gotoprof" style="border:3px solid #3051FF;cursor:pointer;width:45px !important; height:45px !important" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                      <img @click="gotoprof" style="border:2px solid #3051FF;cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
                      </div>
               </div>
           </div>
