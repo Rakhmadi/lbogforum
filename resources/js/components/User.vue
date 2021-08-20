@@ -41,10 +41,6 @@ export default {
     })
   },
     async mounted(){
-        axios.get('/post').then(x=>{
-            this.post = x.data
-            console.log(this.post)
-        })
         window.document.body.onscroll = ()=> {
             if (window.pageYOffset >= 200) {
                 this.totop = true

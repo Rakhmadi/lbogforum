@@ -15,6 +15,8 @@
     "aos": "^2.3.4",
     "bootstrap": "^5.0.0-beta3",
     "equal-vue": "^0.79.2",
+    "infinite-loading-vue3": "^1.0.1",
+    "mobile-device-detect": "^0.4.3",
     "rdatatb": "^0.0.2",
     "roboto-fontface": "*",
     "vue-meta": "^3.0.0-alpha.7",

@@ -11,7 +11,7 @@ class PostController extends Controller
     public function post($order){
         $data = post::with(['tag','category','author'])
         ->withCount('comment')
-        ->orderBy('created_at',$order)->simplePaginate(5);
+        ->orderBy('created_at',$order)->simplePaginate(10);
         return response()->json($data, 200);
     }
     public function allPost(Request $r){

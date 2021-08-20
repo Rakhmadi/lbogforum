@@ -1,16 +1,19 @@
 import { createStore } from 'vuex'
+import axios from "axios";
 
 export const store = createStore({
-  state () {
-    return {
+  state:{
       userDetail: [],
       postList: [],
-    }
   },
   mutations:{
     setUserDetail (state, userDetail) {
       state.userDetail = userDetail
-    }
+    },
+    postLists (state, postList) {
+      return state.postList = postList
+    },
+    
   },actions: { 
     getUserInfo (store,userId) {
       return fetch(`/api/userDetail/${userId}?token=${sessionStorage['token']}`)
@@ -21,8 +24,12 @@ export const store = createStore({
         return store.state.userDetail
       })
     },
-    getPost (store,type) {
-      
+    getPost ({commit,state},{order,page}) {
+      return axios.get(`${window.location.origin}/api/post?order=${order}&page=${page}&token=${sessionStorage['token']}`).then(x=>{
+        commit('postLists',x.data)
+        return state.postList 
+        
+      })
     }
    }
 })

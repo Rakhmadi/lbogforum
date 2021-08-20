@@ -4,18 +4,18 @@
                     <div class="col-12 col-md-6 col-lg-6 ">
                         <div class="card border-0 shadow-none mb-2">
                             <div class="card-body p-0">
-                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                    <span class="mx-1">All</span>
+                                <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                    <span class="mx-1">Newer</span>
                                 </button> 
-                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                    <span class="mx-1">Old</span>
+                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                    <span class="mx-1">Older</span>
                                 </button> 
                                 <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                                     <span class="mx-1">All</span>
                                 </button> 
                             </div>
                         </div>
-                        <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom" v-for="item in post" :key="item.id">
+                        <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom" v-for="item in Data" :key="item.id">
                             <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="item.image_article" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
@@ -52,7 +52,9 @@
                             </div>
                             </div>
                         </div>
-
+                        <div class="d-flex justify-content-center">
+                              <span v-if="loading" class="hidden pb-4">Loading...</span>
+                        </div>
                     </div>
                     <div class="col-3">
                        <div class="position-fixed">
@@ -69,6 +71,7 @@
                     </div>
 </template>
 <script>
+import { isMobile } from 'mobile-device-detect';
 import axios from "axios";
 import { useMeta } from 'vue-meta'
 export default {
@@ -80,19 +83,98 @@ export default {
     })
   },
     async mounted(){
-        axios.get(`${window.location.origin}/api/post?token=${sessionStorage['token']}`).then(x=>{
-            this.post = x.data
-        })
+        this.getData()
+        if(isMobile){
+            console.log('isMobile')
+            window.document.ontouchmove = ()=>{
+
+           let xNnc = (window.pageYOffset + 56)
+           let xNnb = (window.scrollMaxY || (window.document.documentElement.scrollHeight - window.document.documentElement.clientHeight))
+           console.log(xNnc)
+            console.log(xNnb)
+
+           if (xNnc === xNnb) {
+               console.log('end of page')
+               this.getData()
+           }
+            }
+        }else{
+       window.document.onscroll = ()=>{
+           let xNnc = (window.pageYOffset)
+           let xNnb = (window.scrollMaxY || (document.documentElement.scrollHeight - document.documentElement.clientHeight))
+           if (xNnc === xNnb) {
+               console.log('end of page')
+               this.getData()
+           }
+       }
+        }
+
+       this.$store.dispatch('getPost',{
+           order: 'desc',
+           page: 1
+       }).then(x=>{
+           this.post = x.data
+       })
     },
     data() {
         return {
-           post:[] 
+           post:[],
+           page:1,
+           order:'desc',
+           isAsc:false,
+           Data:[],
+           loading:false,
+            orders:{
+                border:'3px'
+            }
+
+        }
+    },
+    computed:{
+        postData(){
+            return this.$store.state.postList.data
         }
     },
     methods: {
         date(x){
             return new Date(x).toLocaleString('en-US');
+        },
+        getAsc(){
+            this.order = "asc"
+            this.Data = []
+            this.page = 1
+            this.isAsc = true
+            this.getData()
+        },
+        getDsc(){
+            this.order = "desc"
+            this.Data = []
+            this.page = 1
+            this.isAsc = false
+            this.getData()
+        },
+        getData(){
+            this.loading = true
+            this.$store.dispatch('getPost',{
+                order: this.order,
+                page: this.page
+            }).then(x=>{
+                if (x.data.length) {
+                    this.loading = false
+                    this.Data.push(...x.data)
+                    this.page++
+                    console.log(this.Data)
+                }
+            })
         }
     },
 }
 </script>
+<style lang="css">
+.toggles_order{
+      border: #3f56eb59 2px solid !important;
+}    
+.toggles_order_hint{
+      border: #122fe6b3 2px solid !important;
+} 
+</style>
