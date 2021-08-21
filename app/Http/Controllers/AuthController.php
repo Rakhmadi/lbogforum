@@ -96,9 +96,27 @@ class AuthController extends Controller
                 "token"=>$rand,
             ], 200);
             }else{
-            return response()->json([
-                "msg"=>"error"
-            ], 400);
+                $EmailExists = User::where('email',$r->email)->exists();
+                if ($EmailExists) {
+                    $u = User::create([
+                        "name"=>$r->name,
+                        "email"=>$r->email,
+                        "avatar"=>$r->avatar,
+                        "google_id"=>$r->google_id,
+                        "password"=>$rand,
+                        "role"=>'user',
+                        'api_token'=>$rand,
+                        'token_expired'=>Carbon::now()->addHours(24),
+                    ]);
+                    return response()->json([
+                        "msg"=>"success",
+                        "token"=>$rand,
+                    ], 200);
+                }else{
+                    return response()->json([
+                        'msg'=>'input Error'
+                    ], 400);
+                }
            }
     }
     public function infoUsr(Request $r,$idUser){

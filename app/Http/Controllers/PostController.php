@@ -33,7 +33,7 @@ class PostController extends Controller
         //           ->orWhere('d', 'like', '');
         // })->get();
     }
-
+ 
     public function searchPost($serch){
         
     }

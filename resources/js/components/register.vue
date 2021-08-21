@@ -3,21 +3,22 @@
         <div class="col-12 col-lg-4">
             <div class="card p-2 m-3">
                 <div class="card-body">
-                    <it-progressbar v-show="isLoading" :height="3" infinite />
                     <h1>Register</h1>
                     <div class="m-1">
                          <form @submit.prevent="Register">
-                             <label for="name" class="form-label">Name</label>
+                             <label for="name" class="form-label">Name &nbsp;&nbsp;<span class="text-danger" >{{cekword}}</span></label>
                              <input v-model="name" class="form-control serch_ rounded-pill" type="text"  placeholder="Your Name" required>
-                             <label for="email" class="form-label">Email</label>
-                             <input v-model="email" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
-                             <label for="password" class="form-label">Password</label>
+                             <label for="email" class="form-label">Email &nbsp;&nbsp;<span v-show="emailCek!=''" class="text-danger" >{{emailCek}}</span></label>
+                             <input v-model="email" @click="emailCek = ''" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
+                             <label for="password" class="form-label">Password &nbsp;&nbsp;<span class="text-danger" >{{cekpass}}</span></label>
                              <input v-model="password" class="form-control serch_ rounded-pill" type="password"  placeholder="Your Passowrd" required>
                              <label for="repassword" class="form-label">Repassword</label>
                              <input v-model="repassword" class="form-control serch_ rounded-pill" type="password"  placeholder="Confirm Password" required>
                              <span class="text-danger" >{{conf}}</span>
                              <div class="d-flex justify-content-star align-items-center mt-3">
-                                    <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Register</button>
+                                    <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                          <span v-show="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        Register</button>
                                     <button  @click.prevent="login()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
                              </div>
                             <font>Sudah punya akun? <router-link to="/f/login">Login</router-link></font>
@@ -47,7 +48,8 @@ export default {
             'email':'',
             'password':'',
             'repassword':'',
-            'isLoading':false
+            'isLoading':false,
+            'emailCek':''
         }
     },
     computed:{
@@ -57,27 +59,47 @@ export default {
             }else{
                 return '! Password & Confrim password harus sama'
             }
+        },
+        cekword(){
+            if (this.name.length >= 6) {
+                return ''
+            }else{
+                return '! Length name must  5 >'
+            }
+        },
+        cekpass(){
+            let cekRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/.test(this.password)
+            if(cekRegex){
+                return ''
+            }else{
+                return ' Minimum eight characters, at least one letter, one number and one special character'
+            }
         }
     },
     methods:{
         Register(){
-            if (this.password === this.repassword) {
-                this.isLoading = true
-                fetch(`${window.location.origin}/api/Auth/Register`,{
-                    method:"POST",
-                    headers: {
-                      'Accept': 'application/json',
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
+            this.emailCek = ''
+            this.isLoading = true
+            if (this.password === this.repassword && this.cekpass === '' && this.cekword === '') {
+                this.$store.dispatch('registerPost',{
                         name:this.name,
                         email:this.email,
                         password:this.password
-                    })
-                }).then(x=>x.json()).then(resp=>{
-                    this.isLoading = false                    
+                }).then(x=>{
+                        this.isLoading = false
+                        sessionStorage['token'] = x.data.token;
+                        this.$router.push({
+                            name:'home'
+                        })
+                }).catch(err=>{
+                        this.isLoading = false
+                        console.log(err)
+                        try {
+                             this.emailCek = err.response.data.email[0]
+                        } catch (error) {
+                            console.log(error)
+                        }
                 })
-                console.log('sdf');
             }
         }
     }

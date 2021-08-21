@@ -28,7 +28,15 @@ export const store = createStore({
       return axios.get(`${window.location.origin}/api/post?order=${order}&page=${page}&token=${sessionStorage['token']}`).then(x=>{
         commit('postLists',x.data)
         return state.postList 
-        
+      }) 
+    },
+    registerPost({commit},{name,email,password}){
+      return axios.post('/api/Auth/Register',{
+        name:name,
+        email:email,
+        password:password
+      }).then(x=>{
+        return x
       })
     }
    }
