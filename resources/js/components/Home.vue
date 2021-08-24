@@ -10,9 +10,6 @@
                                 <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Older</span>
                                 </button> 
-                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                    <span class="mx-1">All</span>
-                                </button> 
                             </div>
                         </div>
                         <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom" v-for="item in Data" :key="item.id">
@@ -44,7 +41,8 @@
                                         </div>
                                         <div class="ms-auto ">
                                             <button class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
-                                                <i style="font-size:14px" class="mdi mdi-bookmark"></i>
+                                                <i style="font-size:14px" v-if="item.bookmark_check_count == 0" class="mdi mdi-bookmark"></i>
+                                                <i style="font-size:14px" v-if="item.bookmark_check_count >= 1" class="mdi mdi-bookmark-check"></i>
                                             </button>
                                         </div>
                                     </div>

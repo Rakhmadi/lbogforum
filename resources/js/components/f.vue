@@ -1,8 +1,5 @@
 <template>
-    <div>
-        
-    <router-link to="/f/U/home">abaut</router-link><br>
-    <router-link to="/f/">home</router-link>
+    <div class="h-100 w-100">
         <router-view></router-view>
     </div>
 </template>

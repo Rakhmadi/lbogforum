@@ -32,5 +32,9 @@ class post extends Model
 
     public function comment(){
         return $this->hasMany('App\Models\comment','article_id');
-    }   
+    }
+
+    public function bookmarkCheck(){
+        return $this->hasOne('App\Models\bookmarx','article_id');
+    }
 }

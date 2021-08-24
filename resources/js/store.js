@@ -38,6 +38,15 @@ export const store = createStore({
       }).then(x=>{
         return x
       })
+    },registerGooglePost({commit},{data}){
+      return axios.post('/api/Auth/GoogleAuth',{
+        email:data.email,
+        name:data.name,
+        avatar:data.avatar,
+        google_id:data.google_id
+      }).then(x=>{
+        return x
+      })
     }
    }
 })

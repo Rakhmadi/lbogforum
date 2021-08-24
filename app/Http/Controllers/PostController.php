@@ -4,21 +4,27 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\post;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    public function post($order){
+    public function post($r,$order){
+        $user = User::where('api_token',$r->token)->first()->id;
         $data = post::with(['tag','category','author'])
+        ->withCount(['bookmarkCheck'=>function ($query) use ($user){
+            $query->where('user_id' , $user);
+        }])
         ->withCount('comment')
         ->orderBy('created_at',$order)->simplePaginate(10);
+        
         return response()->json($data, 200);
     }
     public function allPost(Request $r){
         if ($r->order == 'desc') {
-            return $this->post('desc');
+            return $this->post($r,'desc');
         }else if($r->order == 'asc'){
-            return $this->post('asc');
+            return $this->post($r,'asc');
         }else{
             return response()->json([
                 'msg'=>'Order is not valid',

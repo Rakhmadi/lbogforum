@@ -12,9 +12,12 @@
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-magnify"></i></button>
                      </div>
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
+                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-bookmark"></i></button>
+                     </div>
+                      <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-brightness-4"></i></button>
                      </div>
-                      <img @click="gotoprof" style="border:2px solid #3051FF;cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                      <img @click="gotoprof" style="border:2px solid #3051FF;cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
                      </div>
               </div>
           </div>
@@ -41,6 +44,8 @@ export default {
     })
   },
     async mounted(){
+        this.avatar = JSON.parse(localStorage.getItem('user')).avatar
+        console.log(this.avatar)
         window.document.body.onscroll = ()=> {
             if (window.pageYOffset >= 200) {
                 this.totop = true
@@ -53,7 +58,8 @@ export default {
         return {
            post:[],
            showals:true,
-           totop:false
+           totop:false,
+           avatar:'',
         }
     },methods: {
           scrollToTop() {

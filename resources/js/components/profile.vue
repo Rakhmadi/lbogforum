@@ -1,12 +1,11 @@
 <template>
-    
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
                         <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom">
                             <div class="p-2 ">
                             <div class="p-2 d-flex flex-column align-items-center  border-bottom ">
                                 <div>
-                                    <img style="border:4px solid #3051FF;width:99px; height:99px;" class="rounded-circle" alt="v" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                                    <img style="border:4px solid #3051FF;width:99px; height:99px;" class="rounded-circle" alt="v" :src="resp.user.avatar">
                                 </div>
                                 <div>
                                     <h4 class="m-0 p-0 text-break user_s text-center" style="">{{resp.user.name}}</h4>

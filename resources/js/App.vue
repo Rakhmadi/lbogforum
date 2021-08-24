@@ -17,7 +17,7 @@ mounted(){
 p{
   font-size: 1.05rem!important;
 }
-  html{
+  html,body{
     width:100%;
     height: 100%;
   }
@@ -136,3 +136,4 @@ p{
     right: 15px;
 }
 </style>
+// #060310

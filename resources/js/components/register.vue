@@ -1,5 +1,5 @@
 <template>
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="h-100 row p-0 m-0 d-flex justify-content-center align-items-center">
         <div class="col-12 col-lg-4">
             <div class="card p-2 m-3">
                 <div class="card-body">
@@ -19,7 +19,7 @@
                                     <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                                           <span v-show="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                         Register</button>
-                                    <button  @click.prevent="login()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
+                                    <button  @click.prevent="handleClickSignIn()" class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">Google &nbsp;<i class="mdi mdi-google"></i></button>
                              </div>
                             <font>Sudah punya akun? <router-link to="/f/login">Login</router-link></font>
 
@@ -87,9 +87,11 @@ export default {
                         password:this.password
                 }).then(x=>{
                         this.isLoading = false
-                        sessionStorage['token'] = x.data.token;
                         this.$router.push({
-                            name:'home'
+                            name:'login',
+                            query: {
+                                msg:'Account Registered'
+                            }
                         })
                 }).catch(err=>{
                         this.isLoading = false
@@ -101,7 +103,34 @@ export default {
                         }
                 })
             }
-        }
+        },
+        async handleClickSignIn() {
+         try {
+           const googleUser = await this.$gAuth.signIn();
+           if (!googleUser) {
+             return null;
+           }
+           let getDataUser = googleUser.getBasicProfile()
+           this.$store.dispatch('registerGooglePost',{
+               data:{
+                   email:getDataUser.Et,
+                   name:getDataUser.Ne,
+                   avatar:getDataUser.hJ,
+                   google_id:getDataUser.mS
+               }
+           }).then(x=>{
+               sessionStorage['token'] = x.data.token
+               localStorage.setItem('user',JSON.stringify({avatar:getDataUser.hJ}))
+               this.$router.push({
+                   name:'home'
+               })
+           })
+           this.isSignIn = this.$gAuth.isAuthorized;
+         } catch (error) {
+           console.error(error);
+           return null;
+         }
+    },
     }
 }
 </script>

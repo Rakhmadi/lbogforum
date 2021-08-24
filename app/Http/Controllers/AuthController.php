@@ -43,6 +43,7 @@ class AuthController extends Controller
            return response()->json([
                "msg"=>"success",
                "token"=>$rand,
+               "user"=> $user->first()
            ], 200);
         }else{
             return response()->json([
@@ -97,7 +98,7 @@ class AuthController extends Controller
             ], 200);
             }else{
                 $EmailExists = User::where('email',$r->email)->exists();
-                if ($EmailExists) {
+                if (!$EmailExists) {
                     $u = User::create([
                         "name"=>$r->name,
                         "email"=>$r->email,
@@ -120,6 +121,22 @@ class AuthController extends Controller
            }
     }
     public function infoUsr(Request $r,$idUser){
+        $x = User::where('api_token',$r->token);
+        if ($x->exists()) {
+            $r = folower::where('user_id',$x->first()->id)->where('folower_id',$x->first()->id)->exists();
+            return response()->json([
+                "folowed" => $r,
+                "user"=>User::where('id',$x->first()->id)->first(),
+                "pengikut"=>folower::where('folower_id',$x->first()->id)->leftJoin('users','users.id','=','user_id')->get(["name","email","avatar"]),
+                "mengikuti"=>folower::where('user_id',$x->first()->id)->leftJoin('users','users.id','=','folower_id')->get(["name","email","avatar"])
+            ], 200);
+        }else{
+            return response()->json([
+                'msg'=>'Unauthorized'
+            ], 401);
+        }
+    }
+    public function infoOtherUser(Request $r,$idUser){
         $x = User::where('api_token',$r->token);
         if ($x->exists()) {
             $r = folower::where('user_id',$x->first()->id)->where('folower_id',$idUser)->exists();

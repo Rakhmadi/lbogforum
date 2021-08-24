@@ -7,7 +7,7 @@
         <meta name="Description" CONTENT="Author: A.N. Author, Illustrator: P. Picture, Category: Books, Price:  £9.24, Length: 784 pages">
     </head>
     <body>
-        <div id="app">
+        <div id="app" style="width: 100%;height:100%">
             <App></App>
         </div>
         <script>
