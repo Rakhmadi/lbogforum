@@ -22630,7 +22630,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      bg_: {
+        backgroundImage: "url('".concat(window.location.origin, "/Asset 4.svg')"),
+        backgroundSize: 'cover'
+      }
+    };
+  }
+});
 
 /***/ }),
 
@@ -23158,7 +23167,8 @@ var _hoisted_2 = {
   "class": "col-12 col-md-6 col-lg-6 "
 };
 var _hoisted_3 = {
-  "class": "card border-0 shadow-none mb-2"
+  "class": "card border-0 shadow-none mb-2",
+  "data-aos": "fade-up"
 };
 var _hoisted_4 = {
   "class": "card-body p-0"
@@ -23322,7 +23332,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   )])]), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.Data, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       "class": "card mb-3 border-0 c_shadow",
-      "data-aos-anchor-placement": "top-bottom",
+      "data-aos": "fade-up",
       key: item.id
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       style: {
@@ -23599,13 +23609,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-var _hoisted_1 = {
-  "class": "h-100 w-100"
-};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    "class": "h-100 w-100",
+    style: (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeStyle)($data.bg_)
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)], 4
+  /* STYLE */
+  );
 }
 
 /***/ }),
@@ -23711,7 +23723,7 @@ var _hoisted_2 = {
   "class": "col-12 col-lg-4"
 };
 var _hoisted_3 = {
-  "class": "card p-2 m-3"
+  "class": "card p-2 m-3 border-0 c_shadow"
 };
 var _hoisted_4 = {
   "class": "card-body"
@@ -23942,7 +23954,8 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = {
   "class": "card mb-3 border-0 c_shadow",
-  "data-aos-anchor-placement": "top-bottom"
+  "data-aos": "fade-up",
+  "data-aos-anchor-placement": "top-center"
 };
 var _hoisted_4 = {
   "class": "p-2 "
@@ -24054,7 +24067,7 @@ var _hoisted_2 = {
   "class": "col-12 col-lg-4"
 };
 var _hoisted_3 = {
-  "class": "card p-2 m-3"
+  "class": "card p-2 m-3 border-0 c_shadow"
 };
 var _hoisted_4 = {
   "class": "card-body"

@@ -1,7 +1,7 @@
 <template>
     <div class="h-100 row p-0 m-0 d-flex justify-content-center align-items-center">
         <div class="col-12 col-lg-4">
-            <div class="card p-2 m-3">
+            <div class="card p-2 m-3 border-0 c_shadow">
                 <div class="card-body">
                     <h1>Register</h1>
                     <div class="m-1">

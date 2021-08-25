@@ -2,7 +2,7 @@
 
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-6 col-lg-6 ">
-                        <div class="card border-0 shadow-none mb-2">
+                        <div class="card border-0 shadow-none mb-2" data-aos="fade-up">
                             <div class="card-body p-0">
                                 <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Newer</span>
@@ -12,7 +12,7 @@
                                 </button> 
                             </div>
                         </div>
-                        <div class="card mb-3 border-0 c_shadow" data-aos-anchor-placement="top-bottom" v-for="item in Data" :key="item.id">
+                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in Data" :key="item.id">
                             <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="item.image_article" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
