@@ -120,6 +120,24 @@ class AuthController extends Controller
                 }
            }
     }
+    public function logout(Request $r){
+        $rand = bcrypt(Str::random(10));
+        $user = User::where('api_token',$r->token);
+        if ($user->exists()) {
+            $user->first()->update([
+                'ip'=>'',
+                'api_token'=>$rand,
+                'token_expired'=>Carbon::now()->addHours(100),
+            ]);
+            return response()->json([
+                'msg'=>'success'
+            ], 200);
+        }else{
+            return response()->json([
+                'msg'=>'Unauthorized'
+            ], 401);
+        }
+    }
     public function infoUsr(Request $r,$idUser){
         $x = User::where('api_token',$r->token);
         if ($x->exists()) {
@@ -150,6 +168,20 @@ class AuthController extends Controller
             return response()->json([
                 'msg'=>'Unauthorized'
             ], 401);
+        }
+    }
+    public function unfolow(Request $r,$folowingID){
+        $user = User::where('api_token',$r->token)->first()->id;
+        $f = folower::where('folower_id',$folowingID)->where('user_id',$user);
+        if ($f->exists()) {
+            $f->first()->delete();
+            return response()->json([
+                'msg'=>'success'
+            ], 200);
+        }else{
+            return response()->json([
+                'msg'=>'user not found'
+            ], 404);
         }
     }
 }

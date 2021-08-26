@@ -1,0 +1,19 @@
+{
+	"name": "Shareurcodes",
+	"short_name": "Shareurcodes",
+	"icons": [
+		{
+			"src": "/logo.png",
+			"sizes": "320x320",
+			"type": "image/png"
+		}
+	],
+	"start_url": "/f/U/home",
+	"scope": ".",
+	"display": "standalone",
+	"background_color": "#fff",
+	"theme_color": "#7c4dff",
+	"description": "ShareurCodes is a code sharing site for programmers to learn, share their knowledge with younger generation",
+	"dir": "ltr",
+	"lang": "en-US"
+}

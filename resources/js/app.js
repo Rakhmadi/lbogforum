@@ -17,7 +17,6 @@ const gAuthOptions = {
     scope: 'email',
     prompt: 'select_account',
     }
-
 app.use(router)
 app.use(store);
 app.use(createMetaManager());

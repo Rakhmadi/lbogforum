@@ -37,4 +37,9 @@ class post extends Model
     public function bookmarkCheck(){
         return $this->hasOne('App\Models\bookmarx','article_id');
     }
+
+    public function react()
+    {
+        return $this->hasMany(react::class, 'articel_id');
+    }
 }

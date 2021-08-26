@@ -10,10 +10,21 @@ import { useMeta } from 'vue-meta'
 export default {
 mounted(){
 
-}
+},
+data() {
+  return {
+        bg_:{
+          backgroundImage: `url('${window.location.origin}/Asset 4.svg')`,
+          backgroundSize:'cover'
+        }
+  }
+},
 }
 </script>
 <style lang="css">
+::-webkit-scrollbar {
+    display: none;
+}
 p{
   font-size: 1.05rem!important;
 }
@@ -134,6 +145,10 @@ p{
     position: fixed;
     bottom: 15px;
     right: 15px;
+}
+.scrl__{
+    overflow-x: scroll;
+    box-sizing: content-box; /* So the width will be 100% + 17px */
 }
 </style>
 // #060310

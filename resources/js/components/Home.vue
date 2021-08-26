@@ -4,12 +4,18 @@
                     <div class="col-12 col-md-6 col-lg-6 ">
                         <div class="card border-0 shadow-none mb-2" data-aos="fade-up">
                             <div class="card-body p-0">
-                                <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                    <span class="mx-1">All Post</span>
+                                </button> 
+                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                    <span class="mx-1">Friend Post</span>
+                                </button> 
+                                <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Newer</span>
                                 </button> 
-                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Older</span>
-                                </button> 
+                                </button>
                             </div>
                         </div>
                         <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in Data" :key="item.id">
@@ -31,7 +37,7 @@
                                     <div class="d-flex justify-content-star align-items-center ">
                                         <div class="m-1 ">
                                             <button class="btn btn-sm shadow-none boreder-0 btn-like-circle rounded-pill">
-                                                <i style="font-size:14px" class="mdi mdi-heart"></i> 2000
+                                                <i style="font-size:14px" class="mdi mdi-heart"></i> {{item.react_count}}
                                             </button> 
                                             </div>
                                         <div class="m-1 ">

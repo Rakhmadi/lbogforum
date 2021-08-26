@@ -60,6 +60,7 @@ export default {
            showals:true,
            totop:false,
            avatar:'',
+           
         }
     },methods: {
           scrollToTop() {

@@ -16,6 +16,7 @@ class PostController extends Controller
             $query->where('user_id' , $user);
         }])
         ->withCount('comment')
+        ->withCount('react')
         ->orderBy('created_at',$order)->simplePaginate(10);
         
         return response()->json($data, 200);
