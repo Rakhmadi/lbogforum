@@ -8,7 +8,7 @@
 			"type": "image/png"
 		}
 	],
-	"start_url": "/f/U/home",
+	"start_url": "/",
 	"scope": ".",
 	"display": "standalone",
 	"background_color": "#fff",

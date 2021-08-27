@@ -14,7 +14,7 @@ mounted(){
 data() {
   return {
         bg_:{
-          backgroundImage: `url('${window.location.origin}/Asset 4.svg')`,
+          backgroundImage: `url('${window.location.origin}/Asset 4.svg') !important`,
           backgroundSize:'cover'
         }
   }
@@ -149,6 +149,10 @@ p{
 .scrl__{
     overflow-x: scroll;
     box-sizing: content-box; /* So the width will be 100% + 17px */
+}
+.md{
+font-family: var(--bs-font-sans-serif) !important;
+
 }
 </style>
 // #060310

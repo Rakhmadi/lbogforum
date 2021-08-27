@@ -22334,7 +22334,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       bg_: {
-        backgroundImage: "url('".concat(window.location.origin, "/Asset 4.svg')"),
+        backgroundImage: "url('".concat(window.location.origin, "/Asset 4.svg') !important"),
         backgroundSize: 'cover'
       }
     };
@@ -22900,14 +22900,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  created: function created() {
-    this.$Loading.start();
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var md_editor_v3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! md-editor-v3 */ "./node_modules/md-editor-v3/lib/md-editor-v3.es.js");
+/* harmony import */ var md_editor_v3_lib_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! md-editor-v3/lib/style.css */ "./node_modules/md-editor-v3/lib/style.css");
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vue__WEBPACK_IMPORTED_MODULE_0__.defineComponent)({
+  name: 'VueTemplateDemo',
+  components: {
+    Editor: md_editor_v3__WEBPACK_IMPORTED_MODULE_1__.default
   },
-  mounted: function mounted() {
-    this.$Loading.finish();
+  setup: function setup() {
+    md_editor_v3__WEBPACK_IMPORTED_MODULE_1__.default;
+  },
+  data: function data() {
+    return {
+      text: "sdfsdfdsf, <pre><code class=\"language-ts\"><span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">declare</span> <span class=\"hljs-keyword\">const</span> <span class=\"hljs-attr\">getSlot</span>: <span class=\"hljs-function\">(<span class=\"hljs-params\">{ instance, ctx, props }: {\n    instance?: ComponentPublicInstance&lt;{}, {}, {}, {}, {}, {}, {}, {}, <span class=\"hljs-literal\">false</span>, <span class=\"hljs-keyword\">import</span>(<span class=\"hljs-string\">\"vue\"</span>).ComponentOptionsBase&lt;<span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, {}&gt;&gt; | <span class=\"hljs-literal\">undefined</span>;\n    ctx?: SetupContext&lt;EmitsOptions&gt; | <span class=\"hljs-literal\">undefined</span>;\n    props?: <span class=\"hljs-built_in\">any</span>;\n}, name?: <span class=\"hljs-built_in\">string</span></span>) =&gt;</span> <span class=\"hljs-built_in\">any</span>;\n</code><span class=\"copy-button\">Copy</span></pre>    </div>"
+    };
   }
-});
+}));
 
 /***/ }),
 
@@ -23996,10 +24008,18 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNod
 
 var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("#transs");
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 d-flex flex-row align-items-center \"><div><img style=\"border:3px solid #3051FF;\" class=\"rounded-circle\" width=\"60px\" height=\"60px\" src=\"https://avatarfiles.alphacoders.com/845/84595.png\"></div><div class=\"ms-2\"><h5 class=\"m-0 p-0 text-break user_s\" style=\"\">Hataraku Hataraku Hataraku Hataraku</h5><h6 class=\"p-0 m-0 fw-normal\" style=\"font-size:14px;\">Jumat, 13 Agustus 2021</h6></div></div><div class=\"p-2 \"><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, dolores non? Ipsa similique ab saepe officiis eligendi consectetur dolores libero suscipit maiores. Dolorem inventore nam unde neque consequuntur, perspiciatis magni.</p></div><div class=\"p-2 border-top\"><div class=\"container-fluid p-0 m-0\"><div class=\"d-flex justify-content-star align-items-center \"><div class=\"m-2 \"><i style=\"color:#ff6464;\" class=\"mdi mdi-heart\"></i> 99</div><div class=\"m-2 \"><i style=\"color:#5669e8;\" class=\"mdi mdi-comment\"></i> 1</div><div class=\"ms-auto \"><i style=\"\" class=\"h5 mdi mdi-bookmark-outline\"></i></div></div></div></div>", 3);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 d-flex flex-row align-items-center \"><div><img style=\"border:3px solid #3051FF;\" class=\"rounded-circle\" width=\"60px\" height=\"60px\" src=\"https://avatarfiles.alphacoders.com/845/84595.png\"></div><div class=\"ms-2\"><h5 class=\"m-0 p-0 text-break user_s\" style=\"\">Hataraku Hataraku Hataraku Hataraku</h5><h6 class=\"p-0 m-0 fw-normal\" style=\"font-size:14px;\">Jumat, 13 Agustus 2021</h6></div></div>", 1);
+
+var _hoisted_11 = {
+  "class": "p-2 "
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-2 border-top\"><div class=\"container-fluid p-0 m-0\"><div class=\"d-flex justify-content-star align-items-center \"><div class=\"m-2 \"><i style=\"color:#ff6464;\" class=\"mdi mdi-heart\"></i> 99</div><div class=\"m-2 \"><i style=\"color:#5669e8;\" class=\"mdi mdi-comment\"></i> 1</div><div class=\"ms-auto \"><i style=\"\" class=\"h5 mdi mdi-bookmark-outline\"></i></div></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  var _component_editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("editor");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "linkc_tag me-2",
@@ -24021,7 +24041,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), _hoisted_10])])])]);
+  })]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_editor, {
+    modelValue: _ctx.text,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.text = $event;
+    }),
+    language: "en-US",
+    previewOnly: "true"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])]), _hoisted_12])])])]);
 }
 
 /***/ }),
@@ -24077,17 +24106,7 @@ var _hoisted_10 = {
   }
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "my-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "mx-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "mdi mdi-pencil"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit profile")])])], -1
-/* HOISTED */
-);
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"my-2\"><button class=\"btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill\"><span class=\"mx-1\"><i class=\"mdi mdi-pencil\"></i> Edit profile</span></button><button class=\"btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill\"><span class=\"mx-1\"><i class=\"mdi mdi-pencil\"></i> LogOut</span></button></div>", 1);
 
 var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-4  border-bottom\"><div class=\"row\"><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div></div></div>", 1);
 
@@ -24743,7 +24762,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 1.05rem!important;\n}\nhtml,body{\r\n    width:100%;\r\n    height: 100%;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:rgb(34, 26, 87);\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:rgb(59, 43, 162);\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 1px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 1px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 1.05rem!important;\n}\nhtml,body{\r\n    width:100%;\r\n    height: 100%;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:rgb(34, 26, 87);\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:rgb(59, 43, 162);\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 1px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 1px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\n.md{\r\nfont-family: var(--bs-font-sans-serif) !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

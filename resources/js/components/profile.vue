@@ -18,6 +18,9 @@
                                         <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                                             <span class="mx-1"> <i class="mdi mdi-pencil"></i> Edit profile</span>
                                         </button> 
+                                        <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                            <span class="mx-1"> <i class="mdi mdi-pencil"></i> LogOut</span>
+                                        </button> 
                                     </div>
                             </div>
                             </div>
