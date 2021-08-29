@@ -1,7 +1,12 @@
 <template>
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
-                          <input class="form-control serch_ rounded-pill mb-2"  v-model="password"  type="text" label-top="Password" placeholder="Title Post" required >
+                          <form action="">
+                             <label for="password" class="form-label">Title</label>
+                             <input class="form-control serch_ rounded-pill mb-2"  v-model="password"  type="text"  placeholder="Title Post" required >
+                             <label for="password"  class="form-label">Image Cover</label>
+                             <input  @change="previewFiles" class="form-control serch_ rounded-pill mb-2"  type="file"  accept="image/x-png,image/gif,image/jpeg">
+                          </form>
                           <editor v-model="text" language='en-US' ></editor>
                      </div>
             </div>
@@ -28,6 +33,11 @@ export default defineComponent({
 }, name?: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">any</span>;
 </code><span class="copy-button">Copy</span></pre>    </div>`
     };
+  },
+  methods:{
+      previewFiles(event) {
+         console.log(event.target.files);
+      }
   }
 });
 </script>

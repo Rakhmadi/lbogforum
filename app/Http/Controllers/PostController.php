@@ -60,7 +60,8 @@ class PostController extends Controller
         $val = Validator::make($r->all(),[
             'title'=>'required|max:255',
             'content'=>'required',
-            'category'=>'required'
+            'category'=>'required',
+            'image_article'=>'require'
         ]);
         if (!$val->fails()) {
             $user = User::where('api_token',sesion('TOKEN'))->first();
@@ -68,11 +69,10 @@ class PostController extends Controller
                 'title'=>$r->title,
                 'title_slug'=>Str::slug($r->title),
                 'content'=>$r->content,
-                'category_id'=>$r->category,
                 'author_id'=> $user->id
             ]);
         } else {
-            # code...
+            return response()->json($data, 200, $headers);
         }  
     }
     public function friendPost($r){
