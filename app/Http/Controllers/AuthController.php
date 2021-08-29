@@ -9,6 +9,7 @@ use Auth;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
 use App\Models\folower;
+use App\Models\post;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -183,5 +184,14 @@ class AuthController extends Controller
                 'msg'=>'user not found'
             ], 404);
         }
+    }
+    public function friendPost($r){
+        $x = User::where('api_token',$r->token);
+        $folow = folower::where('user_id',$x->first()->id)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
+        $post = post::query();
+        foreach ($folow as $key => $c) {
+            $post = $post->orWhere('author_id',$c['folower_id']); 
+        }
+        return $post->get();
     }
 }

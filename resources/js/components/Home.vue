@@ -4,10 +4,10 @@
                     <div class="col-12 col-md-6 col-lg-6 ">
                         <div class="card border-0 shadow-none mb-2" data-aos="fade-up">
                             <div class="card-body p-0">
-                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getAllPost()" :class="{'toggles_order_hint':!isUFriendPost}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">All Post</span>
                                 </button> 
-                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getFriendPost()" :class="{'toggles_order_hint':isUFriendPost}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Friend Post</span>
                                 </button> 
                                 <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
@@ -126,6 +126,7 @@ export default {
            page:1,
            order:'desc',
            isAsc:false,
+           isUFriendPost:false,
            Data:[],
            loading:false,
             orders:{
@@ -157,11 +158,24 @@ export default {
             this.isAsc = false
             this.getData()
         },
+        getFriendPost(){
+            this.Data = []
+            this.page = 1
+            this.isUFriendPost = true
+            this.getData()
+        },
+        getAllPost(){
+            this.Data = []
+            this.page = 1
+            this.isUFriendPost = false
+            this.getData()
+        },
         getData(){
             this.loading = true
             this.$store.dispatch('getPost',{
                 order: this.order,
-                page: this.page
+                page: this.page,
+                friendpost: this.isUFriendPost
             }).then(x=>{
                 if (x.data.length) {
                     this.loading = false

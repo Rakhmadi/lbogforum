@@ -73,7 +73,8 @@ export default {
                   this.$router.push({
                       name:'profile'
                   })
-          },createPost(){
+          },
+          createPost(){
               this.$router.push({
                   name:'createPost'
               })

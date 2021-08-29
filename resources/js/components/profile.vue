@@ -18,8 +18,10 @@
                                         <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                                             <span class="mx-1"> <i class="mdi mdi-pencil"></i> Edit profile</span>
                                         </button> 
-                                        <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                                            <span class="mx-1"> <i class="mdi mdi-pencil"></i> LogOut</span>
+                                        <button @click="logout()" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                                            <span v-show="shwldng" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                            <span v-show="!shwldng" class="mx-1"> <i class="mdi mdi-logout"></i></span>
+                                            Logout
                                         </button> 
                                     </div>
                             </div>
@@ -83,7 +85,8 @@ export default {
                     user:{},
                     pengikut:[],
                     mengikuti:[]
-                }
+                },
+                shwldng:false
         }
     },
     methods: {
@@ -100,6 +103,29 @@ export default {
                 name:'folower',
                 query:{
                     type:'Followers'
+                }
+            })
+        },
+        logout(){
+            this.shwldng = true
+            this.$store.dispatch('logOut').then(x=>{
+                sessionStorage['token'] = ''
+                if(x.data.msg === 'success'){
+                        this.shwldng = false
+                        this.$router.push({
+                            name:'login',
+                            query: {
+                                msg:'Logout Success'
+                            }
+                        })
+                }else{
+                        this.shwldng = false
+                        this.$router.push({
+                            name:'login',
+                            query: {
+                                msg:'Unauthorized.'
+                            }
+                        })
                 }
             })
         }

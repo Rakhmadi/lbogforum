@@ -22481,6 +22481,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       page: 1,
       order: 'desc',
       isAsc: false,
+      isUFriendPost: false,
       Data: [],
       loading: false,
       orders: {
@@ -22511,13 +22512,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.isAsc = false;
       this.getData();
     },
+    getFriendPost: function getFriendPost() {
+      this.Data = [];
+      this.page = 1;
+      this.isUFriendPost = true;
+      this.getData();
+    },
+    getAllPost: function getAllPost() {
+      this.Data = [];
+      this.page = 1;
+      this.isUFriendPost = false;
+      this.getData();
+    },
     getData: function getData() {
       var _this2 = this;
 
       this.loading = true;
       this.$store.dispatch('getPost', {
         order: this.order,
-        page: this.page
+        page: this.page,
+        friendpost: this.isUFriendPost
       }).then(function (x) {
         if (x.data.length) {
           var _this2$Data;
@@ -22796,18 +22810,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 6:
                 getDataUser = googleUser.getBasicProfile();
+                console.log(getDataUser);
 
                 _this.$store.dispatch('registerGooglePost', {
                   data: {
-                    email: getDataUser.Et,
-                    name: getDataUser.Ne,
-                    avatar: getDataUser.hJ,
-                    google_id: getDataUser.mS
+                    email: getDataUser.Ht,
+                    name: getDataUser.Qe,
+                    avatar: getDataUser.wJ,
+                    google_id: getDataUser.US
                   }
                 }).then(function (x) {
                   sessionStorage['token'] = x.data.token;
+                  console.log(x.data);
                   localStorage.setItem('user', JSON.stringify({
-                    avatar: getDataUser.hJ
+                    avatar: getDataUser.wJ
                   }));
 
                   _this.$router.push({
@@ -22816,21 +22832,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
                 _this.isSignIn = _this.$gAuth.isAuthorized;
-                _context2.next = 15;
+                _context2.next = 16;
                 break;
 
-              case 11:
-                _context2.prev = 11;
+              case 12:
+                _context2.prev = 12;
                 _context2.t0 = _context2["catch"](0);
                 console.error(_context2.t0);
                 return _context2.abrupt("return", null);
 
-              case 15:
+              case 16:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[0, 11]]);
+        }, _callee2, null, [[0, 12]]);
       }))();
     },
     login: function login() {
@@ -22948,7 +22964,8 @@ __webpack_require__.r(__webpack_exports__);
         user: {},
         pengikut: [],
         mengikuti: []
-      }
+      },
+      shwldng: false
     };
   },
   methods: {
@@ -22965,6 +22982,34 @@ __webpack_require__.r(__webpack_exports__);
         name: 'folower',
         query: {
           type: 'Followers'
+        }
+      });
+    },
+    logout: function logout() {
+      var _this2 = this;
+
+      this.shwldng = true;
+      this.$store.dispatch('logOut').then(function (x) {
+        sessionStorage['token'] = '';
+
+        if (x.data.msg === 'success') {
+          _this2.shwldng = false;
+
+          _this2.$router.push({
+            name: 'login',
+            query: {
+              msg: 'Logout Success'
+            }
+          });
+        } else {
+          _this2.shwldng = false;
+
+          _this2.$router.push({
+            name: 'login',
+            query: {
+              msg: 'Unauthorized.'
+            }
+          });
         }
       });
     }
@@ -23101,15 +23146,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.$store.dispatch('registerGooglePost', {
                   data: {
-                    email: getDataUser.Et,
-                    name: getDataUser.Ne,
-                    avatar: getDataUser.hJ,
-                    google_id: getDataUser.mS
+                    email: getDataUser.Ht,
+                    name: getDataUser.Qe,
+                    avatar: getDataUser.wJ,
+                    google_id: getDataUser.US
                   }
                 }).then(function (x) {
                   sessionStorage['token'] = x.data.token;
+                  console.log(x.data);
                   localStorage.setItem('user', JSON.stringify({
-                    avatar: getDataUser.hJ
+                    avatar: getDataUser.uJ
                   }));
 
                   _this2.$router.push({
@@ -23385,19 +23431,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.getAsc();
+      return $options.getAllPost();
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-      'toggles_order_hint': $data.isAsc
+      'toggles_order_hint': !$data.isUFriendPost
     }, "btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"])
   }, _hoisted_6, 2
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.getAsc();
+      return $options.getFriendPost();
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
-      'toggles_order_hint': $data.isAsc
+      'toggles_order_hint': $data.isUFriendPost
     }, "btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"])
   }, _hoisted_8, 2
   /* CLASS */
@@ -23687,13 +23733,23 @@ var _hoisted_2 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("editor");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_editor, {
-    modelValue: _ctx.text,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": "form-control serch_ rounded-pill mb-2",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return _ctx.password = $event;
+    }),
+    type: "text",
+    "label-top": "Password",
+    placeholder: "Title Post",
+    required: ""
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.password]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_editor, {
+    modelValue: _ctx.text,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return _ctx.text = $event;
     }),
-    language: "en-US",
-    previewOnly: "true"
+    language: "en-US"
   }, null, 8
   /* PROPS */
   , ["modelValue"])])]);
@@ -24105,10 +24161,40 @@ var _hoisted_10 = {
     "text-decoration": "underline"
   }
 };
+var _hoisted_11 = {
+  "class": "my-2"
+};
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"my-2\"><button class=\"btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill\"><span class=\"mx-1\"><i class=\"mdi mdi-pencil\"></i> Edit profile</span></button><button class=\"btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill\"><span class=\"mx-1\"><i class=\"mdi mdi-pencil\"></i> LogOut</span></button></div>", 1);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "mx-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "mdi mdi-pencil"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Edit profile")])], -1
+/* HOISTED */
+);
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-4  border-bottom\"><div class=\"row\"><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div></div></div>", 1);
+var _hoisted_13 = {
+  "class": "spinner-border spinner-border-sm",
+  role: "status",
+  "aria-hidden": "true"
+};
+var _hoisted_14 = {
+  "class": "mx-1"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "mdi mdi-logout"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = [_hoisted_15];
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Logout ");
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"p-4  border-bottom\"><div class=\"row\"><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div><div class=\"col-4 px-1\"><div class=\"card border-0\" style=\"background-color:#566ae833;\"><div class=\"px-2 py-1\"><h6 style=\"color:#5669e8 !important;\">Post</h6></div><div class=\"p-2 pt-0 d-flex justify-content-center\"><h2 style=\"color:#5669e8 !important;\"> 73 </h2></div></div></div></div></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -24154,7 +24240,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), _hoisted_11])]), _hoisted_12])])]);
+  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
+      return $options.logout();
+    }),
+    "class": "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_13, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.shwldng]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_14, _hoisted_16, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, !$data.shwldng]]), _hoisted_17])])])]), _hoisted_18])])]);
 }
 
 /***/ }),
@@ -24579,8 +24674,9 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
       var commit = _ref.commit,
           state = _ref.state;
       var order = _ref2.order,
-          page = _ref2.page;
-      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(window.location.origin, "/api/post?order=").concat(order, "&page=").concat(page, "&token=").concat(sessionStorage['token'])).then(function (x) {
+          page = _ref2.page,
+          friendpost = _ref2.friendpost;
+      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("".concat(window.location.origin, "/api/post?order=").concat(order, "&page=").concat(page, "&friendpost=").concat(friendpost, "&token=").concat(sessionStorage['token'])).then(function (x) {
         commit('postLists', x.data);
         return state.postList;
       });
@@ -24607,6 +24703,11 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
         avatar: data.avatar,
         google_id: data.google_id
       }).then(function (x) {
+        return x;
+      });
+    },
+    logOut: function logOut() {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default().get("/api/Auth/logout?token=".concat(sessionStorage['token'])).then(function (x) {
         return x;
       });
     }

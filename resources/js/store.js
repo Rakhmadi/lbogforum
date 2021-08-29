@@ -24,8 +24,8 @@ export const store = createStore({
         return store.state.userDetail
       })
     },
-    getPost ({commit,state},{order,page}) {
-      return axios.get(`${window.location.origin}/api/post?order=${order}&page=${page}&token=${sessionStorage['token']}`).then(x=>{
+    getPost ({commit,state},{order,page,friendpost}) {
+      return axios.get(`${window.location.origin}/api/post?order=${order}&page=${page}&friendpost=${friendpost}&token=${sessionStorage['token']}`).then(x=>{
         commit('postLists',x.data)
         return state.postList 
       }) 
@@ -45,6 +45,11 @@ export const store = createStore({
         avatar:data.avatar,
         google_id:data.google_id
       }).then(x=>{
+        return x
+      })
+    },
+    logOut(){
+      return axios.get(`/api/Auth/logout?token=${sessionStorage['token']}`).then(x=>{
         return x
       })
     }

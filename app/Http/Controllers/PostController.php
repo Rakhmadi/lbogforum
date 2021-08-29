@@ -5,21 +5,32 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
+use App\Models\folower;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
     public function post($r,$order){
         $user = User::where('api_token',$r->token)->first()->id;
-        $data = post::with(['tag','category','author'])
-        ->withCount(['bookmarkCheck'=>function ($query) use ($user){
+        $data = post::with(['tag','category','author']);
+        $data = $data->withCount(['bookmarkCheck'=>function ($query) use ($user){
             $query->where('user_id' , $user);
-        }])
-        ->withCount('comment')
-        ->withCount('react')
-        ->orderBy('created_at',$order)->simplePaginate(10);
-        
-        return response()->json($data, 200);
+        }]);
+        $folow = folower::where('user_id',$user)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
+        if($r->friendpost == 'true'){
+            foreach ($folow as $key => $c) {
+                $data = $data->orWhere('author_id',$c['folower_id']); 
+            }
+        }
+        $data = $data->withCount('comment');
+        $data = $data->withCount('react');
+        $data = $data->orderBy('created_at',$order)->simplePaginate(10);
+        if (count($folow) == 0 && $r->friendpost == 'true') {
+            return response()->json([], 200);
+        }else{
+            return response()->json($data, 200);
+
+        }
     }
     public function allPost(Request $r){
         if ($r->order == 'desc') {
@@ -63,6 +74,15 @@ class PostController extends Controller
         } else {
             # code...
         }  
+    }
+    public function friendPost($r){
+        $x = User::where('api_token',$r->token);
+        $folow = folower::where('user_id',$x->first()->id)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
+        $post = post::query();
+        foreach ($folow as $key => $c) {
+            $post = $post->orWhere('author_id',$c['folower_id']); 
+        }
+        return $post->get();
     }
 
 

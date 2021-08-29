@@ -63,16 +63,18 @@ export default {
              return null;
            }
            let getDataUser = googleUser.getBasicProfile()
+           console.log(getDataUser)
            this.$store.dispatch('registerGooglePost',{
                data:{
-                   email:getDataUser.Et,
-                   name:getDataUser.Ne,
-                   avatar:getDataUser.hJ,
-                   google_id:getDataUser.mS
+                   email:getDataUser.Ht,
+                   name:getDataUser.Qe,
+                   avatar:getDataUser.wJ,
+                   google_id:getDataUser.US
                }
            }).then(x=>{
                sessionStorage['token'] = x.data.token
-               localStorage.setItem('user',JSON.stringify({avatar:getDataUser.hJ}))
+               console.log(x.data)
+               localStorage.setItem('user',JSON.stringify({avatar:getDataUser.wJ}))
                this.$router.push({
                    name:'home'
                })

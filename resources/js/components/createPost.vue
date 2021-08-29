@@ -1,7 +1,8 @@
 <template>
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
-                         <editor v-model="text" language='en-US' previewOnly='true' ></editor>
+                          <input class="form-control serch_ rounded-pill mb-2"  v-model="password"  type="text" label-top="Password" placeholder="Title Post" required >
+                          <editor v-model="text" language='en-US' ></editor>
                      </div>
             </div>
 

@@ -21,6 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::middleware(['authApi'])->group(function () {
     Route::get('/post', [postController::class,'allPost']);
+    Route::get('/Auth/logout',[AuthController::class,'logout']);
     Route::get('/users/{id}', function ($id) {
         return $id;  
     });
@@ -36,3 +37,4 @@ Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);
 Route::get('userDetail/{idUser}',[AuthController::class,'infoUsr']);
 Route::post('Auth/GoogleAuth',[AuthController::class,'loginWithGoogle']);
+// Route::get('dd',[AuthController::class,'cek']);
