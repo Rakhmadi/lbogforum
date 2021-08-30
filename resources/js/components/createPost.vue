@@ -8,7 +8,11 @@
                              <input  @change="previewFiles" class="form-control serch_ rounded-pill mb-2"  type="file"  accept="image/x-png,image/gif,image/jpeg">
                           </form>
                           <editor v-model="text" language='en-US' ></editor>
-                     </div>
+                          <br>
+                          <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
+                            <span class="mx-1"> <i class="mdi mdi-content-save"></i> Save</span>
+                          </button>
+                      </div>
             </div>
 
 </template>

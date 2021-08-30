@@ -1,5 +1,5 @@
 <template>
-      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm dark__">
           <div class="container">
               <div class="d-flex w-100 align-items-center">
                 <div @click="gotoHome()" style="cursor:pointer;" class=" navbar-brand">Hello</div>
@@ -17,7 +17,7 @@
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-brightness-4"></i></button>
                      </div>
-                      <img @click="gotoprof" style="border:2px solid #3051FF;cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
+                      <img @click="gotoprof" style="cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
                      </div>
               </div>
           </div>

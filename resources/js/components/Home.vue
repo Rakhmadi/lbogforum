@@ -22,7 +22,7 @@
                             <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="item.image_article" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
-                                    <img style="border:3px solid #3051FF;width:60px ;height:60px" class="rounded-circle" :src="item.author.avatar">
+                                    <img style="width:60px ;height:60px" class="rounded-circle" :src="item.author.avatar">
                                 <div class="ms-2">
                                     <h5 class="m-0 p-0 text-break user_s" style="">{{item.author.name}}</h5>
                                     <h6 class="p-0 m-0 fw-normal" style="font-size:13px">{{date(item.created_at)}}</h6>

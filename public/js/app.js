@@ -23491,7 +23491,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_13), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, item.image_article]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
       style: {
-        "border": "3px solid #3051FF",
         "width": "60px",
         "height": "60px"
       },
@@ -23568,7 +23567,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm"
+  "class": "navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm dark__"
 };
 var _hoisted_2 = {
   "class": "container"
@@ -23697,7 +23696,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $options.gotoprof && $options.gotoprof.apply($options, arguments);
     }),
     style: {
-      "border": "2px solid #3051FF",
       "cursor": "pointer",
       "width": "40px !important",
       "height": "40px !important"
@@ -23759,6 +23757,20 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "mx-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "mdi mdi-content-save"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save")])], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("editor");
 
@@ -23789,7 +23801,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     language: "en-US"
   }, null, 8
   /* PROPS */
-  , ["modelValue"])])]);
+  , ["modelValue"]), _hoisted_6, _hoisted_7])]);
 }
 
 /***/ }),
@@ -24900,7 +24912,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 1.05rem!important;\n}\nhtml,body{\r\n    width:100%;\r\n    height: 100%;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:rgb(34, 26, 87);\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:rgb(59, 43, 162);\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 1px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 1px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\n.md{\r\nfont-family: var(--bs-font-sans-serif) !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 1.05rem!important;\n}\nhtml,body{\r\n    width:100%;\r\n    height: 100%;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:rgb(34, 26, 87);\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:rgb(59, 43, 162);\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 1px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 1px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\n.md{\r\nfont-family: var(--bs-font-sans-serif) !important;\n}\n.dark__{\r\n  background-color : #0a0226 !important;\r\n  color:white !important;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

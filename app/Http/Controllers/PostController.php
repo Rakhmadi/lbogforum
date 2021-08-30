@@ -56,23 +56,30 @@ class PostController extends Controller
         
     }
 
-    public function cretatePost(Request $r){
+    public function createPost(Request $r){
         $val = Validator::make($r->all(),[
             'title'=>'required|max:255',
             'content'=>'required',
-            'category'=>'required',
-            'image_article'=>'require'
+            'image_article'=>'required'
         ]);
         if (!$val->fails()) {
-            $user = User::where('api_token',sesion('TOKEN'))->first();
+            $user = User::where('api_token',$r->token)->first();
+            $imageName = time().'_'.Str::random(5).'.'.$r->image_article->extension();
+
+            $file = $r->image_article->move(public_path('images'),$imageName);
+
             post::create([
                 'title'=>$r->title,
                 'title_slug'=>Str::slug($r->title),
+                'image_article'=>$imageName,
                 'content'=>$r->content,
                 'author_id'=> $user->id
             ]);
+            return response()->json([
+                'msg'=>'Success'
+            ], 200);
         } else {
-            return response()->json($data, 200, $headers);
+            return response()->json($val->errors(), 400);
         }  
     }
     public function friendPost($r){
@@ -84,6 +91,4 @@ class PostController extends Controller
         }
         return $post->get();
     }
-
-
 }

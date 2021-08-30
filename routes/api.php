@@ -32,6 +32,7 @@ Route::middleware(['authApi'])->group(function () {
     });
     Route::get('/post/{slug}',[postController::class,'singlePost']);
     Route::get('/post', [postController::class,'allPost']);
+    Route::post('/createPost',[postController::class,'createPost']);
 });
 Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);

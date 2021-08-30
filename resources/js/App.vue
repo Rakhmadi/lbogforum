@@ -154,5 +154,8 @@ p{
 font-family: var(--bs-font-sans-serif) !important;
 
 }
+.dark__{
+  background-color : #0a0226 !important;
+  color:white !important;
+}
 </style>
-// #060310
