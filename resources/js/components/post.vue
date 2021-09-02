@@ -12,7 +12,7 @@
                             </div>
                             <div class="p-2 d-flex flex-row align-items-center ">
                                 <div>
-                                    <img style="border:3px solid #3051FF;" class="rounded-circle" width="60px" height="60px" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                                    <img style="width:60px;height:60px;" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
                                 </div>
                                 <div class="ms-2">
                                     <h5 class="m-0 p-0 text-break user_s" style="">Hataraku Hataraku Hataraku Hataraku</h5>
@@ -25,13 +25,44 @@
                             <div class="p-2 border-top">
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
-                                        <div class="m-2 "><i style="color:#ff6464;" class="mdi mdi-heart"></i> 99</div>
-                                        <div class="m-2 "><i style="color:#5669e8;" class="mdi mdi-comment"></i> 1</div>
+                                        <div class="m-1 ">
+                                            <button class="btn btn-sm shadow-none boreder-0 btn-like-circle rounded-pill">
+                                                <i style="font-size:14px" class="mdi mdi-heart"></i> 
+                                            </button> 
+                                            </div>
+                                        <div class="m-1 ">
+                                            <button class="btn btn-sm shadow-none boreder-0 btn-comment-circle rounded-pill">
+                                                <i style="font-size:14px" class="mdi mdi-comment"></i> 
+                                            </button> 
+                                        </div>
                                         <div class="ms-auto ">
-                                            <i style="" class="h5 mdi mdi-bookmark-outline"></i>
+                                            <button class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
+                                                <i style="font-size:14px" class="mdi mdi-bookmark"></i>
+                                                <!-- <i style="font-size:14px" v-if="item.bookmark_check_count >= 1" class="mdi mdi-bookmark-check"></i> -->
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            </div>
+                        </div>
+                        <h3>Comment</h3>
+                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
+                            <div class="p-2">
+                            <div class="p-2 d-flex flex-row align-items-center ">
+                                <div>
+                                    <img style="width:50px;height:50px;" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
+                                </div>
+                                <div class="ms-2">
+                                    <h5 class="m-0 p-0 text-break user_s" style="">Hataraku Hataraku Hataraku Hataraku</h5>
+                                    <h6 class="p-0 m-0 fw-normal" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
+                                </div>
+                            </div>
+                            <div class="p-2">
+                                <h4>Hello</h4>
+                            </div>
+                            <div class="p-2">
+                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum quia inventore ab minus! Esse velit accusamus pariatur adipisci reiciendis, vitae voluptas quam hic eos. Numquam ratione consequatur harum? Quo?</p>
                             </div>
                             </div>
                         </div>

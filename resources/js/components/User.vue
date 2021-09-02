@@ -81,7 +81,7 @@ export default {
           },
           createPost(){
               this.$router.push({
-                  name:'createPost'
+                  name:'createPostC'
               })
           }
     },

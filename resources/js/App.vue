@@ -158,4 +158,20 @@ font-family: var(--bs-font-sans-serif) !important;
   background-color : #0a0226 !important;
   color:white !important;
 }
+.gallery-title
+{
+    font-size: 36px;
+    color: #42B32F;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 70px;
+}
+.gallery-title:after {
+    content: "";
+    position: absolute;
+    width: 7.5%;
+    left: 46.5%;
+    height: 45px;
+    border-bottom: 1px solid #5e5e5e;
+}
 </style>

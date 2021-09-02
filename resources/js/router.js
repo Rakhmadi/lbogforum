@@ -8,6 +8,12 @@ import post from './components/post.vue';
 import profile from './components/profile.vue';
 import folower from './components/folower.vue';
 import createPost from './components/createPost.vue';
+import createPostC from './components/createPostC.vue';
+import listPOST from './components/listPOST.vue';
+import createTag from './components/createTag.vue';
+import Galery from './components/Galery.vue';
+
+
 
 async function cekLogin(to,from,next) {
   const resp = await fetch(`${window.location.origin}/api/CEK_TOKEN?token=${sessionStorage['token']}`)
@@ -64,7 +70,26 @@ const routes = [
           beforeEnter: cekLogin,
           name:'createPost',
           path:'createPost',
-          component:createPost
+          component:createPost,
+          children:[
+            {
+              name:'createPostC',
+              path:'createPostC',
+              component:createPostC
+            },{
+              name:'listPOST',
+              path:'listPOST',
+              component:listPOST
+            },{
+              name:'createTag',
+              path:'createTag',
+              component:createTag
+            },{
+              name:'Galery',
+              path:'Galery',
+              component:Galery
+            }
+          ]
         }
       ],
     },
