@@ -1,24 +1,12 @@
 <template>
     <div class="mb-4">
-                                  <form action="">
-                             <label for="password" class="form-label">Title</label>
-                             <input class="form-control serch_ rounded-pill mb-2"  v-model="password"  type="text"  placeholder="Title Post" required >
-                             <label for="password"  class="form-label">Image Cover</label>
-                             <input  @change="previewFiles" class="form-control serch_ rounded-pill mb-2"  type="file"  accept="image/x-png,image/gif,image/jpeg">
+                          <form action="">
+                             <label for="password" class="form-label inintColorthemesMode">Title</label>
+                             <input class="form-control serch_ rounded-pill mb-2 inintColorthemesMode"  v-model="password"  type="text"  placeholder="Title Post" required >
+                             <label for="password"  class="form-label inintColorthemesMode">Image Cover</label>
+                             <input  @change="previewFiles" class="form-control serch_ rounded-pill mb-2 inintColorthemesMode"  type="file"  accept="image/x-png,image/gif,image/jpeg">
                           </form>
-                          <div class="d-flex flex-row mb-2">
-                          <div>
-                          <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                            <span class="mx-1"> <i class="mdi mdi-image"></i> Uplaod Image</span>
-                          </button>
-                          </div>
-                          <div>
-                          <router-link to="Galery" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
-                            <span class="mx-1"> <i class="mdi mdi-image-multiple"></i> Galery</span>
-                          </router-link>
-                          </div>
-                          </div>
-                          <editor v-model="text" language='en-US' ></editor>
+                          <editor v-model="text" class="inintColorthemesMode" language='en-US' ></editor>
                           <br>
                           <button class="btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                             <span class="mx-1"> <i class="mdi mdi-content-save"></i> Save</span>
@@ -33,6 +21,7 @@
 import { defineComponent } from 'vue';
 import Editor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
+import cekMode from "../mode"
 
 export default defineComponent({
   name: 'VueTemplateDemo',
@@ -41,6 +30,8 @@ export default defineComponent({
     Editor
   },
   mounted() {
+    cekMode()
+
   },
   data() {
     return {
@@ -53,9 +44,13 @@ export default defineComponent({
     };
   },
   methods:{
+      date(x){
+          return new Date(x).toLocaleString('en-US');
+      },
       previewFiles(event) {
          console.log(event.target.files);
       }
+      
   }
 });
 </script>

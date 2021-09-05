@@ -6,21 +6,21 @@
                             <img src="https://images.unsplash.com/photo-1627483262769-04d0a1401487?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" class="card-img-top" alt="...">
                             <div class="p-2">
                             <div class="p-2">
-                                <h1 class="user_s" style="cursor:pointer;fs-1-text">Zona Waktu Dunia</h1 >
-                                <router-link class="linkc_tag me-2" to="">#transs</router-link>
-                                <router-link class="linkc_tag me-2" to="">#transs</router-link>
+                                <h1 class="user_s inintColorthemesMode" style="cursor:pointer;fs-1-text">Zona Waktu Dunia</h1 >
+                                <router-link class="linkc_tag me-2 inintColorthemesMode" to="">#transs</router-link>
+                                <router-link class="linkc_tag me-2 inintColorthemesMode" to="">#transs</router-link>
                             </div>
                             <div class="p-2 d-flex flex-row align-items-center ">
                                 <div>
                                     <img style="width:60px;height:60px;" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
                                 </div>
                                 <div class="ms-2">
-                                    <h5 class="m-0 p-0 text-break user_s" style="">Hataraku Hataraku Hataraku Hataraku</h5>
-                                    <h6 class="p-0 m-0 fw-normal" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
+                                    <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">Hataraku Hataraku Hataraku Hataraku</h5>
+                                    <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
                                 </div>
                             </div>
                             <div class="p-2 ">
-                                     <editor v-model="text" language='en-US' previewOnly='true' ></editor>
+                                     <editor class="inintColorthemesMode" v-model="text" language='en-US' previewOnly='true' ></editor>
                             </div>
                             <div class="p-2 border-top">
                                 <div class="container-fluid p-0 m-0">
@@ -46,7 +46,14 @@
                             </div>
                             </div>
                         </div>
-                        <h3>Comment</h3>
+                        <h3>Create comment</h3>
+                                <editor class="" v-model="text" language='en-US' ></editor>
+                                <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill m-3">
+                                    <span class="mx-1"> <i class="mdi mdi-send"></i> Send</span>
+                                </button>
+                                <br>
+                                <br>
+                        <h3>Comments</h3>
                         <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center ">
@@ -58,10 +65,10 @@
                                     <h6 class="p-0 m-0 fw-normal" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
                                 </div>
                             </div>
-                            <div class="p-2">
+                            <div class="px-2">
                                 <h4>Hello</h4>
                             </div>
-                            <div class="p-2">
+                            <div class="px-2">
                                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero harum quia inventore ab minus! Esse velit accusamus pariatur adipisci reiciendis, vitae voluptas quam hic eos. Numquam ratione consequatur harum? Quo?</p>
                             </div>
                             </div>

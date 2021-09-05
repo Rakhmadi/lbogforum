@@ -26,8 +26,7 @@ class User extends Authenticatable
         'api_token',
         'password',
         'ip_',
-        "phone",
-        "gender",
+        "desc",
         "website"
     ];
 

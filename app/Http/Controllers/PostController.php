@@ -91,4 +91,9 @@ class PostController extends Controller
         }
         return $post->get();
     }
+    public function userPost(Request $r){
+        $x = User::where('api_token',$r->token);
+        $data = post::where('author_id',$x->first()->id)->get();
+        return response()->json($data, 200);
+    }
 }

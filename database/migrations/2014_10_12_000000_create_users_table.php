@@ -23,8 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('remember_token')->nullable();
             $table->string('password');
-            $table->string('phone')->nullable();
-            $table->string('gender')->nullable();
             $table->string('desc')->nullable();
             $table->string('ip_')->nullable();
             $table->string('api_token')->unique()->nullable()->default(null);

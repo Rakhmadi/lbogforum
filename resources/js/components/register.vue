@@ -7,13 +7,13 @@
                     <div class="m-1">
                          <form @submit.prevent="Register">
                              <label for="name" class="form-label">Name &nbsp;&nbsp;<span class="text-danger" >{{cekword}}</span></label>
-                             <input v-model="name" class="form-control serch_ rounded-pill" type="text"  placeholder="Your Name" required>
+                             <input v-model="name" class="form-control serch_ rounded-pill inintColorthemesMode" type="text"  placeholder="Your Name" required>
                              <label for="email" class="form-label">Email &nbsp;&nbsp;<span v-show="emailCek!=''" class="text-danger" >{{emailCek}}</span></label>
-                             <input v-model="email" @click="emailCek = ''" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
+                             <input v-model="email" @click="emailCek = ''" class="form-control serch_ rounded-pill inintColorthemesMode" type="email"  placeholder="Your Email" required>
                              <label for="password" class="form-label">Password &nbsp;&nbsp;<span class="text-danger" >{{cekpass}}</span></label>
-                             <input v-model="password" class="form-control serch_ rounded-pill" type="password"  placeholder="Your Passowrd" required>
+                             <input v-model="password" class="form-control serch_ rounded-pill inintColorthemesMode" type="password"  placeholder="Your Passowrd" required>
                              <label for="repassword" class="form-label">Repassword</label>
-                             <input v-model="repassword" class="form-control serch_ rounded-pill" type="password"  placeholder="Confirm Password" required>
+                             <input v-model="repassword" class="form-control serch_ rounded-pill inintColorthemesMode" type="password"  placeholder="Confirm Password" required>
                              <span class="text-danger" >{{conf}}</span>
                              <div class="d-flex justify-content-star align-items-center mt-3">
                                     <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
@@ -33,6 +33,7 @@
 </template>
 <script>
 import { useMeta } from 'vue-meta/dist/vue-meta.esm-browser'
+import cekMode from "../mode"
 
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 export default {
@@ -41,6 +42,10 @@ export default {
           title: 'Register',
           htmlAttrs: { lang: 'en', amp: true }
         })
+
+    },
+    mounted() {
+        cekMode()
     },
     data() {
         return {

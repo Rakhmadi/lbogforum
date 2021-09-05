@@ -52,6 +52,9 @@ export const store = createStore({
       return axios.get(`/api/Auth/logout?token=${sessionStorage['token']}`).then(x=>{
         return x
       })
+    },
+    isDark(){
+      return localStorage.getItem('isDark')
     }
    }
 })

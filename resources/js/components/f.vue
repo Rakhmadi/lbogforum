@@ -4,7 +4,13 @@
     </div>
 </template>
 <script>
+import cekMode from "../mode"
+
 export default {
+    mounted() {
+     cekMode()
+
+    },
 data() {
     return {
         bg_:{

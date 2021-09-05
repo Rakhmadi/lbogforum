@@ -2,14 +2,17 @@
     <metainfo>
         <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
     </metainfo>
-    <router-view></router-view>
+    <div class="w-100 h-100 bg-transparent">
+          <router-view></router-view>
+
+    </div>
 </template>
 <script>
 import { useMeta } from 'vue-meta'
 
 export default {
 mounted(){
-
+        localStorage.setItem('isDark',false)
 },
 data() {
   return {
@@ -29,8 +32,8 @@ p{
   font-size: 1.05rem!important;
 }
   html,body{
-    width:100%;
-    height: 100%;
+    width:100% !important;
+    height: 100% !important;
   }
   .avatar {
     display: inline-flex;
@@ -105,7 +108,7 @@ p{
 .btn-like-circle:hover {
 
     background-color:#ff646462 !important ;
-    color: #fa5454 !important;
+    color: #fa5454 !important;  
 }
 .btn-comment-circle {
     text-align: center !important;
@@ -134,12 +137,12 @@ p{
 .serch_{
       transition: .5s ease;
       box-shadow: none !important;
-      border: #a9b1e1bb 1px solid !important;
+      border: #a9b1e1bb 2px solid !important;
 }
 .serch_:focus{
       transition: .5s ease;
       box-shadow: none !important;
-      border: #3f56eb95 1px solid !important;
+      border: #3f56eb95 2px solid !important;
 }
 .back-to-top {
     position: fixed;
@@ -155,6 +158,23 @@ font-family: var(--bs-font-sans-serif) !important;
 
 }
 .dark__{
+  background-color : #0a0226 !important;
+  color:white !important;
+  transition: .5s ease-in-out;
+
+}
+.inintColorthemesMode{
+    transition: .5s ease-in-out;
+}
+.bg_dark__{
+  background-color : #0a0322 !important;
+  color:white !important;
+  transition: .5s ease-in-out;
+}
+#mode{
+    transition: .5s ease-in-out;
+}
+.bg-dark{
   background-color : #0a0226 !important;
   color:white !important;
 }

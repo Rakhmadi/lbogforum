@@ -2,34 +2,34 @@
 
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-6 col-lg-6 ">
-                        <div class="card border-0 shadow-none mb-2" data-aos="fade-up">
+                        <div class="card bg-transparent border-0 shadow-none mb-2" data-aos="fade-up">
                             <div class="card-body p-0">
-                                <button @click="getAllPost()" :class="{'toggles_order_hint':!isUFriendPost}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getAllPost()" :class="{'toggles_order_hint':!isUFriendPost}" class="btn btn-sm me-1 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">All Post</span>
                                 </button> 
-                                <button @click="getFriendPost()" :class="{'toggles_order_hint':isUFriendPost}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getFriendPost()" :class="{'toggles_order_hint':isUFriendPost}" class="btn btn-sm me-1 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Friend Post</span>
                                 </button> 
-                                <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getDsc()" :class="{'toggles_order_hint':!isAsc}" class="btn btn-sm me-1 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Newer</span>
                                 </button> 
-                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-2 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                                <button @click="getAsc()" :class="{'toggles_order_hint':isAsc}" class="btn btn-sm me-1 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">Older</span>
                                 </button>
                             </div>
                         </div>
                         <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in Data" :key="item.id">
-                            <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="item.image_article" :alt="item.image_article">
+                            <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="`${origin}/images/${item.image_article}`" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
                                     <img style="width:60px ;height:60px" class="rounded-circle" :src="item.author.avatar">
                                 <div class="ms-2">
-                                    <h5 class="m-0 p-0 text-break user_s" style="">{{item.author.name}}</h5>
-                                    <h6 class="p-0 m-0 fw-normal" style="font-size:13px">{{date(item.created_at)}}</h6>
+                                    <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">{{item.author.name}}</h5>
+                                    <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:13px">{{date(item.created_at)}}</h6>
                                 </div>
                             </div>
                             <div class="p-2">
-                                <h2 class="user_s" style="cursor:pointer;">{{item.title}}</h2>
+                                <h2 class="user_s inintColorthemesMode" style="cursor:pointer;">{{item.title}}</h2>
                                 <router-link v-for="ite in item.tag" :key="ite.id" class="linkc_tag me-2" to="">#{{ite.tag_name}}</router-link>
                             </div>
                             <div class="p-2 border-top">
@@ -78,6 +78,7 @@
 import { isMobile } from 'mobile-device-detect';
 import axios from "axios";
 import { useMeta } from 'vue-meta'
+import cekMode from "../mode"
 export default {
 
   setup () {
@@ -85,6 +86,9 @@ export default {
       title: 'Home',
       htmlAttrs: { lang: 'en', amp: true }
     })
+  },
+  beforeMount(){
+        cekMode()
   },
     async mounted(){
         this.getData()
@@ -122,6 +126,7 @@ export default {
     },
     data() {
         return {
+            origin:window.location.origin,
            post:[],
            page:1,
            order:'desc',
@@ -182,8 +187,13 @@ export default {
                     this.Data.push(...x.data)
                     this.page++
                     console.log(this.Data)
+                    
                 }
+            }).then(x=>{
+                        cekMode()
+
             })
+            
         }
     },
 }

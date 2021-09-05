@@ -73,11 +73,14 @@
                     </div>
 </template>
 <script>
+import cekMode from "../mode"
+
 export default {
-   beforeMount(){
+   mounted(){
         this.$store.dispatch('getUserInfo',1).then(x=>{
             this.resp = x;
         })
+        cekMode()
     },
     data(){
         return {

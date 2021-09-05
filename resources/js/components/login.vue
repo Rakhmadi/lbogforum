@@ -13,9 +13,9 @@
                     <div class="m-1">
                          <form @submit.prevent="login">
                              <label for="email" class="form-label">Email</label>
-                             <input v-model="email" class="form-control serch_ rounded-pill" type="email"  placeholder="Your Email" required>
+                             <input v-model="email" class="form-control serch_ rounded-pill inintColorthemesMode" type="email"  placeholder="Your Email" required>
                              <label for="password" class="form-label">Password</label>
-                             <input class="form-control serch_ rounded-pill"  v-model="password"  type="password" label-top="Password" placeholder="Your Password" required >
+                             <input class="form-control serch_ rounded-pill inintColorthemesMode"  v-model="password"  type="password" label-top="Password" placeholder="Your Password" required >
                              <div class="d-flex justify-content-star align-items-center mt-3">
                                     <button class="m-2 btn shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                                     <span v-show="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -34,12 +34,19 @@
 </template>
 <script>
 import { useMeta } from 'vue-meta'
+import cekMode from "../mode"
+
 export default {
     setup(){
         useMeta({
           title: 'Login',
           htmlAttrs: { lang: 'en', amp: true }
         })
+            
+
+    },
+    mounted() {
+         cekMode()
     },
     data() {
         return {

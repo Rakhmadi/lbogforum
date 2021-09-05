@@ -45,7 +45,6 @@ const routes = [
      },
     { 
       path: '/f/U/', 
-      beforeEnter: cekLogin,
       component: User,
       children:[
         {

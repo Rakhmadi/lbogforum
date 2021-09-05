@@ -1,9 +1,9 @@
 <template>
-      <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-white shadow-sm dark__">
+      <nav class="navbar navbar-expand-lg fixed-top navbar-light shadow-sm  inintColorthemesMode" style="background-color:#fff;">
           <div class="container">
-              <div class="d-flex w-100 align-items-center">
+              <div class="d-flex w-100 align-items-center bg-transparent">
                 <div @click="gotoHome()" style="cursor:pointer;" class=" navbar-brand">Hello</div>
-                    <input class="form-control rounded-pill me-2 serch_ shadow-none" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
+                    <input class="form-control rounded-pill me-2 serch_ shadow-none inintColorthemesMode" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
                      <div class=" ms-auto d-flex align-items-center">
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="createPost" style=""><i class="fs-6 mdi mdi-feather"></i></button>
@@ -14,8 +14,11 @@
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-bookmark"></i></button>
                      </div>
-                      <div class="me-2" data-aos="zoom-in"  v-if="showals" >
-                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-brightness-4"></i></button>
+                      <div class="me-2" data-aos="zoom-in" @click="changeTheme()"  v-if="showals" >
+                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style="">
+                            <i v-if="isDark" class="fs-6 mdi mdi-brightness-4"></i>
+                            <i v-if="!isDark" class="fs-6 mdi mdi-brightness-7"></i>
+                        </button>
                      </div>
                       <img @click="gotoprof" style="cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
                      </div>
@@ -29,11 +32,14 @@
     </div>
     </main>
     <div class="back-to-top" v-if="totop" data-aos="zoom-in">
-        <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="scrollToTop" style="background-color: rgb(218 224 255) !important;"><i class="fs-6 mdi mdi-arrow-up"></i></button>
+        <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="scrollToTop" style="background-color: rgb(218 224 255) !important;">
+            <i class="fs-6 mdi mdi-arrow-up"></i>
+        </button>
     </div>
 </template>
 <script>
 import axios from "axios";
+import cekMode from "../mode"
 import { useMeta } from 'vue-meta'
 export default {
   
@@ -60,6 +66,7 @@ export default {
            showals:true,
            totop:false,
            avatar:'',
+           isDark:false
            
         }
     },methods: {
@@ -83,7 +90,20 @@ export default {
               this.$router.push({
                   name:'createPostC'
               })
+          },
+          changeTheme(){
+            let isDark = localStorage.getItem('isDark')
+              if(isDark === 'true'){
+                  localStorage.setItem('isDark',false)
+                  this.isDark = false
+                    cekMode()
+              }else{
+                  localStorage.setItem('isDark',true)
+                  this.isDark = true
+                    cekMode()
+              }
           }
+
     },
 }
 </script>
