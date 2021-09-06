@@ -22330,9 +22330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  mounted: function mounted() {
-    localStorage.setItem('isDark', false);
-  },
+  mounted: function mounted() {},
   data: function data() {
     return {
       bg_: {
@@ -25054,6 +25052,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 aos__WEBPACK_IMPORTED_MODULE_5___default().init();
+navigator.serviceWorker.register("".concat(window.location.origin, "/sw.js"), {
+  scope: './'
+});
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_1__.createApp)(_App_vue__WEBPACK_IMPORTED_MODULE_0__.default);
 app.component('modal', _components_component_modal_vue__WEBPACK_IMPORTED_MODULE_12__.default);
 var gAuthOptions = {

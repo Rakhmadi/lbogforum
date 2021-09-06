@@ -4,7 +4,6 @@
     </metainfo>
     <div class="w-100 h-100 bg-transparent">
           <router-view></router-view>
-
     </div>
 </template>
 <script>
@@ -12,7 +11,6 @@ import { useMeta } from 'vue-meta'
 
 export default {
 mounted(){
-        localStorage.setItem('isDark',false)
 },
 data() {
   return {

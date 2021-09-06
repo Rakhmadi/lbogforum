@@ -13,6 +13,11 @@ import 'bootstrap/dist/js/bootstrap.min'
 import '@mdi/font/css/materialdesignicons.min.css'
 import modal from './components/component/modal.vue'
 AOS.init();
+
+navigator.serviceWorker.register(`${window.location.origin}/sw.js`, {
+    scope: './'
+});
+
 const app = createApp(App);
 app.component('modal',modal);
 const gAuthOptions = { 
