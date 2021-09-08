@@ -9,5 +9,9 @@ class bookmarx extends Model
 {
     use HasFactory;
     protected $table = 'save_article';
-
+    protected $fillable = [
+        'id',
+        'article_id',
+        'user_id'
+    ];
 }

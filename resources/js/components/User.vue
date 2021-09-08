@@ -2,7 +2,7 @@
       <nav class="navbar navbar-expand-lg fixed-top navbar-light shadow-sm  inintColorthemesMode" style="background-color:#fff;">
           <div class="container">
               <div class="d-flex w-100 align-items-center bg-transparent">
-                <div @click="gotoHome()" style="cursor:pointer;" class=" navbar-brand">Hello</div>
+                <div @click="gotoHome()" style="cursor:pointer;" class="inintColorthemesMode navbar-brand">Hello</div>
                     <input class="form-control rounded-pill me-2 serch_ shadow-none inintColorthemesMode" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
                      <div class=" ms-auto d-flex align-items-center">
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >

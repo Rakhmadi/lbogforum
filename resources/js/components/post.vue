@@ -46,14 +46,15 @@
                             </div>
                             </div>
                         </div>
-                        <h3>Create comment</h3>
-                                <editor class="" v-model="text" language='en-US' ></editor>
+                        <h3 class=" mb-3" style="color:#5669e8 !important">Create comment</h3>
+                        
+                                <editor class="inintColorthemesMode" v-model="text" language='en-US' ></editor>
                                 <button class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill m-3">
                                     <span class="mx-1"> <i class="mdi mdi-send"></i> Send</span>
                                 </button>
                                 <br>
                                 <br>
-                        <h3>Comments</h3>
+                        <h3 class="" style="color:#5669e8 !important">Comments</h3>
                         <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center ">
@@ -61,7 +62,7 @@
                                     <img style="width:50px;height:50px;" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
                                 </div>
                                 <div class="ms-2">
-                                    <h5 class="m-0 p-0 text-break user_s" style="">Hataraku Hataraku Hataraku Hataraku</h5>
+                                    <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">Hataraku Hataraku Hataraku Hataraku</h5>
                                     <h6 class="p-0 m-0 fw-normal" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
                                 </div>
                             </div>

@@ -59,11 +59,11 @@ p{
 
 }
 .linkc_tag{
-  color:rgb(34, 26, 87);
+  color:#3f56eb;
   font-weight: 600;
 }
 .linkc_tag:hover{
-  color:rgb(59, 43, 162);
+  color:#2640ed;
 }
 .btn-circle.btn-xl {
     width: 70px;

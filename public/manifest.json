@@ -5,38 +5,50 @@
 		{
 			"src": "icon/android-launchericon-48-48.png",
 			"sizes": "48x48",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		},
 		{
 			"src": "icon/android-launchericon-72-72.png",
 			"sizes": "72x72",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		},
 		{
 			"src": "icon/android-launchericon-96-96.png",
 			"sizes": "96x96",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		},
 		{
 			"src": "icon/icon-256x256.png",
 			"sizes": "256x256",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		},
 		{
 			"src": "icon/icon-384x384.png",
 			"sizes": "384x384",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		},
 		{
 			"src": "icon/icon-512x512.png",
 			"sizes": "512x512",
-			"type": "image/png"
+			"type": "image/png",
+    	      "purpose": "any maskable"
+
 		}
 	],
 	"start_url": "/f/U/home",
 	"display": "standalone",
 	"background_color": "#0a0322",
-	"theme_color": "#0a0322 ",
+	"theme_color": "#0a0322",
 	"description": "ShareurCodes is a code sharing site for programmers to learn, share their knowledge with younger generation",
 	"dir": "ltr",
 	"lang": "en-US"

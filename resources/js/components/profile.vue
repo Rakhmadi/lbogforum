@@ -8,7 +8,7 @@
                                     <img style="border:4px solid #3051FF;width:99px; height:99px;" class="rounded-circle" alt="v" :src="resp.user.avatar">
                                 </div>
                                 <div>
-                                    <h4 class="m-0 p-0 text-break user_s text-center" style="">{{resp.user.name}}</h4>
+                                    <h4 class="m-0 p-0 text-break user_s text-center inintColorthemesMode" style="">{{resp.user.name}}</h4>
                                 </div>
                                 <div class="d-flex flex-row mt-2">
                                     <h6 class="mx-1" style="text-decoration: underline;"><router-link @click="followers" to="">Follower {{resp.pengikut.length}}</router-link></h6>
@@ -68,7 +68,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                     </div>
 </template>

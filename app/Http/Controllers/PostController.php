@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
 use App\Models\folower;
+use App\Models\bookmarx;
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -95,5 +96,36 @@ class PostController extends Controller
         $x = User::where('api_token',$r->token);
         $data = post::where('author_id',$x->first()->id)->get();
         return response()->json($data, 200);
+    }
+    public function savePost( Request $r,$id){
+        $user = User::where('api_token',$r->token)->first()->id;
+        $post = bookmarx::where('article_id',$id)->where('user_id',$user)->exists();
+        if (!$post) {
+            bookmarx::create([
+                'article_id'=>$id,
+                'user_id'=>$user
+            ]);
+            return response()->json([
+                "msg"=>"Success"
+            ], 200);
+        }else{
+            return response()->json([
+                "msg"=>"Success"
+            ], 200);
+        }
+    }
+    public function unsavePost( Request $r,$id){
+        $user = User::where('api_token',$r->token)->first()->id;
+        $post = bookmarx::where('article_id',$id)->where('user_id',$user)->exists();
+        if ($post) {
+            bookmarx::where('article_id',$id)->where('user_id',$user)->delete();
+            return response()->json([
+                "msg"=>"Success"
+            ], 200);
+        }else{
+            return response()->json([
+                "msg"=>"Success"
+            ], 200);
+        }
     }
 }

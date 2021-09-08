@@ -18,7 +18,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in Data" :key="item.id">
+                        <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="(item,index) in Data" :key="item.id">
                             <img style=" object-fit: cover;height:50vh"  v-show="item.image_article" :src="`${origin}/images/${item.image_article}`" :alt="item.image_article">
                             <div class="p-2">
                             <div class="p-2 d-flex flex-row align-items-center">
@@ -46,7 +46,7 @@
                                             </button> 
                                         </div>
                                         <div class="ms-auto ">
-                                            <button class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
+                                            <button @click="bookmark(index,bookmarkCheker(item.bookmark_check_count),item.id)" class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
                                                 <i style="font-size:14px" v-if="item.bookmark_check_count == 0" class="mdi mdi-bookmark"></i>
                                                 <i style="font-size:14px" v-if="item.bookmark_check_count >= 1" class="mdi mdi-bookmark-check"></i>
                                             </button>
@@ -57,7 +57,8 @@
                             </div>
                         </div>
                         <div class="d-flex justify-content-center">
-                              <span v-if="loading" class="hidden pb-4">Loading...</span>
+                                <div v-if="loading"><i class="mdi mdi-checkbox-blank-circle " style="color:#3f56eb !important"> Waiting...</i></div>
+                                <div v-if="isDone"><i class="mdi mdi-checkbox-blank-circle " style="color:#3f56eb !important"></i></div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -81,16 +82,16 @@ import { useMeta } from 'vue-meta'
 import cekMode from "../mode"
 export default {
 
+
   setup () {
     useMeta({
       title: 'Home',
       htmlAttrs: { lang: 'en', amp: true }
     })
   },
-  beforeMount(){
-        cekMode()
-  },
+
     async mounted(){
+         cekMode()
         this.getData()
         if(isMobile){
             console.log('isMobile')
@@ -101,7 +102,7 @@ export default {
            console.log(xNnc)
             console.log(xNnb)
 
-           if (xNnc === xNnb) {
+           if (xNnc >= xNnb) {
                console.log('end of page')
                this.getData()
            }
@@ -136,7 +137,9 @@ export default {
            loading:false,
             orders:{
                 border:'3px'
-            }
+            },
+            isDone:false,
+            loadingSave:false
 
         }
     },
@@ -176,6 +179,7 @@ export default {
             this.getData()
         },
         getData(){
+            this.isDone = false;
             this.loading = true
             this.$store.dispatch('getPost',{
                 order: this.order,
@@ -188,14 +192,46 @@ export default {
                     this.page++
                     console.log(this.Data)
                     
+                }else{
+                    this.loading = false
+                    this.isDone = true;
+
                 }
             }).then(x=>{
                         cekMode()
-
             })
-            
-        }
+        },
+        bookmarkCheker(val){
+            if(val >= 1){
+                return 'checked'
+            }else if(val === 0){
+                return 'nocheked'
+            }
+        },
+        bookmark(index,val,id_post){
+            let that = this
+            if(val === 'checked'){
+                axios.delete(`/api/unsavePost/${id_post}?token=${sessionStorage['token']}`).then(x=>{
+                    that.Data[index].bookmark_check_count = 0
+                    this.msg('Unsaved')
+                })
+
+            }else if(val = 'unchecked'){
+                axios.post(`/api/savePost/${id_post}?token=${sessionStorage['token']}`).then(x=>{
+                    that.Data[index].bookmark_check_count = 1
+                    this.msg('Saved')
+                })
+            }
+        },
+    msg(title){
+        const x = this
+        x.$toast.show(title,{
+             position:"bottom",
+             duration:5142,
+        })
+}
     },
+
 }
 </script>
 <style lang="css">
