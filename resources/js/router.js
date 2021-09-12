@@ -12,6 +12,7 @@ import createPostC from './components/createPostC.vue';
 import listPOST from './components/listPOST.vue';
 import createTag from './components/createTag.vue';
 import Galery from './components/Galery.vue';
+import searchPage from './components/searchPage.vue';
 
 
 
@@ -65,6 +66,10 @@ const routes = [
           name:'folower',
           path:'folower',
           component:folower
+        },{
+          name:'searchPage',
+          path:'searchPage',
+          component:searchPage
         },{
           beforeEnter: cekLogin,
           name:'createPost',

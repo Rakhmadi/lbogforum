@@ -6,6 +6,7 @@
                              <label for="password"  class="form-label inintColorthemesMode">Image Cover</label>
                              <input  @change="previewFiles" class="form-control serch_ rounded-pill mb-2 inintColorthemesMode"  type="file"  accept="image/x-png,image/gif,image/jpeg">
                           </form>
+                          <label for="password"  class="form-label inintColorthemesMode">Image Cover</label>
                           <editor v-model="text" class="inintColorthemesMode" language='en-US' ></editor>
                           <br>
                           <button class="btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
@@ -31,6 +32,7 @@ export default defineComponent({
   },
   mounted() {
     cekMode()
+    
 
   },
   data() {

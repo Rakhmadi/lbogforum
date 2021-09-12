@@ -7,6 +7,8 @@ use App\Models\post;
 use App\Models\User;
 use App\Models\folower;
 use App\Models\bookmarx;
+use App\Models\tag;
+
 use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
@@ -30,7 +32,6 @@ class PostController extends Controller
             return response()->json([], 200);
         }else{
             return response()->json($data, 200);
-
         }
     }
     public function allPost(Request $r){
@@ -53,10 +54,6 @@ class PostController extends Controller
         // })->get();
     }
  
-    public function searchPost($serch){
-        
-    }
-
     public function createPost(Request $r){
         $val = Validator::make($r->all(),[
             'title'=>'required|max:255',
@@ -127,5 +124,37 @@ class PostController extends Controller
                 "msg"=>"Success"
             ], 200);
         }
+    }
+    public function searchPost(Request $r,$text){
+            $user = User::where('api_token',$r->token)->first()->id;
+            $data = post::with(['tag','category','author']);
+            $data = $data->withCount(['bookmarkCheck'=>function ($query) use ($user){
+                $query->where('user_id' , $user);
+            }]);
+            $folow = folower::where('user_id',$user)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
+            if($r->friendpost == 'true'){
+                foreach ($folow as $key => $c) {
+                    $data = $data->orWhere('author_id',$c['folower_id']); 
+                }
+            }
+            $data = $data->withCount('comment');
+            $data = $data->withCount('react');
+            $data = $data->where('title','like',"%{$text}%")
+            ->orWhere('content','like',"%{$text}%");
+            $data = $data->orWhereHas('tag',function($query) use ($text){
+                $query->where('tag_name','like',"%{$text}%");
+            });
+            $data = $data->orderBy('created_at',$r->order)->simplePaginate(10);
+            if (count($folow) == 0 && $r->friendpost == 'true') {
+                return response()->json([], 200);
+            }else{
+                return response()->json($data, 200);
+            }
+    }
+    public function createTag(Request $r){
+        
+    }
+    public function deleteTag(Request $r,$id){
+    
     }
 }

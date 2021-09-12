@@ -37,8 +37,8 @@ Route::middleware(['authApi'])->group(function () {
     Route::post('/savePost/{id}',[postController::class,'savePost']);
     Route::delete('/unsavePost/{id}',[postController::class,'unsavePost']);
 
-
 });
+Route::get('/searchPost/{text}',[postController::class,'searchPost']);
 Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);
 Route::get('userDetail/{idUser}',[AuthController::class,'infoUsr']);

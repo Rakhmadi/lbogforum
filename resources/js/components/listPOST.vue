@@ -48,7 +48,15 @@ export default {
 			console.log(this.resp)
 			
 		})
-		let x = await new RdataTB('myTable');
+		let x = await new RdataTB('myTable',{
+						ShowSearch:true, // show search field,
+						ShowSelect:true, // show show select,
+						ShowPaginate:false, // show paginate ,
+						SelectionNumber:[5,10,20,50], //Change Option in Select
+						ShowHighlight:false, // show Highlight if search
+	       				fixedTable:true, // fixed table
+                		sortAnimate:true // show animated if sorted
+		});
 		cekMode()
 
     },

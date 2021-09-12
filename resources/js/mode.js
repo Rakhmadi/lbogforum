@@ -14,6 +14,8 @@ export default function cekMode(){
         }
         htmlEl.classList.add('bg_dark__')
         console.log('changes')
+            return true;
+
     }else{
         for (let v = 0; v < n.length; v++) {
             n[v].classList.remove('dark__')
@@ -23,5 +25,7 @@ export default function cekMode(){
         }
         htmlEl.classList.remove('bg_dark__')
         console.log('changes')
+            return false;
+
     }
 }

@@ -7,8 +7,8 @@
                             <div class="p-2">
                             <div class="p-2">
                                 <h1 class="user_s inintColorthemesMode" style="cursor:pointer;fs-1-text">Zona Waktu Dunia</h1 >
-                                <router-link class="linkc_tag me-2 inintColorthemesMode" to="">#transs</router-link>
-                                <router-link class="linkc_tag me-2 inintColorthemesMode" to="">#transs</router-link>
+                                <router-link class="linkc_tag me-2 " to="">#transs</router-link>
+                                <router-link class="linkc_tag me-2 " to="">#transs</router-link>
                             </div>
                             <div class="p-2 d-flex flex-row align-items-center ">
                                 <div>
@@ -79,7 +79,7 @@
                     </div>
 </template>
 <script>
-
+import cekMode from '../mode.js';
 import { defineComponent } from 'vue';
 import Editor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
@@ -89,6 +89,9 @@ export default defineComponent({
   components: { Editor },
   setup(){
     Editor
+  },
+  mounted(){
+      cekMode()
   },
   data() {
     return {

@@ -2,7 +2,7 @@
 
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-6 col-lg-6 ">
-                        <div class="card bg-transparent border-0 shadow-none mb-2" data-aos="fade-up">
+                        <div class="card bg-transparent border-0 shadow-none mb-2 rounded-3" >
                             <div class="card-body p-0">
                                 <button @click="getAllPost()" :class="{'toggles_order_hint':!isUFriendPost}" class="btn btn-sm me-1 mt-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                                     <span class="mx-1">All Post</span>
@@ -65,9 +65,16 @@
                        <div class="position-fixed">
                             <div class="position-static">
                                 <div class="col-12">
-                                    <div class="card" style="width:250px">
-                                        <router-link to="/f/login">Login</router-link>
-                                        <router-link to="/f/register">register</router-link>
+                                    <div class="card hidden-xs border-0 c_shadow rounded-3 d-none  d-sm-none d-md-block" style="width: 250px;margin-top:45px">
+                                      <div class="p-3 inintColorthemesMode  d-none  d-sm-none d-md-block">
+                                          <h5>Tag</h5>
+                                          <div style="">
+                                               <router-link class="linkc_tag me-2" to="/">#ertf</router-link>
+                                               <router-link class="linkc_tag me-2" to="/">#gfhfghfg</router-link>
+                                               <router-link class="linkc_tag me-2" to="/">#vbvbfg</router-link>
+                                               <router-link class="linkc_tag me-2" to="/">#rer</router-link>
+                                          </div>
+                                      </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +111,10 @@ export default {
 
            if (xNnc >= xNnb) {
                console.log('end of page')
-               this.getData()
+               
+               if(this.$route.name === 'home'){
+                   this.getData()
+               }
            }
             }
         }else{
@@ -113,7 +123,10 @@ export default {
            let xNnb = (window.scrollMaxY || (document.documentElement.scrollHeight - document.documentElement.clientHeight))
            if (xNnc === xNnb) {
                console.log('end of page')
-               this.getData()
+               
+               if(this.$route.name === 'home'){
+                   this.getData()
+               }
            }
        }
         }
