@@ -68,7 +68,7 @@ const routes = [
           component:folower
         },{
           name:'searchPage',
-          path:'searchPage',
+          path:'searchPage/:serch',
           component:searchPage
         },{
           beforeEnter: cekLogin,

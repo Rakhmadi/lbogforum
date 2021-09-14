@@ -11,7 +11,9 @@ class tag extends Model
     protected $table = 'tag';
 
     protected $fillable = [
-        
+        "tag_name",
+        "article_id",
+        "user_id"
     ];
 
     public function post(){

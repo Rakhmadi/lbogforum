@@ -9,13 +9,25 @@
                           <label for="password"  class="form-label inintColorthemesMode">Image Cover</label>
                           <editor v-model="text" class="inintColorthemesMode" language='en-US' ></editor>
                           <br>
+                          <div class="row mb-3">
+                            <div>
+                              <div class="card border-0 c_shadow">
+                                <div class="card-body">
+                                    <h4>Add Tag</h4>
+                                      <div>
+                                          <span v-for="(item, index) in tags" :key="index" class="badge rounded-pill bg-primary p-2 m-1" style="background-color: #566ae854 !important;color: #5669e8  !important;transition: .5s ease;">{{item.tag_name}} <i @click="deleteTag(index)" class="mdi mdi-close-circle" style="cursor: pointer;color: rgb(252 121 121) !important;"></i></span>
+                                      </div>
+                                    <input v-on:keyup.enter="addTag()" v-model="tagName" class="form-control serch_ rounded-pill mt-2 inintColorthemesMode form-control-sm" type="text" placeholder="Add Tag" required="">
+                                    {{tags}}
+                                </div>
+                              </div> 
+                            </div>
+                          </div>
                           <button class="btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill">
                             <span class="mx-1"> <i class="mdi mdi-content-save"></i> Save</span>
                           </button>
-
-
-                              <modal titleModal="Galery" idModal="swmodal">
-                              </modal>
+                          <modal titleModal="Galery" idModal="swmodal">
+                          </modal>
     </div>
 </template>
 <script>
@@ -32,8 +44,6 @@ export default defineComponent({
   },
   mounted() {
     cekMode()
-    
-
   },
   data() {
     return {
@@ -42,7 +52,9 @@ export default defineComponent({
     ctx?: SetupContext&lt;EmitsOptions&gt; | <span class="hljs-literal">undefined</span>;
     props?: <span class="hljs-built_in">any</span>;
 }, name?: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">any</span>;
-</code><span class="copy-button">Copy</span></pre>    </div>`
+</code><span class="copy-button">Copy</span></pre>    </div>`,
+    tags:[],
+    tagName:''
     };
   },
   methods:{
@@ -51,6 +63,18 @@ export default defineComponent({
       },
       previewFiles(event) {
          console.log(event.target.files);
+      },
+      addTag(){
+        if(this.tagName != '' && this.tagName != null){
+           this.tags.push({
+             tag_name:this.tagName.replace(/\s/g,'_')
+           })
+        } 
+        this.tagName = ''
+      },
+      deleteTag(index){
+        this.tags.splice(index,1);
+        console.log(index)
       }
       
   }

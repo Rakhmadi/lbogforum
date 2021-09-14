@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\folower;
 use App\Models\bookmarx;
 use App\Models\tag;
+use App\Models\react;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -151,10 +152,26 @@ class PostController extends Controller
                 return response()->json($data, 200);
             }
     }
+    public function likePost(){
+
+    }
+    public function unLikePost(){
+
+    }
     public function createTag(Request $r){
-        
+        tag::create([
+            'tag_name'=>$r->tag_name,
+            'article_id'=>$r->article_id,
+            'user_id'=>$r->user_id
+        ]);
+        return response()->json([
+            "msg"=>"success"
+        ], 200);
     }
     public function deleteTag(Request $r,$id){
-    
+        tag::where('id',$id)->where('article_id',$r->article_id)->where('user_id',$r->user_id)->delete();
+        return response()->json([
+            "msg"=>"success"
+        ], 200);
     }
 }

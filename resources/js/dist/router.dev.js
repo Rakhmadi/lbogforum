@@ -110,7 +110,7 @@ var routes = [{
     component: _folower["default"]
   }, {
     name: 'searchPage',
-    path: 'searchPage',
+    path: 'searchPage/:serch',
     component: _searchPage["default"]
   }, {
     beforeEnter: cekLogin,
