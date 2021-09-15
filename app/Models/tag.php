@@ -12,7 +12,7 @@ class tag extends Model
 
     protected $fillable = [
         "tag_name",
-        "article_id",
+        "articel_id",
         "user_id"
     ];
 

@@ -38,7 +38,8 @@ Route::middleware(['authApi'])->group(function () {
     Route::delete('/unsavePost/{id}',[postController::class,'unsavePost']);
     Route::get('/searchPost/{text}',[postController::class,'searchPost']);
     Route::post('/createTag',[postController::class,'createTag']);
-    Route::delete('deleteTag/{id}',[postController::class,'deleteTag']);
+    Route::delete('deleteTag/{id}/{articel_id}',[postController::class,'deleteTag']);
+    Route::get('/allTag/{id_article}',[postController::class,'allTag']);
 });
 Route::post('Auth/Register',[AuthController::class,'Register']);
 Route::post('Auth/Login',[AuthController::class,'Login']);

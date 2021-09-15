@@ -159,18 +159,29 @@ class PostController extends Controller
 
     }
     public function createTag(Request $r){
+        $user = User::where('api_token',$r->token)->first()->id;
         tag::create([
             'tag_name'=>$r->tag_name,
-            'article_id'=>$r->article_id,
-            'user_id'=>$r->user_id
+            'articel_id'=>$r->articel_id,
+            'user_id'=>$user
         ]);
+        $da = tag::orderBy('created_at','desc')->first();
         return response()->json([
+            "tag"=>$da,
             "msg"=>"success"
         ], 200);
     }
-    public function deleteTag(Request $r,$id){
-        tag::where('id',$id)->where('article_id',$r->article_id)->where('user_id',$r->user_id)->delete();
+    public function deleteTag(Request $r,$id,$articel_id){
+        $user = User::where('api_token',$r->token)->first()->id;
+        $y =tag::where('id',$id)->where('articel_id',$articel_id)->where('user_id',$user)->delete();
         return response()->json([
+            "msg"=>$y
+        ], 200);
+    }
+    public function allTag($id_article){
+        $tg = tag::where('articel_id',$id_article)->get();
+        return response()->json([
+            "tag"=>$tg,
             "msg"=>"success"
         ], 200);
     }

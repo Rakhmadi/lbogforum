@@ -86,7 +86,7 @@ const routes = [
               component:listPOST
             },{
               name:'createTag',
-              path:'createTag',
+              path:'createTag/:pos_id',
               component:createTag
             },{
               name:'Galery',

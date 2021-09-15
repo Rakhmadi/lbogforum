@@ -127,7 +127,7 @@ var routes = [{
       component: _listPOST["default"]
     }, {
       name: 'createTag',
-      path: 'createTag',
+      path: 'createTag/:pos_id',
       component: _createTag["default"]
     }, {
       name: 'Galery',
