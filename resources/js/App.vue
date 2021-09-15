@@ -163,7 +163,7 @@ font-family: var(--bs-font-sans-serif) !important;
 
 }
 .inintColorthemesMode{
-    transition: .5s ease-in-out;
+    transition: .3s ease-in-out;
 }
 .bg_dark__{
   background-color : #221f2c !important;
