@@ -23120,6 +23120,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     b: function b() {
       this.sc = false;
+    },
+    listPost: function listPost() {
+      this.$router.push({
+        name: "listPOST"
+      });
+    },
+    createPost: function createPost() {
+      this.$router.push({
+        name: "createPostC"
+      });
     }
   }
 });
@@ -23169,10 +23179,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     previewFiles: function previewFiles(event) {
       console.log(event.target.files);
-    },
-    deleteTag: function deleteTag(index) {
-      this.tags.splice(index, 1);
-      console.log(index);
     }
   }
 }));
@@ -23358,11 +23364,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _mode_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mode.js */ "./resources/js/mode.js");
+/* harmony import */ var rdatatb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rdatatb */ "./node_modules/rdatatb/dist/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mode_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../mode.js */ "./resources/js/mode.js");
+
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
-    (0,_mode_js__WEBPACK_IMPORTED_MODULE_0__.default)();
+    (0,_mode_js__WEBPACK_IMPORTED_MODULE_2__.default)();
+    this.getData();
+  },
+  data: function data() {
+    return {
+      reps: []
+    };
+  },
+  methods: {
+    getData: function getData() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(window.location.origin, "/api/userPost?token=").concat(sessionStorage['token'])).then(function (x) {
+        console.log(x.data);
+        _this.reps = x.data;
+      }).then(function () {
+        new rdatatb__WEBPACK_IMPORTED_MODULE_0__.default('myTable', {});
+      });
+    },
+    date: function date(x) {
+      return new Date(x).toLocaleString('en-US');
+    }
   }
 });
 
@@ -24611,9 +24643,13 @@ var _hoisted_2 = {
   "class": "col-12 col-md-9 col-lg-9 "
 };
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Create Post");
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("List Post");
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+/* HOISTED */
+);
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
 /* HOISTED */
@@ -24623,54 +24659,28 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-/* HOISTED */
-);
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
-
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[0] || (_cache[0] = function ($event) {
-      return $options.a();
+      return $options.a(), $options.createPost();
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'toggles_order_hint': $data.sc
-    }, "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"]),
-    to: "createPostC"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_3];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["class"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    }, "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"])
+  }, "Create Post", 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     onClick: _cache[1] || (_cache[1] = function ($event) {
-      return $options.b();
+      return $options.b(), $options.listPost();
     }),
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([{
       'toggles_order_hint': !$data.sc
-    }, "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"]),
-    to: "listPOST"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_4];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["class"]), _hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _hoisted_7, _hoisted_8])]);
+    }, "btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"])
+  }, "List Post", 2
+  /* CLASS */
+  ), _hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view), _hoisted_5, _hoisted_6])]);
 }
 
 /***/ }),
@@ -24720,23 +24730,7 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_7 = {
-  "class": "row mb-3"
-};
-var _hoisted_8 = {
-  "class": "card border-0 c_shadow"
-};
-var _hoisted_9 = {
-  "class": "card-body"
-};
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Add Tag", -1
-/* HOISTED */
-);
-
-var _hoisted_11 = ["onClick"];
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "mx-1"
@@ -24746,7 +24740,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-function render(_ctx, _cache) {
+function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("editor");
 
   var _component_modal = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("modal");
@@ -24779,47 +24773,7 @@ function render(_ctx, _cache) {
     language: "en-US"
   }, null, 8
   /* PROPS */
-  , ["modelValue"]), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.tags, function (item, index) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", {
-      key: index,
-      "class": "badge rounded-pill bg-primary p-2 m-1",
-      style: {
-        "background-color": "#566ae854 !important",
-        "color": "#5669e8  !important",
-        "transition": ".5s ease"
-      }
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.tag_name) + " ", 1
-    /* TEXT */
-    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-      onClick: function onClick($event) {
-        return _ctx.deleteTag(index);
-      },
-      "class": "mdi mdi-close-circle",
-      style: {
-        "cursor": "pointer",
-        "color": "rgb(252 121 121) !important"
-      }
-    }, null, 8
-    /* PROPS */
-    , _hoisted_11)]);
-  }), 128
-  /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    onKeyup: _cache[3] || (_cache[3] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withKeys)(function ($event) {
-      return _ctx.addTag();
-    }, ["enter"])),
-    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return _ctx.tagName = $event;
-    }),
-    "class": "form-control serch_ rounded-pill mt-2 inintColorthemesMode form-control-sm",
-    type: "text",
-    placeholder: "Add Tag",
-    required: ""
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.tagName]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.tags), 1
-  /* TEXT */
-  )])])])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
+  , ["modelValue"]), _hoisted_6, _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
     titleModal: "Galery",
     idModal: "swmodal"
   })]);
@@ -25051,12 +25005,51 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "p-0 m-0"
 };
+var _hoisted_2 = {
+  "class": ""
+};
+var _hoisted_3 = {
+  "class": ""
+};
+var _hoisted_4 = {
+  id: "myTable",
+  "class": " table inintColorthemesMode table-bordered w-100"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"row d-flex flex-row justify-content-center\"><div class=\"col-12 col-md-9 col-lg-9\"><div class=\"card mb-3 border-0 c_shadow\" data-aos=\"fade-up\"><div class=\"px-4 pt-4 d-flex flex-row align-items-center\"></div><div class=\"p-4 pt-2\"><h2 class=\"m-0 user_s inintColorthemesMode\">Impelementasi Big-O Notation</h2></div><div class=\"p-2 border-top\"><div class=\"container-fluid p-0 m-0\"><div class=\"d-flex justify-content-star align-items-center \"><div class=\"m-1 \"><button class=\"btn btn-sm shadow-none boreder-0 btn-comment-circle rounded-pill\"><i style=\"font-size:14px;\" class=\"mdi mdi-pencil\"></i></button></div><div class=\"m-1 \"><button class=\"btn btn-sm shadow-none boreder-0 btn-comment-circle rounded-pill\"><i style=\"font-size:14px;\" class=\"mdi mdi-delete\"></i></button></div><div class=\"m-1 \"><button class=\"btn btn-sm shadow-none boreder-0 btn-comment-circle rounded-pill\"><i style=\"font-size:14px;\" class=\"mdi mdi-tag-plus\"></i></button></div></div></div></div></div></div></div>", 1);
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "type-date": ""
+}, "Created"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", null, "o1"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" If column contain type date add attribut \"type-date\" example = <th type-date >Head 3</th>  ")])], -1
+/* HOISTED */
+);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fs-6 mdi mdi-pencil"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fs-6 mdi mdi-tag-plus"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  "class": "toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "fs-6 mdi mdi-delete"
+})])], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.reps, function (item) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: item
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date(item.created_at)), 1
+    /* TEXT */
+    ), _hoisted_6]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])])])]);
 }
 
 /***/ }),
@@ -27488,6 +27481,544 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 process.umask = function() { return 0; };
+
+
+/***/ }),
+
+/***/ "./node_modules/rdatatb/dist/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/rdatatb/dist/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+/**
+ *
+ *
+ * By Rakhmadi (c) 2021
+ * Under the MIT License.
+ *
+ *
+ */
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+class RdataTB {
+    /**
+     *
+     * @param IdTable Id tabble
+     * @param Options Options
+     *
+     */
+    constructor(IdTable, Options = { RenderJSON: null,
+        ShowSearch: true,
+        ShowSelect: true,
+        ShowPaginate: true,
+        SelectionNumber: [5, 10, 20, 50],
+        HideColumn: [],
+        ShowHighlight: false,
+        fixedTable: false,
+        sortAnimate: true }) {
+        var _a, _b, _c, _d, _e, _f;
+        this.HeaderDataTable = []; // header table to array
+        this.RowDataTable = []; // get Table to json
+        this.DataTable = [];
+        this.DataSorted = [];
+        this.DataToRender = [];
+        this.PageSize = 5;
+        this.Assc = false;
+        this.DataSearch = [];
+        this.i = 0;
+        this.COntrolDataArr = [];
+        this.DataTableRaw = [];
+        this.searchValue = '';
+        this.ListHiding = [];
+        this.SelectionNumber = [5, 10, 20, 50];
+        this.SelectElementString = '';
+        this.ShowHighlight = false;
+        this.listTypeDate = [];
+        this.PageNow = 1;
+        this.TableElement = document.getElementById(IdTable);
+        this.detectTyped();
+        this.StyleS();
+        this.ConvertToJson();
+        this.paginateRender();
+        this.Control();
+        this.search();
+        this.RenderToHTML();
+        this.PaginateUpdate();
+        this.Options = Options;
+        if (Options.RenderJSON != null) {
+            this.JSONinit(Options.RenderJSON);
+        }
+        if (Options.ShowSelect != true) {
+            if (Options.ShowSelect != null || Options.ShowSelect === false) {
+                (_a = document.getElementById('my-select')) === null || _a === void 0 ? void 0 : _a.remove();
+            }
+        }
+        if (Options.ShowSelect != true) {
+            if (Options.ShowSelect != null || Options.ShowSelect === false) {
+                (_b = document.getElementById('my-select')) === null || _b === void 0 ? void 0 : _b.remove();
+            }
+        }
+        if (Options.ShowHighlight != false) {
+            if (Options.ShowHighlight != null || Options.ShowHighlight === true) {
+                this.ShowHighlight = true;
+            }
+        }
+        if (Options.fixedTable != false) {
+            if (Options.fixedTable != null || Options.fixedTable === true) {
+                (_c = this.TableElement) === null || _c === void 0 ? void 0 : _c.classList.add("table_layout_fixed");
+            }
+            else {
+                (_d = this.TableElement) === null || _d === void 0 ? void 0 : _d.classList.remove("table_layout_fixed");
+            }
+        }
+        else {
+            (_e = this.TableElement) === null || _e === void 0 ? void 0 : _e.classList.add("table_layout_fixed");
+        }
+        if (Options.ShowSearch != true) {
+            if (Options.ShowSearch != null || Options.ShowSearch === false) {
+                (_f = document.getElementById('SearchControl')) === null || _f === void 0 ? void 0 : _f.remove();
+            }
+        }
+        if (Options.HideColumn != null) {
+            this.ListHiding = Options.HideColumn;
+            this.DoHide();
+        }
+        if (Options.SelectionNumber != null) {
+            this.SelectionNumber = Options.SelectionNumber;
+            this.ChangeSelect();
+        }
+        this.totalPages = this.Divide().length;
+    }
+    detectTyped() {
+        var _a;
+        const getHead = (_a = this.TableElement) === null || _a === void 0 ? void 0 : _a.getElementsByTagName('th');
+        for (let z = 0; z < getHead.length; z++) {
+            if (getHead[z].attributes['type-date']) {
+                this.listTypeDate.push({
+                    HeaderIndex: z,
+                    dateVal: true
+                });
+            }
+        }
+    }
+    StyleS() {
+        const style = document.createElement('style');
+        style.innerHTML = `
+        .table_layout_fixed { 
+            table-layout:fixed;
+        }
+        table > thead{
+            -webkit-user-select: none;  
+            -moz-user-select: none;    
+            -ms-user-select: none;      
+            user-select: none;
+        }
+        .pagination a {
+          color: black;
+          float: left;
+          padding: 8px 12px;
+          text-decoration: none;
+          transition: background-color .3s;
+          font-size:12px;
+        }
+        .tablesorter-header-asc::after {
+            content: '\\2191';
+            top: calc(50% - 0.75em);
+            float: right;
+        }
+        .tablesorter-header-desc::after {
+            content: '\\2193';
+            top: calc(50% - 0.75em);
+            float: right;
+        }
+        .pagination a:hover:not(.active) {background-color: #ddd;}
+        .blink_me {
+            animation: blinker 1s;
+          }
+          @keyframes blinker {
+            50% {
+              opacity: .5;
+            }
+          } 
+          `;
+        document.getElementsByTagName('head')[0].appendChild(style);
+    }
+    ChangeSelect() {
+        this.SelectElementString = '';
+        for (let x = 0; x < this.SelectionNumber.length; x++) {
+            this.SelectElementString += `<option value="${this.SelectionNumber[x]}">${this.SelectionNumber[x]}</option>`;
+        }
+        document.getElementById("my-select").innerHTML = this.SelectElementString;
+        return this.SelectElementString;
+    }
+    Control() {
+        const span1 = document.createElement('span');
+        span1.innerHTML = `
+        <table id="C" border="0" style="width:100%;margin-bottom:12px;">
+        <tr>
+          <td style="width:100%;">
+             <select id="my-select" class="form-select shadow-none" style="float:left;width:99px!important;margin-right:10px;">
+             <option value="5">5</option><option value="10">10</option><option value="20">20</option><option value="50">50</option>
+             </select>
+             <input id="SearchControl" class="form-control shadow-none" placeholder="Search" type="text" style="width:30%;margin-left:10px">
+          </td>
+        </tr>
+      </table>
+        `;
+        span1.className = 'Selc';
+        this.TableElement.parentNode.insertBefore(span1, this.TableElement);
+        this.TableElement.style.width = '100%';
+        const ChangeV = (params) => {
+            this.PageSize = params;
+            this.i = 0;
+            this.RenderToHTML();
+        };
+        document.getElementById('my-select').addEventListener('change', function () {
+            ChangeV(this.value);
+        });
+        document.getElementById('x__NEXT__X').onclick = () => {
+            this.nextItem();
+            this.highlight(this.searchValue);
+            this.DoHide();
+        };
+        document.getElementById('x__PREV__X').onclick = () => {
+            this.prevItem();
+            this.highlight(this.searchValue);
+            this.DoHide();
+        };
+    }
+    nextItem() {
+        this.i = this.i + 1; // increase i by one
+        this.i = this.i % this.Divide().length; // if we've gone too high, start from `0` again
+        this.COntrolDataArr = this.Divide()[this.i]; // give us back the item of where we are now
+        this.RenderToHTML(this.COntrolDataArr);
+        this.PageNow = this.i + 1;
+    }
+    prevItem() {
+        if (this.i === 0) { // i would become 0
+            this.i = this.Divide().length; // so put it at the other end of the array
+        }
+        this.i = this.i - 1; // decrease by one
+        this.PageNow = this.i + 1;
+        this.COntrolDataArr = this.Divide()[this.i]; // give us back the item of where we are now
+        this.RenderToHTML(this.COntrolDataArr);
+    }
+    paginateRender() {
+        const k = ` <div class="pagination" id="pgN"><a id="x__PREV__X" style="cursor:pointer;user-select: none;">&laquo;</a><div id="PF"></div><a id="x__NEXT__X" style="cursor:pointer;user-select: none;">&raquo;</a></div>`;
+        const span = document.createElement('span');
+        span.innerHTML = k;
+        span.className = 'asterisk';
+        this.TableElement.parentNode.insertBefore(span, this.TableElement.nextSibling);
+    }
+    PaginateUpdate() {
+        if (document.getElementById('PF') != null) {
+            document.getElementById('PF').innerHTML = `
+            <a style="">Page ${this.i + 1} to ${this.Divide().length} of ${(this.DataTable === undefined) ? 0 : this.DataTable.length} Entries</a>`;
+        }
+    }
+    search() {
+        var _a;
+        this.DataSearch = this.DataTable;
+        (_a = document.getElementById('SearchControl')) === null || _a === void 0 ? void 0 : _a.addEventListener('input', (evt) => {
+            this.searchValue = evt.target.value;
+            this.DataTable = this.DataSearch.filter((element) => {
+                for (let index = 0; index < this.HeaderDataTable.length; index++) {
+                    const fg = element[this.HeaderDataTable[index]].toString().toLowerCase().includes(evt.target.value.toLowerCase());
+                    if (fg) {
+                        return fg;
+                    }
+                }
+            });
+            this.RenderToHTML();
+            this.i = 0;
+            this.PaginateUpdate();
+            this.highlight(evt.target.value);
+        });
+    }
+    ConvertToJson() {
+        var _a, _b, _c;
+        //get Header
+        const getHead = (_a = this.TableElement) === null || _a === void 0 ? void 0 : _a.getElementsByTagName('th');
+        for (let v = 0; v < getHead.length; v++) {
+            (_b = this.HeaderDataTable) === null || _b === void 0 ? void 0 : _b.push(getHead[v].textContent);
+        }
+        //get row data
+        const getbody = (_c = this.TableElement) === null || _c === void 0 ? void 0 : _c.getElementsByTagName('tbody');
+        for (let row = 0; row < ((getbody[0] === undefined) ? 0 : getbody[0].rows.length); row++) {
+            const cellsD = [];
+            for (let cellsIndex = 0; cellsIndex < getbody[0].rows[row].cells.length; cellsIndex++) {
+                cellsD.push(getbody[0].rows[row].cells[cellsIndex].innerHTML);
+            }
+            this.RowDataTable.push(cellsD);
+        }
+        // to key value Json
+        this.DataTable = this.RowDataTable.reduce((akumulasi, e) => {
+            akumulasi.push(this.HeaderDataTable.reduce((x, y, i) => {
+                x[y] = e[i];
+                return x;
+            }, {}));
+            return akumulasi;
+        }, []);
+        this.DataTableRaw = this.DataTable;
+        return this.DataTable;
+    }
+    Divide() {
+        const gh = [];
+        const h = (typeof this.PageSize === "string") ? parseInt(this.PageSize) : this.PageSize;
+        for (let i = 0; i < ((this.DataTable === undefined) ? 0 : this.DataTable.length); i += h) {
+            gh.push(this.DataTable.slice(i, i + h));
+        }
+        return gh;
+    }
+    RenderToHTML(SlecTloaf = null) {
+        //clear 
+        this.TableElement.innerHTML = '';
+        // check if is sorted
+        const CheckIFSorted = (this.DataSorted === null || this.DataSorted === [] || this.DataSorted === undefined) ?
+            this.Divide()[0]
+            : this.Divide()[0];
+        this.DataToRender = CheckIFSorted;
+        // HeaderDataTable To Element
+        let header = '';
+        let footer = '';
+        for (let I = 0; I < this.HeaderDataTable.length; I++) {
+            header += `<th style="cursor: pointer;" id="${this.HeaderDataTable[I]}_header" class="columns tablesorter-header">${this.HeaderDataTable[I]}</th>\n`;
+            footer += `<th style="cursor: pointer;" id="${this.HeaderDataTable[I]}_footer" class="columns tablesorter-header">${this.HeaderDataTable[I]}</th>\n`;
+        }
+        // RowDataTable To Element
+        const ifUndefinded = (this.DataToRender === undefined) ? 0 : this.DataToRender.length;
+        let row = '';
+        if (SlecTloaf === null) {
+            for (let ___row = 0; ___row < ifUndefinded; ___row++) {
+                let ToCell = '';
+                for (let ___cell = 0; ___cell < this.HeaderDataTable.length; ___cell++) {
+                    ToCell += `<td class="${this.HeaderDataTable[___cell]}__row">${this.DataToRender[___row][this.HeaderDataTable[___cell]]}</td>\n`;
+                }
+                row += `<tr>${ToCell}</tr>\n`;
+            }
+        }
+        else {
+            for (let ___row = 0; ___row < SlecTloaf.length; ___row++) {
+                let ToCell = '';
+                for (let ___cell = 0; ___cell < this.HeaderDataTable.length; ___cell++) {
+                    ToCell += `<td class="${this.HeaderDataTable[___cell]}__row">${SlecTloaf[___row][this.HeaderDataTable[___cell]]}</td>\n`;
+                }
+                row += `<tr>${ToCell}</tr>\n`;
+            }
+            this.DataToRender = SlecTloaf;
+        }
+        // ====
+        const ToEl = `<thead><tr>${header}</tr></thead><tbody>${row}</tbody><tfoot>${footer}</tfoot>`;
+        this.TableElement.innerHTML = ToEl;
+        for (let n = 0; n < this.HeaderDataTable.length; n++) {
+            const cv = document.getElementById(`${this.HeaderDataTable[n]}_header`);
+            document.getElementById(`${this.HeaderDataTable[n]}_header`).style.opacity = '100%';
+            cv.onclick = () => {
+                this.sort(this.HeaderDataTable[n]);
+                document.getElementById(`${this.HeaderDataTable[n]}_header`).style.opacity = '60%';
+                if (this.Assc) {
+                    document.getElementById(`${this.HeaderDataTable[n]}_header`).classList.remove('tablesorter-header-asc');
+                    document.getElementById(`${this.HeaderDataTable[n]}_header`).classList.add('tablesorter-header-desc');
+                }
+                else {
+                    document.getElementById(`${this.HeaderDataTable[n]}_header`).classList.remove('tablesorter-header-desc');
+                    document.getElementById(`${this.HeaderDataTable[n]}_header`).classList.add('tablesorter-header-asc');
+                }
+                //animate
+                if (this.Options.sortAnimate || !undefined) {
+                    const s = document.getElementsByClassName(`${this.HeaderDataTable[n]}__row`);
+                    for (let NN = 0; NN < s.length; NN++) {
+                        setTimeout(() => s[NN].classList.add('blink_me'), 21 * NN);
+                    }
+                }
+            };
+        }
+        this.PaginateUpdate();
+        this.DoHide();
+    }
+    /**
+     *
+     * @param column name column to sort
+     * @returns show data shorted
+     */
+    sort(column) {
+        const t0 = performance.now();
+        function naturalCompare(a, b) {
+            const ax = [];
+            const bx = [];
+            a.toString().replace(/(^\$|,)/g, '').replace(/(\d+)|(\D+)/g, function (_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]); });
+            b.toString().replace(/(^\$|,)/g, '').replace(/(\d+)|(\D+)/g, function (_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]); });
+            for (let index = 0; ax.length && bx.length; index++) {
+                const an = ax.shift();
+                const bn = bx.shift();
+                const nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+                if (nn)
+                    return nn;
+            }
+            return ax.length - bx.length;
+        }
+        const IndexHead = this.HeaderDataTable.indexOf(column);
+        const listDated = this.listTypeDate.find(x => x.HeaderIndex === IndexHead);
+        const isDate = (listDated === null || listDated === void 0 ? void 0 : listDated.HeaderIndex) === IndexHead;
+        const data = this.DataTable;
+        if (this.Assc) {
+            this.Assc = !this.Assc;
+            if (!isDate) {
+                data.sort((a, b) => {
+                    return naturalCompare(a[column], b[column]);
+                });
+            }
+            else {
+                data.sort((a, b) => {
+                    return Date.parse(a[column]) - Date.parse(b[column]);
+                });
+            }
+        }
+        else {
+            this.Assc = !this.Assc;
+            if (!isDate) {
+                data.sort((a, b) => {
+                    return naturalCompare(b[column], a[column]);
+                });
+            }
+            else {
+                data.sort((a, b) => {
+                    return Date.parse(b[column]) - Date.parse(a[column]);
+                });
+            }
+        }
+        this.DataSorted = data;
+        this.i = 0;
+        this.RenderToHTML();
+        const t1 = performance.now();
+        this.timeSort = Math.round((t1 - t0) / 1000 * 10000) / 10000;
+        return this.DataSorted;
+    }
+    /**
+     *
+     * @param filename filename to download default is Export
+     *
+     */
+    DownloadCSV(filename = 'Export') {
+        let str = '';
+        let hed = this.HeaderDataTable.toString();
+        str = hed + '\r\n';
+        for (let i = 0; i < this.DataTable.length; i++) {
+            let line = '';
+            for (const index in this.DataTable[i]) {
+                if (line != '')
+                    line += ',';
+                line += this.DataTable[i][index];
+            }
+            str += line + '\r\n';
+        }
+        const element = document.createElement('a');
+        element.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(str);
+        element.target = '_blank';
+        element.download = filename + '.csv';
+        element.click();
+    }
+    /**
+     *
+     * @param filename filename to download default is Export
+     *
+     */
+    DownloadJSON(filename = 'Export') {
+        const element = document.createElement('a');
+        element.href = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.DataTable));
+        element.target = '_blank';
+        element.download = filename + '.json';
+        element.click();
+    }
+    /**
+     *
+     * @param text for highlighting text in table
+     *
+     */
+    highlight(text) {
+        var _a;
+        if (this.ShowHighlight) {
+            const getbody = (_a = this.TableElement) === null || _a === void 0 ? void 0 : _a.getElementsByTagName('tbody');
+            for (let row = 0; row < getbody[0].rows.length; row++) {
+                for (let cellsIndex = 0; cellsIndex < getbody[0].rows[row].cells.length; cellsIndex++) {
+                    let innerHTML = getbody[0].rows[row].cells[cellsIndex].innerHTML;
+                    const index = innerHTML.indexOf(text);
+                    if (index >= 0) {
+                        innerHTML = innerHTML.substring(0, index) + "<span style='background-color: yellow;'>" + innerHTML.substring(index, index + text.length) + "</span>" + innerHTML.substring(index + text.length);
+                        getbody[0].rows[row].cells[cellsIndex].innerHTML = innerHTML;
+                        getbody[0].rows[row].cells[cellsIndex].classList.add(`${this.HeaderDataTable[cellsIndex].replace(/\s/g, '_')}__row`);
+                    }
+                }
+            }
+        }
+    }
+    /**
+     *
+     * @param PayLoad you json data to table
+     *
+     */
+    JSONinit(PayLoad = []) {
+        this.HeaderDataTable = [];
+        for (const key in PayLoad[0]) {
+            this.HeaderDataTable.push(key);
+        }
+        this.DataTable = PayLoad;
+        this.DataSearch = PayLoad;
+        this.RenderToHTML();
+    }
+    HideCol(column) {
+        const Classes = document.getElementsByClassName(`${column}__row`);
+        for (let O = 0; O < Classes.length; O++) {
+            Classes[O].style.display = "none";
+        }
+        if (document.getElementById(`${column}_header`)) {
+            document.getElementById(`${column}_header`).style.display = "none";
+            document.getElementById(`${column}_footer`).style.display = "none";
+        }
+    }
+    ShowCol(column) {
+        const Classes = document.getElementsByClassName(`${column}__row`);
+        for (let O = 0; O < Classes.length; O++) {
+            Classes[O].style.display = "";
+        }
+        if (document.getElementById(`${column}_header`)) {
+            document.getElementById(`${column}_header`).style.display = "";
+            document.getElementById(`${column}_footer`).style.display = "";
+        }
+    }
+    DoHide() {
+        const GetHeadArr = this.HeaderDataTable;
+        const ListOftrutc = [];
+        for (let T = 0; T < this.HeaderDataTable.length; T++) {
+            ListOftrutc.push(true);
+        }
+        for (let O = 0; O < this.ListHiding.length; O++) {
+            const Index = GetHeadArr.indexOf(this.ListHiding[O]);
+            if (Index > -1) {
+                ListOftrutc[Index] = false;
+            }
+        }
+        const IndexTrue = [];
+        const IndexFalse = [];
+        for (let U = 0; U < ListOftrutc.length; U++) {
+            if (ListOftrutc[U]) {
+                IndexTrue.push(U);
+            }
+            if (!ListOftrutc[U]) {
+                IndexFalse.push(U);
+            }
+        }
+        for (let V = 0; V < IndexTrue.length; V++) {
+            this.ShowCol(GetHeadArr[IndexTrue[V]]);
+        }
+        for (let F = 0; F < IndexFalse.length; F++) {
+            this.HideCol(GetHeadArr[IndexFalse[F]]);
+        }
+    }
+}
+exports.default = RdataTB;
 
 
 /***/ }),

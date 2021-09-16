@@ -20,29 +20,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     
 });
 Route::middleware(['authApi'])->group(function () {
+    //handle post
     Route::get('/post', [postController::class,'allPost']);
-    Route::get('/Auth/logout',[AuthController::class,'logout']);
-    Route::get('/users/{id}', function ($id) {
-        return $id;  
-    });
-    Route::get('CEK_TOKEN', function () {
-        return response()->json([
-            'msg'=>"logged"
-        ], 200);        
-    });
     Route::get('/post/{slug}',[postController::class,'singlePost']);
-    Route::get('/post', [postController::class,'allPost']);
     Route::post('/createPost',[postController::class,'createPost']);
     Route::get('/listUserPost',[postController::class,'userPost']);
+    Route::get('/searchPost/{text}',[postController::class,'searchPost']);
+    Route::get('/post/{slug}',[postController::class,'singlePost']);
+    Route::get('/userPost', [postController::class,'userPost']);
+     //handle Save post
     Route::post('/savePost/{id}',[postController::class,'savePost']);
     Route::delete('/unsavePost/{id}',[postController::class,'unsavePost']);
-    Route::get('/searchPost/{text}',[postController::class,'searchPost']);
+    //handel tag
     Route::post('/createTag',[postController::class,'createTag']);
-    Route::delete('deleteTag/{id}/{articel_id}',[postController::class,'deleteTag']);
+    Route::delete('/deleteTag/{id}/{articel_id}',[postController::class,'deleteTag']);
     Route::get('/allTag/{id_article}',[postController::class,'allTag']);
 });
-Route::post('Auth/Register',[AuthController::class,'Register']);
-Route::post('Auth/Login',[AuthController::class,'Login']);
-Route::get('userDetail/{idUser}',[AuthController::class,'infoUsr']);
-Route::post('Auth/GoogleAuth',[AuthController::class,'loginWithGoogle']);
+//handle Auth
+Route::get('CEK_TOKEN', function () {
+    return response()->json([
+        'msg'=>"logged"
+    ], 200);
+});
+Route::get('/Auth/logout',[AuthController::class,'logout']);
+Route::post('/Auth/Register',[AuthController::class,'Register']);
+Route::post('/Auth/Login',[AuthController::class,'Login']);
+Route::get('/userDetail/{idUser}',[AuthController::class,'infoUsr']);
+Route::post('/Auth/GoogleAuth',[AuthController::class,'loginWithGoogle']);
 // Route::get('dd',[AuthController::class,'cek']);

@@ -90,11 +90,6 @@ class PostController extends Controller
         }
         return $post->get();
     }
-    public function userPost(Request $r){
-        $x = User::where('api_token',$r->token);
-        $data = post::where('author_id',$x->first()->id)->get();
-        return response()->json($data, 200);
-    }
     public function savePost( Request $r,$id){
         $user = User::where('api_token',$r->token)->first()->id;
         $post = bookmarx::where('article_id',$id)->where('user_id',$user)->exists();
@@ -142,8 +137,10 @@ class PostController extends Controller
             $data = $data->withCount('react');
             $data = $data->where('title','like',"%{$text}%")
             ->orWhere('content','like',"%{$text}%");
-            $data = $data->orWhereHas('tag',function($query) use ($text){
+            $ff = preg_replace("/\s/i","_",$text);
+            $data = $data->orWhereHas('tag',function($query) use ($text,$ff){
                 $query->where('tag_name','like',"%{$text}%");
+                $query->orWhere('tag_name','like',"%{$ff}%");
             });
             $data = $data->orderBy('created_at',$r->order)->simplePaginate(10);
             if (count($folow) == 0 && $r->friendpost == 'true') {
@@ -184,5 +181,27 @@ class PostController extends Controller
             "tag"=>$tg,
             "msg"=>"success"
         ], 200);
+    }
+    public function userPost(Request $r){
+        $user = User::where('api_token',$r->token)->first()->id;
+        $data = post::with(['tag','category','author']);
+        $data = $data->withCount(['bookmarkCheck'=>function ($query) use ($user){
+            $query->where('user_id' , $user);
+        }]);
+        $folow = folower::where('user_id',$user)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
+        if($r->friendpost == 'true'){
+            foreach ($folow as $key => $c) {
+                $data = $data->orWhere('author_id',$c['folower_id']); 
+            }
+        }
+        $data = $data->withCount('comment');
+        $data = $data->withCount('react');
+        $data = $data->where('author_id',$user);
+        $data = $data->orderBy('created_at','desc')->get();
+        if (count($folow) == 0 && $r->friendpost == 'true') {
+            return response()->json([], 200);
+        }else{
+            return response()->json($data, 200);
+        }
     }
 }

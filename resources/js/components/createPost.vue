@@ -1,8 +1,8 @@
 <template>
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
-                      <router-link @click="a()" :class="{'toggles_order_hint':sc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order" to="createPostC">Create Post</router-link>
-                      <router-link @click="b()" :class="{'toggles_order_hint':!sc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order" to="listPOST">List Post</router-link>
+                      <a @click="a(),createPost()" :class="{'toggles_order_hint':sc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order" >Create Post</a>
+                      <a @click="b(),listPost()" :class="{'toggles_order_hint':!sc}" class="btn btn-sm me-2 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">List Post</a>
                       <br>
                       <br>
                       <router-view></router-view> 
@@ -24,6 +24,16 @@ export default {
     },
     b(){
       this.sc = false
+    },
+    listPost(){
+      this.$router.push({
+        name:"listPOST"
+      })
+    },
+    createPost(){
+      this.$router.push({
+        name:"createPostC"
+      })
     }
   },
 }
