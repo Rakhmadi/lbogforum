@@ -5,13 +5,13 @@
                 <div @click="gotoHome()" style="cursor:pointer;" class="inintColorthemesMode navbar-brand">
                     <img src="/icon/icon-192x192.png" style="width:35px;heigth:35px;" alt="logo" srcset="">
                 </div>
-                    <input @input="search()" v-model="searchText" class="form-control rounded-pill me-2 serch_ shadow-none inintColorthemesMode" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
+                    <input @input="search(),goSpin()" v-model="searchText" class="form-control rounded-pill me-2 serch_ shadow-none inintColorthemesMode" @focus="showals = false" @blur="showals = true" placeholder="Search" type="text">
                      <div class=" ms-auto d-flex align-items-center">
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="createPost" style=""><i class="fs-6 mdi mdi-feather"></i></button>
                      </div>
                      <div class="me-2" data-aos="zoom-in"  v-if="!showals">
-                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-magnify"></i></button>
+                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i v-if="!goSpin" class="fs-6 mdi mdi-magnify"></i><i v-if="goSpin" class="fs-6 mdi mdi-spin mdi-loading"></i></button>
                      </div>
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-bookmark"></i></button>
@@ -30,7 +30,7 @@
 
     <main role="main" style="margin-top:75px;">
     <div class="container-fluid ">
-        <router-view  :key="$route.fullPath"></router-view>
+        <router-view  :key="$route.fullPath" @goSpin="goSpin = $event" ></router-view>
     </div>
     </main>
     <div class="back-to-top" v-if="totop" data-aos="zoom-in">
@@ -78,7 +78,8 @@ export default {
            totop:false,
            avatar:'',
            isDark:false,
-           searchText:''           
+           searchText:'',
+           goSpin:false
         }
     },methods: {
           scrollToTop() {
@@ -121,8 +122,7 @@ export default {
                       serch:t
                   }
               })
-          }
-
+          },
     },
 }
 </script>

@@ -3,7 +3,7 @@
         <div class="row d-flex flex-row justify-content-center">
             <div class="col-12 col-md-9 col-lg-9">
                     <h5 class="inintColorthemesMode mb-2">Search results for "{{$route.params.serch}}"</h5>
-                <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in resp" :key="item.id">
+                <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="(item,index) in resp" :key="item.id">
                             <div class="px-4 pt-4 d-flex flex-row align-items-center">
                                 <img style="width:60px ;height:60px" class="rounded-circle" src="https://avatarfiles.alphacoders.com/843/thumb-84318.jpg">
                                 <div class="ms-2">
@@ -20,19 +20,10 @@
                             <div class="p-2 border-top">
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
-                                        <div class="m-1 ">
-                                            <button class="btn btn-sm shadow-none boreder-0 btn-like-circle rounded-pill">
-                                                <i style="font-size:14px" class="mdi mdi-heart"></i>
-                                            </button> 
-                                            </div>
-                                        <div class="m-1 ">
-                                            <button class="btn btn-sm shadow-none boreder-0 btn-comment-circle rounded-pill">
-                                                <i style="font-size:14px" class="mdi mdi-comment"></i> 
-                                            </button> 
-                                        </div>
                                         <div class="ms-auto ">
                                             <button @click="bookmark(index,bookmarkCheker(item.bookmark_check_count),item.id)" class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
-                                                <i style="font-size:14px" class="mdi mdi-bookmark"></i>
+                                                <i style="font-size:14px" v-if="item.bookmark_check_count == 0" class="mdi mdi-bookmark"></i>
+                                                <i style="font-size:14px" v-if="item.bookmark_check_count >= 1" class="mdi mdi-bookmark-check"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -51,24 +42,56 @@ export default {
 
         cekMode()
         if(this.$route.params.serch != '' || this.$route.params.serch != null){
+            this.$emit("goSpin",this.goSpin = true);
             axios.get(`/api/searchPost/${this.$route.params.serch}?order=desc&token=${sessionStorage['token']}`).then(x=>{
-                console.log(x.data)
                 this.resp = x.data.data
+                console.log(this.resp)
             }).then(()=>{
                         cekMode()
+            this.$emit("goSpin", this.goSpin = false);
+
+            }).catch(x=>{
+            this.$emit("goSpin", this.goSpin = false);
+
             })
         }
     },
     data(){
         return{
             paramsSearch:'',
-            resp:[]
+            resp:[],
         }
     },
     methods: {
         date(x){
             return new Date(x).toLocaleString('en-US');
-        },
+        },bookmarkCheker(val){
+            if(val >= 1){
+                return 'checked'
+            }else if(val === 0){
+                return 'nocheked'
+            }
+        },bookmark(index,val,id_post){
+            let that = this
+            if(val === 'checked'){
+                axios.delete(`/api/unsavePost/${id_post}?token=${sessionStorage['token']}`).then(x=>{
+                    that.resp[index].bookmark_check_count = 0
+                    this.msg('Unsaved')
+                })
+
+            }else if(val = 'unchecked'){
+                axios.post(`/api/savePost/${id_post}?token=${sessionStorage['token']}`).then(x=>{
+                    that.resp[index].bookmark_check_count = 1
+                    this.msg('Saved')
+                })
+            }
+        },msg(title){
+        const x = this
+        x.$toast.show(title,{
+             position:"bottom",
+             duration:5142,
+        })
+}
     },
 }
 </script>

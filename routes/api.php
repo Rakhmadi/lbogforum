@@ -35,13 +35,14 @@ Route::middleware(['authApi'])->group(function () {
     Route::post('/createTag',[postController::class,'createTag']);
     Route::delete('/deleteTag/{id}/{articel_id}',[postController::class,'deleteTag']);
     Route::get('/allTag/{id_article}',[postController::class,'allTag']);
+    Route::get('CEK_TOKEN', function () {
+        return response()->json([
+            'msg'=>"logged"
+        ], 200);
+    });
 });
 //handle Auth
-Route::get('CEK_TOKEN', function () {
-    return response()->json([
-        'msg'=>"logged"
-    ], 200);
-});
+
 Route::get('/Auth/logout',[AuthController::class,'logout']);
 Route::post('/Auth/Register',[AuthController::class,'Register']);
 Route::post('/Auth/Login',[AuthController::class,'Login']);

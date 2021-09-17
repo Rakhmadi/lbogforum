@@ -62,20 +62,21 @@
                         </div>
                     </div>
                     <div class="col-3">
-                       <div class="position-fixed">
+                       <div class="">
                             <div class="position-static">
                                 <div class="col-12">
-                                    <div class="card hidden-xs border-0 c_shadow rounded-3 d-none  d-sm-none d-md-block" style="width: 250px;margin-top:45px">
+                                    <div class="card hidden-xs border-0 c_shadow rounded-3 d-none  d-sm-none d-md-block" style="width: auto;margin-top:45px;border: #122fe6b3 3px solid !important;">
                                       <div class="p-3 inintColorthemesMode  d-none  d-sm-none d-md-block">
                                           <h5>Tag</h5>
                                           <div style="">
                                                <router-link class="linkc_tag me-2" to="/">#ertf</router-link>
                                                <router-link class="linkc_tag me-2" to="/">#gfhfghfg</router-link>
                                                <router-link class="linkc_tag me-2" to="/">#vbvbfg</router-link>
-                                               <router-link class="linkc_tag me-2" to="/">#rer</router-link>
+                                               <router-link class="linkc_tag me-2" to="/">#rerdsfsdfs</router-link>
                                           </div>
                                       </div>
                                     </div>
+                                    <div class="card hidden-xs border-0 c_shadow rounded-3 d-none d-sm-none d-md-block mt-3" style="border: #122fe6b3 3px solid !important;"><div class="p-3 inintColorthemesMode d-none d-sm-none d-md-block"><h5>Tag</h5></div></div>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +153,8 @@ export default {
                 border:'3px'
             },
             isDone:false,
-            loadingSave:false
+            loadingSave:false,
+            goSpin:false
 
         }
     },
@@ -242,7 +244,7 @@ export default {
              position:"bottom",
              duration:5142,
         })
-}
+},
     },
 
 }
