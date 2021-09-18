@@ -2,7 +2,7 @@
     <div class="p-0 m-0">
         <div class="">
             <div class="">
-<table id="myTable" class=" table inintColorthemesMode table-bordered w-100">
+<table id="" class=" table inintColorthemesMode table-bordered w-100">
 	<thead>
 		<tr>
 			<th>Title</th>
@@ -20,9 +20,9 @@
                 <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-pencil"></i>
 </a>
-               <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+               <router-link :to="{name:'createTag',params:{pos_id:item.id}}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-tag-plus"></i>
-</a>
+</router-link>
                <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-delete"></i>
 </a>
@@ -62,7 +62,15 @@ export default {
         },
           date(x){
           return new Date(x).toLocaleString('en-US');
-      },
+      },gotoEditTag(val){
+          console.log('sdf')
+          this.$router.push({
+              name:'createTag',
+              params:{
+                  pos_id:val
+              }
+          })
+      }
     }
 }
 </script>
