@@ -197,7 +197,10 @@ class PostController extends Controller
         $data = $data->withCount('comment');
         $data = $data->withCount('react');
         $data = $data->where('author_id',$user);
-        $data = $data->orderBy('created_at','desc')->get();
+        if ($r->search != null || $r->search != '') {
+            $data = $data->where('title','LIKE',"%{$r->search}%");
+         }
+        $data = $data->orderBy('created_at','desc')->simplePaginate(10);
         if (count($folow) == 0 && $r->friendpost == 'true') {
             return response()->json([], 200);
         }else{

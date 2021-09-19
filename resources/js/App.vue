@@ -193,4 +193,7 @@ font-family: var(--bs-font-sans-serif) !important;
     height: 45px;
     border-bottom: 1px solid #5e5e5e;
 }
+    .hint{
+border: #3f56eb59 2px solid !important;
+}
 </style>

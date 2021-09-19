@@ -1,22 +1,17 @@
 <template>
     <div class="p-0 m-0">
-        <div class="">
-            <div class="">
-<table id="" class=" table inintColorthemesMode table-bordered w-100">
-	<thead>
-		<tr>
-			<th>Title</th>
-			<th type-date>Created</th>
-			<th>o1</th> 
-
-			 <!-- If column contain type date add attribut "type-date" example = <th type-date >Head 3</th>  -->
-		</tr>
-	</thead>
-	<tbody>
-		<tr v-for="item in reps" :key="item">
-			<td>{{item.title}}</td>
-			<td >{{date(item.created_at)}}</td>
-			<td>
+        <div class="row d-flex flex-row justify-content-center p-2">
+<input class="form-control rounded-pill m-2 serch_ shadow-none inintColorthemesMode  dark__" v-model="searchText" placeholder="Search" type="text">
+<h4 class="inintColorthemesMode">Page {{reps.current_page}}</h4>
+                <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in reps.data" :key="item.id">
+                            <div class="p-2">
+                                <div class="container-fluid p-0 m-0">
+                                    <div class="d-flex justify-content-star align-items-center ">
+                                        <div class="p-1">
+                                             <h3 class="m-0 user_s inintColorthemesMode">{{item.title}}</h3>
+                                             <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:12px">{{date(item.created_at)}}</h6>
+                                        </div>
+                                        <div class="ms-auto ">
                 <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-pencil"></i>
 </a>
@@ -26,19 +21,25 @@
                <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-delete"></i>
 </a>
-
-            </td>
-		</tr>
-	</tbody>
-</table>
-            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+               <button  @click="prev()" :class="{'hint':!fd1}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                <i class="fs-6 mdi mdi-chevron-left"></i>
+                </button>
+                               <button @click="next()" :disable="!fd" :class="{'hint':!fd}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                <i class="fs-6 mdi mdi-chevron-right"></i>
+                </button>
         </div>
     </div>
 </template>
 <script>
-import RdataTB from 'rdatatb'
 import axios from 'axios'
 import cekMode from '../mode.js'
+import pDebounce from '../debounce.js';
+
 export default {
     mounted(){
         cekMode()
@@ -47,8 +48,20 @@ export default {
     },
     data() {
         return {
-            reps:[]
+            reps:[],
+            searchText:'',
+            fd:true,
+            fd1:true,
         }
+    },
+    watch:{
+      searchText:pDebounce(async function tangani(searchText){
+          if(searchText && searchText.length >= 1){
+              await this.search(searchText)
+          }else{
+              this.getData()
+          }
+      },250)
     },
     methods:{
         getData(){
@@ -56,9 +69,46 @@ export default {
                 console.log(x.data)
                 this.reps = x.data
             }).then(()=>{
-                new RdataTB('myTable',{
-	            });
+                cekMode()
             })
+        },
+        search(searchText){
+            axios.get(`${window.location.origin}/api/userPost?search=${searchText}&token=${sessionStorage['token']}`).then(x=>{
+                console.log(x.data)
+                this.reps = x.data
+            }).then(()=>{
+                cekMode()
+            })
+        },
+        next(){
+            if(this.reps.data.length >= 1){
+                this.fd = true
+                axios.get(`${window.location.origin}/api/userPost?search=${this.searchText}&page=${this.reps.current_page+1}&token=${sessionStorage['token']}`).then(x=>{
+                    console.log(x.data)
+                    if(x.data.data.length > 0){
+                        this.reps = x.data
+                    }else{
+                        this.fd = false
+                    }
+                }).then(()=>{
+                    cekMode()
+                })
+            }else{
+                this.fd = false
+            }
+        },
+        prev(){
+            if(this.reps.data.length >= 0){
+                this.fd1 = true
+                axios.get(`${window.location.origin}/api/userPost?search=${this.searchText}&page=${this.reps.current_page-1}&token=${sessionStorage['token']}`).then(x=>{
+                    console.log(x.data)
+                    this.reps = x.data
+                }).then(()=>{
+                    cekMode()
+                })
+            }else{
+                this.fd1 = false
+            }
         },
           date(x){
           return new Date(x).toLocaleString('en-US');
@@ -74,3 +124,6 @@ export default {
     }
 }
 </script>
+<style lang="css">
+
+</style>
