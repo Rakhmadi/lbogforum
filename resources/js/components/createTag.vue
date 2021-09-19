@@ -7,7 +7,7 @@
                                 <div class="card-body pt-0">
                                     <h4>Add Tag</h4>
                                       <div>
-                                          <span v-for="(item, index) in tags" :key="index" class="badge rounded-pill bg-primary p-2 m-1" style="background-color: #566ae854 !important;color: #5669e8  !important;transition: .5s ease;">{{item.tag_name}} <i @click="deleteTag(item.id,index)" class="mdi mdi-close-circle" style="cursor: pointer;color: rgb(252 121 121) !important;"></i></span>
+                                          <span v-for="(item, index) in tags" :key="index" class="badge rounded-pill bg-primary p-2 m-1" style="background-color: #566ae854 !important;color: #5669e8  !important;transition: .5s ease; font-size:12px;">{{item.tag_name}} <i @click="deleteTag(item.id,index)" class="mdi mdi-close-circle" style="cursor: pointer;color: rgb(252 121 121) !important;"></i></span>
                                           <div class="spinner-grow m-1" v-show="isLoading" style="background-color:#e23e;height: 7px; width: 7px;" role="status"></div>
                                       </div>
                                     <input v-on:keyup.enter="addTag()" v-model="tagName" class="form-control serch_ rounded-pill mt-2 inintColorthemesMode form-control-sm" type="text" placeholder="Add Tag" required="">

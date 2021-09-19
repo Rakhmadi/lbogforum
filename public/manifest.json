@@ -47,8 +47,8 @@
 	],
 	"start_url": "/f/U/home",
 	"display": "standalone",
-	"background_color": "#0a0322",
-	"theme_color": "#0a0322",
+	"background_color": "#221F2C",
+	"theme_color": "#221F2C",
 	"description": "ShareurCodes is a code sharing site for programmers to learn, share their knowledge with younger generation",
 	"dir": "ltr",
 	"lang": "en-US"

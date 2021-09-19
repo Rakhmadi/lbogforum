@@ -1,4 +1,6 @@
 <template>
+    <h2 class="inintColorthemesMode">Create Your Post</h2>
+
     <div class="mb-4">
                           <form action="">
                              <label for="password" class="form-label inintColorthemesMode">Title</label>

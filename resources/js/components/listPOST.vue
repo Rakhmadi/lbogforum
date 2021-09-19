@@ -1,14 +1,15 @@
 <template>
+    <h2 class="inintColorthemesMode">List Posts</h2>
     <div class="p-0 m-0">
         <div class="row d-flex flex-row justify-content-center p-2">
 <input class="form-control rounded-pill m-2 serch_ shadow-none inintColorthemesMode  dark__" v-model="searchText" placeholder="Search" type="text">
-<h4 class="inintColorthemesMode">Page {{reps.current_page}}</h4>
-                <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" v-for="item in reps.data" :key="item.id">
+<h6 class="inintColorthemesMode mt-2">Page {{reps.current_page}}</h6>
+                <div class="card mb-3 border-0 c_shadow" v-for="item in reps.data" :key="item.id">
                             <div class="p-2">
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
                                         <div class="p-1">
-                                             <h3 class="m-0 user_s inintColorthemesMode">{{item.title}}</h3>
+                                             <h5 class="m-0 user_s inintColorthemesMode">{{item.title}}</h5>
                                              <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:12px">{{date(item.created_at)}}</h6>
                                         </div>
                                         <div class="ms-auto ">
@@ -26,10 +27,10 @@
                                 </div>
                             </div>
                             </div>
-               <button  @click="prev()" :class="{'hint':!fd1}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+               <button   @click="prev()" :class="{'hint':!fd1}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                 <i class="fs-6 mdi mdi-chevron-left"></i>
                 </button>
-                               <button @click="next()" :disable="!fd" :class="{'hint':!fd}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+                               <button  @click="next()" :disable="!fd" :class="{'hint':!fd}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
                 <i class="fs-6 mdi mdi-chevron-right"></i>
                 </button>
         </div>
@@ -92,6 +93,7 @@ export default {
                     }
                 }).then(()=>{
                     cekMode()
+                    window.scrollTo(0,0);
                 })
             }else{
                 this.fd = false
@@ -105,6 +107,7 @@ export default {
                     this.reps = x.data
                 }).then(()=>{
                     cekMode()
+                    window.scrollTo(0,0);
                 })
             }else{
                 this.fd1 = false
