@@ -81,6 +81,9 @@ class PostController extends Controller
             return response()->json($val->errors(), 400);
         }  
     }
+    public function deletePost($id_article){
+        
+    }
     public function friendPost($r){
         $x = User::where('api_token',$r->token);
         $folow = folower::where('user_id',$x->first()->id)->leftJoin('users','users.id','=','folower_id')->get(['folower_id']);
@@ -207,4 +210,5 @@ class PostController extends Controller
             return response()->json($data, 200);
         }
     }
+
 }

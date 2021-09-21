@@ -22,7 +22,7 @@
                             <i v-if="!isDark" class="fs-6 mdi mdi-brightness-7"></i>
                         </button>
                      </div>
-                      <img @click="gotoprof" style="cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
+                      <img @click="gotoprof" referrerpolicy="no-referrer" style="cursor:pointer;width:40px !important; height:40px !important" class="rounded-circle" :src="avatar" :alt="avatar">
                      </div>
               </div>
           </div>

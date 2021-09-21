@@ -23152,6 +23152,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var md_editor_v3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! md-editor-v3 */ "./node_modules/md-editor-v3/lib/md-editor-v3.es.js");
 /* harmony import */ var md_editor_v3_lib_style_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! md-editor-v3/lib/style.css */ "./node_modules/md-editor-v3/lib/style.css");
 /* harmony import */ var _mode__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../mode */ "./resources/js/mode.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -23169,9 +23172,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      text: "sdfsdfdsf, <pre><code class=\"language-ts\"><span class=\"hljs-keyword\">export</span> <span class=\"hljs-keyword\">declare</span> <span class=\"hljs-keyword\">const</span> <span class=\"hljs-attr\">getSlot</span>: <span class=\"hljs-function\">(<span class=\"hljs-params\">{ instance, ctx, props }: {\n    instance?: ComponentPublicInstance&lt;{}, {}, {}, {}, {}, {}, {}, {}, <span class=\"hljs-literal\">false</span>, <span class=\"hljs-keyword\">import</span>(<span class=\"hljs-string\">\"vue\"</span>).ComponentOptionsBase&lt;<span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, <span class=\"hljs-built_in\">any</span>, {}&gt;&gt; | <span class=\"hljs-literal\">undefined</span>;\n    ctx?: SetupContext&lt;EmitsOptions&gt; | <span class=\"hljs-literal\">undefined</span>;\n    props?: <span class=\"hljs-built_in\">any</span>;\n}, name?: <span class=\"hljs-built_in\">string</span></span>) =&gt;</span> <span class=\"hljs-built_in\">any</span>;\n</code><span class=\"copy-button\">Copy</span></pre>    </div>",
+      text: "Hello",
       tags: [],
-      tagName: ''
+      tagName: '',
+      file: '',
+      title: ''
     };
   },
   methods: {
@@ -23180,6 +23185,22 @@ __webpack_require__.r(__webpack_exports__);
     },
     previewFiles: function previewFiles(event) {
       console.log(event.target.files);
+    },
+    savePost: function savePost() {
+      var formData = new FormData();
+      formData.append('title', this.title);
+      formData.append('content', this.text);
+      formData.append('image_article', this.file);
+      axios__WEBPACK_IMPORTED_MODULE_4___default().post("".concat(window.location.origin, "/api/createPost?token=").concat(sessionStorage['token']), formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (x) {
+        console.log(x.data);
+      });
+    },
+    fileHandler: function fileHandler(event) {
+      this.file = event.target.files[0];
     }
   }
 }));
@@ -24440,6 +24461,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "height": "60px"
       },
       "class": "rounded-circle",
+      referrerpolicy: "no-referrer",
       src: item.author.avatar
     }, null, 8
     /* PROPS */
@@ -24696,6 +24718,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[7] || (_cache[7] = function () {
       return $options.gotoprof && $options.gotoprof.apply($options, arguments);
     }),
+    referrerpolicy: "no-referrer",
     style: {
       "cursor": "pointer",
       "width": "40px !important",
@@ -24896,16 +24919,15 @@ var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "mx-1"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "mdi mdi-content-save"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save")])], -1
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Save")], -1
 /* HOISTED */
 );
 
+var _hoisted_9 = [_hoisted_8];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_editor = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("editor");
 
@@ -24914,16 +24936,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     "class": "form-control serch_ rounded-pill mb-2 inintColorthemesMode",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.password = $event;
+      return _ctx.title = $event;
     }),
     type: "text",
     placeholder: "Title Post",
     required: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.password]]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    onChange: _cache[1] || (_cache[1] = function () {
-      return _ctx.previewFiles && _ctx.previewFiles.apply(_ctx, arguments);
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.title]]), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onChange: _cache[1] || (_cache[1] = function ($event) {
+      return _ctx.fileHandler($event);
     }),
     "class": "form-control serch_ rounded-pill mb-2 inintColorthemesMode",
     type: "file",
@@ -24939,7 +24961,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     language: "en-US"
   }, null, 8
   /* PROPS */
-  , ["modelValue"]), _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
+  , ["modelValue"]), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
+      return _ctx.savePost();
+    }),
+    "class": "btn btn-sm me-2 mb-4 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill"
+  }, _hoisted_9), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_modal, {
     titleModal: "Galery",
     idModal: "swmodal"
   })])], 64
@@ -25680,6 +25707,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "width": "99px",
       "height": "99px"
     },
+    referrerpolicy: "no-referrer",
     "class": "rounded-circle",
     alt: "v",
     src: $data.resp.user.avatar

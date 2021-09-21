@@ -5,7 +5,7 @@
                             <div class="p-2 ">
                             <div class="p-2 d-flex flex-column align-items-center  border-bottom ">
                                 <div>
-                                    <img style="border:4px solid #3051FF;width:99px; height:99px;" class="rounded-circle" alt="v" :src="resp.user.avatar">
+                                    <img style="border:4px solid #3051FF;width:99px; height:99px;" referrerpolicy="no-referrer" class="rounded-circle" alt="v" :src="resp.user.avatar">
                                 </div>
                                 <div>
                                     <h4 class="m-0 p-0 text-break user_s text-center inintColorthemesMode" style="">{{resp.user.name}}</h4>
