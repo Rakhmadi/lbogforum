@@ -35,6 +35,7 @@ Route::middleware(['authApi'])->group(function () {
     Route::post('/createTag',[postController::class,'createTag']);
     Route::delete('/deleteTag/{id}/{articel_id}',[postController::class,'deleteTag']);
     Route::get('/allTag/{id_article}',[postController::class,'allTag']);
+    Route::get('/savedPost',[postController::class,'getSavedPost']);
     Route::get('CEK_TOKEN', function () {
         return response()->json([
             'msg'=>"logged"
