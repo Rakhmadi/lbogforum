@@ -14,7 +14,7 @@
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i v-if="!goSpin" class="fs-6 mdi mdi-magnify"></i><i v-if="goSpin" class="fs-6 mdi mdi-spin mdi-loading"></i></button>
                      </div>
                       <div class="me-2" data-aos="zoom-in"  v-if="showals" >
-                        <button class="btn btn-U btn-sm rounded-circle btn-circle" style=""><i class="fs-6 mdi mdi-bookmark"></i></button>
+                        <button class="btn btn-U btn-sm rounded-circle btn-circle" @click="gotoBookmark()" style=""><i class="fs-6 mdi mdi-bookmark"></i></button>
                      </div>
                       <div class="me-2" data-aos="zoom-in" @click="changeTheme()"  v-if="showals" >
                         <button class="btn btn-U btn-sm rounded-circle btn-circle" style="">
@@ -97,6 +97,9 @@ export default {
               this.$router.push({
                   name:'home'
               })
+          },
+          gotoBookmark(){
+              this.$router.push({name:'bookmarkList'})
           },
           createPost(){
               this.$router.push({

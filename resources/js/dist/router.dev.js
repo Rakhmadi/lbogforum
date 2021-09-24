@@ -35,6 +35,8 @@ var _Galery = _interopRequireDefault(require("./components/Galery.vue"));
 
 var _searchPage = _interopRequireDefault(require("./components/searchPage.vue"));
 
+var _bookmarkList = _interopRequireDefault(require("./components/bookmarkList.vue"));
+
 var _f = _interopRequireDefault(require("./components/f.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -104,6 +106,11 @@ var routes = [{
     beforeEnter: cekLogin,
     path: 'profile',
     component: _profile["default"]
+  }, {
+    name: 'bookmarkList',
+    beforeEnter: cekLogin,
+    path: 'bookmarkList',
+    component: _bookmarkList["default"]
   }, {
     name: 'folower',
     path: 'folower',

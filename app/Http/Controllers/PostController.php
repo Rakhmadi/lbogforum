@@ -212,7 +212,7 @@ class PostController extends Controller
     }
     public function getSavedPost(Request $r){
         $user = User::where('api_token',$r->token)->first()->id;
-        $post = bookmarx::with(['post','post.tag'])->where('user_id',$user)->get();
+        $post = bookmarx::with(['post','post.author','post.tag'])->where('user_id',$user)->get();
         return response()->json($post,200);
     }
 }

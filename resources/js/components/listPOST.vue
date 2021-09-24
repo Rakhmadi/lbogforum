@@ -8,11 +8,13 @@
                             <div class="p-2">
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
-                                        <div class="p-1">
-                                             <h5 class="m-0 user_s inintColorthemesMode">{{item.title}}</h5>
-                                             <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:12px">{{date(item.created_at)}}</h6>
+                                        <div class="p-1 mb-2">
+                                             <h4 class="m-0 user_s inintColorthemesMode">{{item.title}}</h4>
+                                             <h6 class="p-0 my-2 fw-normal inintColorthemesMode " style="font-size:12px">{{date(item.created_at)}}</h6>
                                         </div>
-                                        <div class="ms-auto ">
+
+                                    </div>
+                                <div class="ms-auto ">
                 <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-pencil"></i>
 </a>
@@ -22,16 +24,15 @@
                <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-delete"></i>
 </a>
-                                        </div>
-                                    </div>
+                                </div>
                                 </div>
                             </div>
                             </div>
                <button   @click="prev()" :class="{'hint':!fd1}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
-                <i class="fs-6 mdi mdi-chevron-left"></i>
+                <i class="fs-6 mdi mdi-chevron-left">Prev</i>
                 </button>
                                <button  @click="next()" :disable="!fd" :class="{'hint':!fd}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
-                <i class="fs-6 mdi mdi-chevron-right"></i>
+                <i class="fs-6 mdi mdi-chevron-right">Next</i>
                 </button>
         </div>
     </div>

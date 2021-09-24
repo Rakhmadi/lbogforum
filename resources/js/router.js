@@ -13,7 +13,7 @@ import listPOST from './components/listPOST.vue';
 import createTag from './components/createTag.vue';
 import Galery from './components/Galery.vue';
 import searchPage from './components/searchPage.vue';
-
+import bookmarkList from './components/bookmarkList.vue';
 
 
 async function cekLogin(to,from,next) {
@@ -62,6 +62,11 @@ const routes = [
           beforeEnter: cekLogin,
           path:'profile',
           component:profile
+        },{
+          name:'bookmarkList',
+          beforeEnter: cekLogin,
+          path:'bookmarkList',
+          component:bookmarkList
         },{
           name:'folower',
           path:'folower',

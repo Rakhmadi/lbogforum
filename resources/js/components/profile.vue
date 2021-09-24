@@ -75,10 +75,16 @@
 import cekMode from "../mode"
 
 export default {
-   mounted(){
+    beforeCreate() {
         this.$store.dispatch('getUserInfo',1).then(x=>{
             this.resp = x;
         })
+    },  
+   beforeMount(){
+
+   },
+   mounted(){
+
         cekMode()
     },
     data(){

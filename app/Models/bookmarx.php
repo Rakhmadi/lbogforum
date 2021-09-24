@@ -18,7 +18,7 @@ class bookmarx extends Model
 
     public function post()
     {
-        return $this->hasMany('App\Models\post', 'id', 'article_id')->select(['id', 'title']);;
+        return $this->hasMany('App\Models\post', 'id', 'article_id')->select(['id', 'title','author_id']);;
     }
-
+  
 }
