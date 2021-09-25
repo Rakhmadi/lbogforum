@@ -9,6 +9,7 @@ use App\Models\folower;
 use App\Models\bookmarx;
 use App\Models\tag;
 use App\Models\react;
+use App\Models\comment;
 
 use Illuminate\Support\Facades\Validator;
 
@@ -81,8 +82,16 @@ class PostController extends Controller
             return response()->json($val->errors(), 400);
         }  
     }
-    public function deletePost($id_article){
-        
+    public function deletePost($id_post){
+        $xyy = comment::where('article_id',$id_post)->delete();
+        $xy = tag::where('articel_id',$id_post)->delete();
+        $xyx = bookmarx::where('article_id',$id_post)->delete();
+        $x = post::where('id',$id_post)->first();
+            if ($x->image_article != '' || $x->image_article == null) {
+                unlink(public_path('images').'/'.$x->image_article);
+            }
+        $x->delete();
+        return response()->json(["msg"=>"Success"], 200);
     }
     public function friendPost($r){
         $x = User::where('api_token',$r->token);

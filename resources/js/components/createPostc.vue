@@ -61,6 +61,11 @@ export default defineComponent({
           }
         }).then(x=>{
           console.log(x.data)
+            this.$toast.show('Saved',{
+             position:"bottom",
+             duration:5142,
+        })
+        this.$router.push({'name':'listPOST'})
         })
       },
       fileHandler(event){

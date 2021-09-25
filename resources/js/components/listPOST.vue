@@ -4,7 +4,7 @@
         <div class="row d-flex flex-row justify-content-center p-2">
 <input class="form-control rounded-pill m-2 serch_ shadow-none inintColorthemesMode  dark__" v-model="searchText" placeholder="Search" type="text">
 <h6 class="inintColorthemesMode mt-2">Page {{reps.current_page}}</h6>
-                <div class="card mb-3 border-0 c_shadow" v-for="item in reps.data" :key="item.id">
+                <div class="card mb-3 border-0 c_shadow" v-for="(item,index) in reps.data" :key="item.id">
                             <div class="p-2">
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
@@ -21,18 +21,18 @@
                <router-link :to="{name:'createTag',params:{pos_id:item.id}}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-tag-plus"></i>
 </router-link>
-               <a class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
+               <button @click="DeletePost(item.id,index)" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
 <i class="fs-6 mdi mdi-delete"></i>
-</a>
+</button>
                                 </div>
                                 </div>
                             </div>
                             </div>
                <button   @click="prev()" :class="{'hint':!fd1}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
-                <i class="fs-6 mdi mdi-chevron-left">Prev</i>
+                <i class="fs-6 mdi mdi-chevron-left"></i>
                 </button>
                                <button  @click="next()" :disable="!fd" :class="{'hint':!fd}" class="toggles_order_hint btn btn-sm m-1 shadow-none boreder-0 btn-comment-circle w-auto rounded-pill toggles_order">
-                <i class="fs-6 mdi mdi-chevron-right">Next</i>
+                <i class="fs-6 mdi mdi-chevron-right"></i>
                 </button>
         </div>
     </div>
@@ -124,6 +124,19 @@ export default {
                   pos_id:val
               }
           })
+      }, 
+      DeletePost(id,index){
+          let that = this
+        axios.delete(`${window.location.origin}/api/deletePost/${id}?token=${sessionStorage['token']}`).then(x=>{
+            console.log(x)
+            that.reps.data.splice(index,1);
+            this.$toast.show('Delete Success',{
+             position:"bottom",
+             duration:5142,
+        })
+        }).catch(err=>{
+            console.log(err.response)
+        })
       }
     }
 }

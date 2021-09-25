@@ -28,8 +28,8 @@ Route::middleware(['authApi'])->group(function () {
     Route::get('/searchPost/{text}',[postController::class,'searchPost']);
     Route::get('/post/{slug}',[postController::class,'singlePost']);
     Route::get('/userPost', [postController::class,'userPost']);
-     //handle Save post
     Route::post('/savePost/{id}',[postController::class,'savePost']);
+    Route::delete('/deletePost/{id_post}',[postController::class,'deletePost']);
     Route::delete('/unsavePost/{id}',[postController::class,'unsavePost']);
     //handel tag
     Route::post('/createTag',[postController::class,'createTag']);
