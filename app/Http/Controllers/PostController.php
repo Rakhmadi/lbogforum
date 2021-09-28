@@ -88,7 +88,9 @@ class PostController extends Controller
         $xyx = bookmarx::where('article_id',$id_post)->delete();
         $x = post::where('id',$id_post)->first();
             if ($x->image_article != '' || $x->image_article == null) {
-                unlink(public_path('images').'/'.$x->image_article);
+                if(file_exists(public_path('images').'/'.$x->image_article)){
+                    unlink(public_path('images').'/'.$x->image_article);
+                }
             }
         $x->delete();
         return response()->json(["msg"=>"Success"], 200);

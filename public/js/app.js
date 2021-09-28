@@ -23107,6 +23107,8 @@ __webpack_require__.r(__webpack_exports__);
     (0,_mode__WEBPACK_IMPORTED_MODULE_0__.default)();
     axios__WEBPACK_IMPORTED_MODULE_1___default().get("".concat(window.location.origin, "/api/savedPost?token=").concat(sessionStorage['token'])).then(function (x) {
       _this.resp = x.data;
+    }).then(function () {
+      (0,_mode__WEBPACK_IMPORTED_MODULE_0__.default)();
     });
   },
   data: function data() {
@@ -23115,7 +23117,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    "delete": function _delete(id, index) {
+    deletes: function deletes(id, index) {
       var _this2 = this;
 
       axios__WEBPACK_IMPORTED_MODULE_1___default().delete("".concat(window.location.origin, "/api/unsavePost/").concat(id, "?token=").concat(sessionStorage['token'])).then(function (x) {
@@ -23125,6 +23127,8 @@ __webpack_require__.r(__webpack_exports__);
           position: "bottom",
           duration: 5142
         });
+
+        console.log('sdf');
       });
     }
   }
@@ -24928,7 +24932,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* KEYED_FRAGMENT */
     ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
       onClick: function onClick($event) {
-        return delete (item.id, index);
+        return $options.deletes(item.post[0].id, index);
       },
       "class": "btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill"
     }, _hoisted_13, 8

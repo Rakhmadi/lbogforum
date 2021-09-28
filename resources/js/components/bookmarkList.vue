@@ -14,7 +14,7 @@
                                 <div class="container-fluid p-0 m-0">
                                     <div class="d-flex justify-content-star align-items-center ">
                                         <div class="ms-auto ">
-                                            <button @click="delete(item.id,index)" class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
+                                            <button @click="deletes(item.post[0].id,index)" class="btn btn-sm shadow-none boreder-0 btn-add-circle rounded-pill">
                                                 <i style="font-size:14px" class="mdi mdi-bookmark-remove"></i>
                                             </button>
                                         </div>
@@ -31,10 +31,13 @@ import cekMode from "../mode"
 import axios from 'axios';
 export default {
     mounted(){
-                cekMode()
-
+        cekMode()
         axios.get(`${window.location.origin}/api/savedPost?token=${sessionStorage['token']}`).then(x=>{
             this.resp = x.data
+             
+
+        }).then(()=>{
+               cekMode()
         })
     },
     data(){
@@ -42,13 +45,14 @@ export default {
             resp:[]
         }
     },methods: {
-        delete(id,index){
+        deletes(id,index){
             axios.delete(`${window.location.origin}/api/unsavePost/${id}?token=${sessionStorage['token']}`).then(x=>{
                 this.resp.splice(index,1)
                 this.$toast.show('Deleted',{
                  position:"bottom",
                  duration:5142,
                 })
+                console.log('sdf')
             })
         }
     },
