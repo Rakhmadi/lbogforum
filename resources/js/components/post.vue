@@ -3,24 +3,23 @@
             <div class="row d-flex justify-content-center">
                     <div class="col-12 col-md-9 col-lg-9 ">
                         <div class="card mb-3 border-0 c_shadow" data-aos="fade-up" data-aos-anchor-placement="top-bottom">
-                            <img src="https://images.unsplash.com/photo-1627483262769-04d0a1401487?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80" class="card-img-top" alt="...">
+                            <img :src="`${origin}/images/${respPost.image_article}`" class="card-img-top" alt="...">
                             <div class="p-2">
                             <div class="p-2">
-                                <h1 class="user_s inintColorthemesMode" style="cursor:pointer;fs-1-text">Zona Waktu Dunia</h1 >
-                                <router-link class="linkc_tag me-2 " to="">#transs</router-link>
-                                <router-link class="linkc_tag me-2 " to="">#transs</router-link>
+                                <h1 class="user_s inintColorthemesMode" style="cursor:pointer;fs-1-text">{{respPost.title}}</h1 >
+                                <router-link class="linkc_tag me-2 " v-for="item in respPost.tag" :key="item" to="">#{{item.tag_name}}</router-link>
                             </div>
                             <div class="p-2 d-flex flex-row align-items-center ">
                                 <div>
                                     <img style="width:60px;height:60px;" class="rounded-circle" src="https://avatarfiles.alphacoders.com/845/84595.png">
                                 </div>
                                 <div class="ms-2">
-                                    <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">Hataraku Hataraku Hataraku Hataraku</h5>
+                                    <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">{{respPost.author.name}}</h5>
                                     <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
                                 </div>
                             </div>
                             <div class="p-2 ">
-                                     <editor class="inintColorthemesMode" v-model="text" language='en-US' previewOnly='true' ></editor>
+                                     <editor class="inintColorthemesMode" :modelValue="respPost.content" language='en-US' previewOnly='true' ></editor>
                             </div>
                             <div class="p-2 border-top">
                                 <div class="container-fluid p-0 m-0">
@@ -83,7 +82,7 @@ import cekMode from '../mode.js';
 import { defineComponent } from 'vue';
 import Editor from 'md-editor-v3';
 import 'md-editor-v3/lib/style.css';
-
+import axios from 'axios';
 export default defineComponent({
   name: 'VueTemplateDemo',
   components: { Editor },
@@ -92,16 +91,25 @@ export default defineComponent({
   },
   mounted(){
       cekMode()
+        axios.get(`${window.location.origin}/api/post/${this.$route.params.slug}?token=${sessionStorage['token']}`).then(x=>{
+            this.respPost = x.data
+        })
   },
   data() {
     return {
-      text: `sdfsdfdsf, <pre><code class="language-ts"><span class="hljs-keyword">export</span> <span class="hljs-keyword">declare</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">getSlot</span>: <span class="hljs-function">(<span class="hljs-params">{ instance, ctx, props }: {
-    instance?: ComponentPublicInstance&lt;{}, {}, {}, {}, {}, {}, {}, {}, <span class="hljs-literal">false</span>, <span class="hljs-keyword">import</span>(<span class="hljs-string">"vue"</span>).ComponentOptionsBase&lt;<span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, <span class="hljs-built_in">any</span>, {}&gt;&gt; | <span class="hljs-literal">undefined</span>;
-    ctx?: SetupContext&lt;EmitsOptions&gt; | <span class="hljs-literal">undefined</span>;
-    props?: <span class="hljs-built_in">any</span>;
-}, name?: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">any</span>;
-</code><span class="copy-button">Copy</span></pre>    </div>`
+      respPost:{
+          author:{
+          name:''
+          }
+      },
+      origin:window.location.origin,
     };
-  }
+  },
+  methods: {
+              date(x){
+            return new Date(x).toLocaleString('en-US');
+        },
+
+  },
 });
 </script>
