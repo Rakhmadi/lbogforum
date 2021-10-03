@@ -27,8 +27,8 @@ data() {
     display: none;
 }
 p{
-  font-size: 0.9rem !important;
-  line-height: 20px;
+  font-size: 1.0rem !important;
+  line-height: auto;
 }
   html,body{
     width:100% !important;
@@ -195,5 +195,8 @@ font-family: var(--bs-font-sans-serif) !important;
 }
     .hint{
 border: #3f56eb59 2px solid !important;
+}
+.md-content p{
+  margin:0px
 }
 </style>

@@ -22900,6 +22900,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         position: "bottom",
         duration: 5142
       });
+    },
+    goPost: function goPost(f) {
+      this.$router.push({
+        path: "post/".concat(f)
+      });
     }
   }
 });
@@ -24360,12 +24365,7 @@ var _hoisted_19 = {
 var _hoisted_20 = {
   "class": "p-2"
 };
-var _hoisted_21 = {
-  "class": "user_s inintColorthemesMode",
-  style: {
-    "cursor": "pointer"
-  }
-};
+var _hoisted_21 = ["onClick"];
 var _hoisted_22 = {
   "class": "p-2 border-top"
 };
@@ -24574,9 +24574,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.date(item.created_at)), 1
     /* TEXT */
-    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 1
-    /* TEXT */
-    ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(item.tag, function (ite) {
+    )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", {
+      "class": "user_s inintColorthemesMode",
+      onClick: function onClick($event) {
+        return $options.goPost(item.title_slug);
+      },
+      style: {
+        "cursor": "pointer"
+      }
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.title), 9
+    /* TEXT, PROPS */
+    , _hoisted_21), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(item.tag, function (ite) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_router_link, {
         key: ite.id,
         "class": "linkc_tag me-2",
@@ -25774,16 +25782,12 @@ var _hoisted_11 = {
   "class": "m-0 p-0 text-break user_s inintColorthemesMode",
   style: {}
 };
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", {
+var _hoisted_12 = {
   "class": "p-0 m-0 fw-normal inintColorthemesMode",
   style: {
     "font-size": "14px"
   }
-}, "Jumat, 13 Agustus 2021", -1
-/* HOISTED */
-);
-
+};
 var _hoisted_13 = {
   "class": "p-2 "
 };
@@ -25835,7 +25839,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.respPost.author.name), 1
   /* TEXT */
-  ), _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_editor, {
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h6", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.date(_ctx.respPost.created_at)), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_editor, {
     "class": "inintColorthemesMode",
     modelValue: _ctx.respPost.content,
     language: "en-US",
@@ -26631,6 +26637,7 @@ var routes = [{
     name: 'home',
     component: _components_Home_vue__WEBPACK_IMPORTED_MODULE_1__.default
   }, {
+    name: 'post',
     path: 'post/:slug',
     beforeEnter: cekLogin,
     component: _components_post_vue__WEBPACK_IMPORTED_MODULE_6__.default
@@ -26944,7 +26951,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 0.9rem !important;\r\n  line-height: 20px;\n}\nhtml,body{\r\n    width:100% !important;\r\n    height: 100% !important;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:#3f56eb;\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:#2640ed;\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 2px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 2px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\n.md{\r\nfont-family: var(--bs-font-sans-serif) !important;\n}\n.dark__{\r\n  background-color : #221f2c !important;\r\n  color: #e2e2ff !important;\r\n  transition: .5s ease-in-out;\n}\n.inintColorthemesMode{\r\n    transition: .3s ease-in-out;\n}\n.bg_dark__{\r\n  background-color : #221f2c !important;\r\n  color:white !important;\r\n  transition: .5s ease-in-out;\n}\n#mode{\r\n    transition: .5s ease-in-out;\n}\n.bg-dark{\r\n  background-color : #221f2c !important;\r\n  color:white !important;\n}\n.gallery-title\r\n{\r\n    font-size: 36px;\r\n    color: #42B32F;\r\n    text-align: center;\r\n    font-weight: 500;\r\n    margin-bottom: 70px;\n}\n.gallery-title:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 7.5%;\r\n    left: 46.5%;\r\n    height: 45px;\r\n    border-bottom: 1px solid #5e5e5e;\n}\n.hint{\r\nborder: #3f56eb59 2px solid !important;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n::-webkit-scrollbar {\r\n    display: none;\n}\np{\r\n  font-size: 1.0rem !important;\r\n  line-height: auto;\n}\nhtml,body{\r\n    width:100% !important;\r\n    height: 100% !important;\n}\n.avatar {\r\n    display: inline-flex;\r\n    border-radius: 50%;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    position: relative;\n}\n.avatar.avatar-lg .avatar-content, .avatar.avatar-lg img {\r\n    width: 48px;\r\n    height: 48px;\r\n    font-size: 1.2rem;\n}\n.user_s{\r\n  margin-left: 0px !important;\r\n  cursor: pointer;\r\n  color:rgb(15, 12, 38);\r\n  transition: .5s ease;\n}\n.user_s:hover{\r\n  color:rgb(34, 26, 87);\n}\n.c_shadow{\r\n  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;\n}\n.linkc_tag{\r\n  color:#3f56eb;\r\n  font-weight: 600;\n}\n.linkc_tag:hover{\r\n  color:#2640ed;\n}\n.btn-circle.btn-xl {\r\n    width: 70px;\r\n    height: 70px;\r\n    padding: 10px 16px;\r\n    border-radius: 35px;\r\n    font-size: 24px;\r\n    line-height: 1.33;\n}\n.btn-circle {\r\n    width: 35px;\r\n    height: 35px;\r\n    padding: 6px 0px;\r\n    border-radius: 15px;\r\n    text-align: center;\r\n    line-height: 1.42857;\n}\n.btn-U{\r\n  border:none !important;\r\n  background-color:#3052ff2c  !important;\r\n  color :#3051FF !important;\r\n  box-shadow: none !important;\r\n  font-size: 16px;\r\n  transition: .5s ease;\n}\n.btn-U:hover{\r\n    background-color:#3052ff44  !important;\r\n    color :#1f45ff !important;\n}\n.btn-like-circle {\r\n    text-align: center !important;\r\n    background-color:#ff646436 !important ;\r\n    color: #ff6464 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-like-circle:hover {\r\n\r\n    background-color:#ff646462 !important ;\r\n    color: #fa5454 !important;\n}\n.btn-comment-circle {\r\n    text-align: center !important;\r\n    background-color:#566ae833 !important ;\r\n    color: #5669e8 !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-comment-circle:hover {\r\n    background-color:#566ae854 !important ;\r\n    color: #3f56eb !important;\n}\n.btn-add-circle {\r\n    text-align: center !important;\r\n    background-color:#008f5d35 !important ;\r\n    color: #008f5d !important;\r\n    font-size: auto;\r\n    transition: .5s ease;\n}\n.btn-add-circle:hover {\r\n    background-color:#008f5d4b !important ;\r\n    color: #038758 !important;\n}\n.serch_{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #a9b1e1bb 2px solid !important;\n}\n.serch_:focus{\r\n      transition: .5s ease;\r\n      box-shadow: none !important;\r\n      border: #3f56eb95 2px solid !important;\n}\n.back-to-top {\r\n    position: fixed;\r\n    bottom: 15px;\r\n    right: 15px;\n}\n.scrl__{\r\n    overflow-x: scroll;\r\n    box-sizing: content-box; /* So the width will be 100% + 17px */\n}\n.md{\r\nfont-family: var(--bs-font-sans-serif) !important;\n}\n.dark__{\r\n  background-color : #221f2c !important;\r\n  color: #e2e2ff !important;\r\n  transition: .5s ease-in-out;\n}\n.inintColorthemesMode{\r\n    transition: .3s ease-in-out;\n}\n.bg_dark__{\r\n  background-color : #221f2c !important;\r\n  color:white !important;\r\n  transition: .5s ease-in-out;\n}\n#mode{\r\n    transition: .5s ease-in-out;\n}\n.bg-dark{\r\n  background-color : #221f2c !important;\r\n  color:white !important;\n}\n.gallery-title\r\n{\r\n    font-size: 36px;\r\n    color: #42B32F;\r\n    text-align: center;\r\n    font-weight: 500;\r\n    margin-bottom: 70px;\n}\n.gallery-title:after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 7.5%;\r\n    left: 46.5%;\r\n    height: 45px;\r\n    border-bottom: 1px solid #5e5e5e;\n}\n.hint{\r\nborder: #3f56eb59 2px solid !important;\n}\n.md-content p{\r\n  margin:0px\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -54,6 +54,7 @@ const routes = [
           name:'home',
           component:Home
         },{
+          name:'post',
           path:'post/:slug',
           beforeEnter: cekLogin,
           component:post

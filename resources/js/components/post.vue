@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="ms-2">
                                     <h5 class="m-0 p-0 text-break user_s inintColorthemesMode" style="">{{respPost.author.name}}</h5>
-                                    <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:14px">Jumat, 13 Agustus 2021</h6>
+                                    <h6 class="p-0 m-0 fw-normal inintColorthemesMode" style="font-size:14px">{{date(respPost.created_at)}}</h6>
                                 </div>
                             </div>
                             <div class="p-2 ">

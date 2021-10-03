@@ -29,7 +29,7 @@
                                 </div>
                             </div>
                             <div class="p-2">
-                                <h2 class="user_s inintColorthemesMode" style="cursor:pointer;">{{item.title}}</h2>
+                                <h2 class="user_s inintColorthemesMode" @click="goPost(item.title_slug)" style="cursor:pointer;">{{item.title}}</h2>
                                 <router-link v-for="ite in item.tag" :key="ite.id" class="linkc_tag me-2" to="">#{{ite.tag_name}}</router-link>
                             </div>
                             <div class="p-2 border-top">
@@ -245,6 +245,11 @@ export default {
              duration:5142,
         })
 },
+goPost(f){
+    this.$router.push({
+        path:`post/${f}`
+    })
+}
     },
 
 }
